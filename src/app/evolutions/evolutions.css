@@ -1,0 +1,4655 @@
+:host {
+  display: block;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.navbar {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1000; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 60px; 
+  /* Cambio de Rojo a Amarillo corporativo de Super Óptica */
+  background-color: #ffffff; 
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);  
+  transform: translateY(-100%);
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.navbar::after {
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  background: transparent;
+}
+
+.navbar:hover {
+  transform: translateY(0);
+}
+
+.logo-container img {
+  height: 35px; /* Aumenta este valor si lo quieres aún más grande (ej: 70px) */
+  cursor: pointer;
+  filter: none; /* Esto quita la sombra / drop-shadow por completo */
+  transition: transform 0.3s ease;
+}
+
+.nav-links {
+  display: flex;
+  gap: 35px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links a {
+  /* Color azul oscuro corporativo para contrastar sobre el fondo amarillo */
+  color: #05051B;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif; 
+  font-size: 1.1rem; 
+  font-weight: 700; 
+  letter-spacing: 1px;
+  transition: 0.3s;
+  padding: 5px 12px;
+  border-radius: 4px;
+}
+
+.nav-links a:hover {
+  color: #090A22;
+  background-color: #FFCC00; 
+}
+
+
+
+.nav-links {
+  display: flex;
+  gap: 35px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links a {
+  color: #090A22;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif; 
+  font-size: 1.1rem; 
+  font-weight: 600; 
+  letter-spacing: 1px;
+  transition: 0.3s;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+/* =========================================
+   ANIMACIONES DE ENTRADA (Scroll)
+   ========================================= */
+.animar-izquierda {
+  opacity: 0;
+  transform: translateX(-100px); 
+  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.animar-izquierda.visible {
+  opacity: 1;
+  transform: translateX(0); 
+}
+
+/* =========================================
+   CONTROLES DE PRESENTACIÓN PREMIUM
+   ========================================= */
+.controles-presentacion {
+  position: fixed;
+  bottom: 40px;
+  right: 50px;
+  display: flex;
+  flex-direction: row; /* Dispuestos en horizontal */
+  gap: 20px;
+  z-index: 9999;
+}
+
+.btn-flecha {
+  background: rgba(155, 27, 48, 0.1); /* Tono Ruby oscuro translúcido */
+  border: 1px solid rgba(255, 77, 109, 0.4); /* Borde Ruby claro */
+  color: #ff4d6d;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.btn-flecha:hover {
+  background: rgba(155, 27, 48, 0.8);
+  color: #ffffff;
+  border-color: #ff4d6d;
+  transform: scale(1.15);
+  box-shadow: 0 0 25px rgba(255, 77, 109, 0.5);
+}
+
+/* Oculta el botón suavemente cuando no se puede usar (ej: flecha arriba en la primera sección) */
+.btn-flecha.oculto {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.5);
+}
+
+/* Opcional: Asegura que el scroll se comporte de manera fluida globalmente */
+html {
+  scroll-behavior: smooth;
+}
+
+
+
+
+
+
+/* =========================================
+   SECCIÓN 1: HERO EVOLUTION PREMIUM
+   ========================================= */
+.hero-evolution-premium {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  align-items: stretch;
+  background-color: #080b12; /* Un azul noche muy profundo */
+  overflow: hidden;
+}
+
+/* Contenedor del fondo animado */
+.bg-evolution-hero {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 1;
+}
+
+.bg-evolution-hero img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+  /* Animación de zoom muy sutil y elegante */
+  animation: zoomFondoEvo 20s infinite alternate linear;
+}
+
+@keyframes zoomFondoEvo {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+}
+
+/* Degradado que mezcla el fondo oscuro con un halo cyan de tecnología */
+.overlay-evolution {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(90deg, rgba(8, 11, 18, 0.95) 0%, rgba(8, 11, 18, 0.7) 50%, rgba(0, 212, 255, 0.1) 100%);
+}
+
+.contenedor-hero-evolution {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 5%;
+  display: flex;
+  align-items: stretch;
+}
+
+/* Tres zonas verticales: kicker arriba, identidad en el centro, caption al pie */
+.hero-evo-textos {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr) auto auto;
+  padding: 140px 0 80px 34px;
+}
+
+.hero-evo-textos::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 150px;
+  bottom: 90px;
+  width: 1px;
+  background: linear-gradient(180deg,
+    rgba(0, 212, 255, 0) 0%,
+    rgba(0, 212, 255, 0.7) 18%,
+    rgba(0, 212, 255, 0.7) 82%,
+    rgba(0, 212, 255, 0) 100%);
+}
+
+.pre-title-evo {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #00d4ff; /* Acento Cyan */
+  letter-spacing: 4px;
+  margin: 0 0 15px 0;
+}
+
+.logo-hero-evo {
+  max-width: 400px;
+  width: 100%;
+  align-self: end;
+  margin-bottom: 25px;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
+}
+
+.titulo-dinamico-evo {
+  font-family: 'Baby Monsta', sans-serif;
+  font-weight: 400;
+  font-size: 3.6rem;
+  color: #ffffff;
+  line-height: 1.1;
+  margin: 0 0 20px 0;
+  letter-spacing: 1px;
+}
+
+.titulo-dinamico-evo strong {
+  color: #00d4ff;
+  text-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+}
+
+.desc-hero-evo {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.15rem;
+  color: #cccccc;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 640px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(0, 212, 255, 0.45);
+}
+
+.btn-premium-evo {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  background: linear-gradient(135deg, #005599 0%, #00d4ff 100%);
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 15px 35px;
+  border-radius: 30px;
+  text-decoration: none;
+  letter-spacing: 1px;
+  box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-premium-evo:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 25px rgba(0, 212, 255, 0.5);
+}
+
+/* Opcional: Cambiar las flechas globales a tono Azul/Cyan para esta página */
+.btn-flecha {
+  background: rgba(0, 212, 255, 0.1); 
+  border: 1px solid rgba(0, 212, 255, 0.4); 
+  color: #00d4ff;
+}
+.btn-flecha:hover {
+  background: rgba(0, 85, 153, 0.8);
+  color: #ffffff;
+  border-color: #00d4ff;
+  box-shadow: 0 0 25px rgba(0, 212, 255, 0.5);
+}
+
+
+
+
+
+
+
+
+/* =========================================
+   SECCIÓN 2: EVOLUTION PRO 2.0 (EXTRA COMPACTA)
+   ========================================= */
+.seccion-pro-2 {
+  position: relative;
+  background-color: #080b12;
+  padding: 0 5%;
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* ENVIAMOS TODO A LA IZQUIERDA */
+  overflow: hidden;
+}
+
+.fondo-pro2-img {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: right center; /* Anclamos la foto a la derecha */
+  filter: brightness(0.85); /* Quitamos el desenfoque */
+  transform: scale(1);
+  z-index: 1;
+}
+
+.overlay-pro2 {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  /* Degradado oscuro a la izquierda para leer bien, transparente a la derecha */
+  background: linear-gradient(90deg, rgba(8, 11, 18, 0.95) 0%, rgba(8, 11, 18, 0.85) 48%, transparent 100%);
+  z-index: 2;
+}
+
+/* --- Bento asimétrico: identidad a la izquierda, ficha técnica a la derecha --- */
+.contenedor-pro2 {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 680px; /* LIMITAMOS EL ANCHO PARA LIBERAR LA FOTO */
+  display: grid;
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+  gap: 30px;
+  align-items: stretch;
+}
+
+/* --- Lado Izquierdo: Textos --- */
+.info-pro2 {
+  width: 100%;
+  max-width: 100%; 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.badge-raypath {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.4);
+  color: #00d4ff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 6px 15px;
+  border-radius: 30px;
+  margin-bottom: 18px; /* Espacio hacia el párrafo descriptivo */
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+}
+
+.badge-raypath i {
+  margin-right: 5px;
+}
+
+.info-pro2 h2 {
+  font-family: 'Baby Monsta', sans-serif;
+  font-weight: 400;
+  font-size: 2.2rem;
+  color: #ffffff;
+  line-height: 1;
+  margin: 0 0 14px 0; /* Espacio hacia la pastilla inferior */
+  letter-spacing: 1px;
+}
+
+.info-pro2 h2 strong {
+  background: linear-gradient(90deg, #ffffff 0%, #00d4ff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.linea-cyan {
+  width: 60px;
+  height: 4px;
+  background: #00d4ff;
+  border-radius: 2px;
+  margin-bottom: 12px; /* REDUCIDO */
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.6);
+}
+
+.desc-pro2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem; /* REDUCIDO */
+  color: #cccccc;
+  line-height: 1.5;
+  margin-bottom: 15px; /* REDUCIDO */
+}
+
+.caja-destaque-pro2 {
+  background: rgba(0, 212, 255, 0.06);
+  border: 1px solid rgba(0, 212, 255, 0.22);
+  padding: 14px 16px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  backdrop-filter: blur(5px);
+  margin-top: auto; /* Se ancla al pie de la columna para equilibrar la ficha */
+}
+
+.caja-destaque-pro2 i {
+  font-size: 1.6rem; /* REDUCIDO */
+  color: #00d4ff;
+  opacity: 0.8;
+}
+
+.caja-destaque-pro2 p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem; /* REDUCIDO */
+  color: #e0e0e0;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.caja-destaque-pro2 p strong {
+  color: #ffffff;
+}
+
+/* --- Los 6 beneficios dejan de ser tarjetas y pasan a lista técnica vertical --- */
+.grid-beneficios-pro2 {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  align-content: start;
+}
+
+.beneficio-card {
+  background: transparent;
+  backdrop-filter: none;
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 0;
+  padding: 15px 6px;
+  transition: background 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), padding-left 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+  
+  /* EL TRUCO: Usamos CSS Grid interno para alinear icono y texto horizontalmente sin tocar tu HTML */
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: 
+    "icon title"
+    "icon desc";
+  column-gap: 14px;
+  row-gap: 3px;
+  align-items: center;
+}
+
+.beneficio-card:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.beneficio-card:last-child {
+  padding-bottom: 0;
+}
+
+/* Efecto de borde iluminado al hover */
+.beneficio-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%; width: 50%; height: 2px;
+  background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+  transition: left 0.6s ease;
+}
+
+.beneficio-card:hover {
+  background: rgba(255, 255, 255, 0.035);
+  padding-left: 14px;
+}
+
+.beneficio-card:hover::before {
+  left: 150%;
+}
+
+.icono-ben {
+  grid-area: icon;
+  width: 32px; height: 32px; /* REDUCIDO */
+  border-radius: 8px;
+  background: rgba(0, 212, 255, 0.1);
+  display: flex; justify-content: center; align-items: center;
+  color: #00d4ff;
+  font-size: 1rem;
+  margin-bottom: 0; /* ELIMINAMOS EL MARGEN INFERIOR */
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.beneficio-card:hover .icono-ben {
+  background: #00d4ff;
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+  transform: scale(1.1);
+}
+
+.beneficio-card h4 {
+  grid-area: title;
+  font-family: 'Antonio', sans-serif;
+  font-size: 1.1rem; /* REDUCIDO */
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.beneficio-card p {
+  grid-area: desc;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75rem; /* REDUCIDO */
+  color: #aaaaaa;
+  margin: 0;
+  line-height: 1.3;
+  transition: color 0.3s ease;
+}
+
+.beneficio-card:hover p {
+  color: #cccccc;
+}
+/* =========================================
+   SECCIÓN 4: EVOLUTION PLUS (ALINEADO A LA IZQUIERDA)
+   ========================================= */
+
+   /* =========================================
+   SISTEMA INTUITIVO DE CHIPS (Reemplaza listas largas)
+   ========================================= */
+.tags-perfil {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.tag-p {
+  background: rgba(0, 153, 255, 0.1);
+  border: 1px solid rgba(0, 153, 255, 0.3);
+  color: #0099ff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.grid-chips {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 columnas de etiquetas */
+  gap: 12px;
+}
+
+.chip {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #e0e0e0;
+  border-left: 3px solid transparent;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.chip i { 
+  font-size: 1.1rem; 
+  width: 20px; 
+  text-align: center; 
+}
+
+/* Chips Positivos (Verde) */
+.chip.pro { border-left-color: rgba(26, 188, 156, 0.5); }
+.chip.pro i { color: #1abc9c; }
+.chip.pro:hover { 
+  background: rgba(26, 188, 156, 0.1); 
+  border-left-color: #1abc9c; 
+  transform: translateX(3px); 
+  color: #ffffff; 
+}
+
+/* Chips a Mejorar (Rojo) */
+.chip.con { border-left-color: rgba(255, 77, 109, 0.5); }
+.chip.con i { color: #ff4d6d; }
+.chip.con:hover { 
+  background: rgba(255, 77, 109, 0.1); 
+  border-left-color: #ff4d6d; 
+  transform: translateX(3px); 
+  color: #ffffff; 
+}
+
+/* Ajuste Móvil */
+@media (max-width: 600px) {
+  .grid-chips { grid-template-columns: 1fr; }
+  .comparativa-grid { grid-template-columns: 1fr !important; }
+  .divisor-vertical { display: none; }
+}
+
+
+.seccion-plus {
+  position: relative;
+  background-color: #040b14;
+  padding: 0 5%;
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* ENVIAMOS TODO A LA IZQUIERDA */
+  overflow: hidden;
+}
+
+.fondo-plus-img {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: right center; /* Anclamos la foto a la derecha */
+  filter: brightness(0.85); /* Quitamos el desenfoque para que se vea nítida */
+  transform: scale(1);
+  z-index: 1;
+}
+
+.overlay-plus {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  /* Degradado oscuro a la izquierda para leer bien, transparente a la derecha */
+  background: linear-gradient(90deg, rgba(4, 11, 20, 0.95) 0%, rgba(4, 11, 20, 0.85) 45%, transparent 100%);
+  z-index: 2;
+}
+
+.contenedor-plus {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 680px; /* LIMITAMOS EL ANCHO PARA LIBERAR LA FOTO */
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* --- Encabezado --- */
+.header-plus {
+  text-align: left; /* Alineamos a la izquierda */
+}
+
+.titulo-plus {
+  font-family: 'Baby Monsta', sans-serif;
+  font-weight: 400;
+  font-size: 2.4rem;
+  color: #ffffff;
+  margin: 0 0 10px 0;
+  letter-spacing: 1px;
+}
+
+.titulo-plus strong {
+  color: #0099ff; /* Tono azul vibrante de Evolution PLUS */
+}
+
+.subtitulo-plus {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: #cccccc;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* --- Contenedor de las Tarjetas (Apiladas verticalmente) --- */
+.grid-tarjetas-plus {
+  display: flex;
+  flex-direction: column; /* FORZAMOS EL APILADO VERTICAL */
+  gap: 20px;
+}
+
+/* --- Tarjeta: Para quién va dirigido --- */
+.card-perfil-plus {
+  background: rgba(4, 11, 20, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 153, 255, 0.15); /* Borde sutil azul */
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: row; 
+  align-items: flex-start;
+  gap: 20px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+.card-perfil-plus i {
+  font-size: 2.5rem;
+  color: #0099ff;
+  margin-top: 5px;
+}
+
+.contenido-perfil-plus h3 {
+  font-family: 'Antonio', sans-serif;
+  font-size: 1.6rem;
+  color: #ffffff;
+  margin: 0 0 10px 0;
+  letter-spacing: 1px;
+}
+
+.contenido-perfil-plus p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: #dddddd;
+  line-height: 1.5;
+  margin: 0 0 10px 0;
+}
+
+.contenido-perfil-plus p strong {
+  color: #ffffff;
+}
+
+/* --- Tarjeta: Análisis de Rendimiento --- */
+.card-analisis-plus {
+  background: rgba(4, 11, 20, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+.card-analisis-plus h3 {
+  font-family: 'Antonio', sans-serif;
+  font-size: 1.6rem;
+  color: #ffffff;
+  margin: 0 0 20px 0;
+  text-align: center; 
+  letter-spacing: 1px;
+}
+
+/* Columnas internas de Ventajas y Mejoras */
+.grid-columnas-analisis-plus {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Mantiene las 2 columnas dentro de la tarjeta */
+  gap: 20px;
+}
+
+.columna-ventajas-plus h4 {
+  color: #1abc9c; /* Verde esmeralda */
+  font-family: 'Antonio', sans-serif;
+  font-size: 1.2rem;
+  margin: 0 0 15px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.columna-mejoras-plus h4 {
+  color: #ff4d6d; /* Rojo/Rosado */
+  font-family: 'Antonio', sans-serif;
+  font-size: 1.2rem;
+  margin: 0 0 15px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lista-analisis-plus {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.item-analisis-plus {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 10px 15px;
+  border-radius: 8px;
+}
+
+.item-ventaja-plus {
+  border-left: 3px solid #1abc9c;
+}
+
+.item-mejora-plus {
+  border-left: 3px solid #ff4d6d;
+}
+
+.item-analisis-plus p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  color: #cccccc;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.item-analisis-plus p strong {
+  color: #ffffff;
+}
+
+.hover-target-plus {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* Indicador sutil de que el título es interactivo */
+.hover-target-plus .titulo-plus {
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.hover-target-plus:hover .titulo-plus {
+  transform: translateX(4px);
+  text-shadow: 0 0 20px rgba(0, 153, 255, 0.5);
+}
+
+/* Contenedor flotante que se ubica a la derecha (en la zona del recuadro) */
+.preview-plus-container {
+  position: absolute;
+  top: -10px;
+  left: calc(100% + 400px); /* Aumentado para moverlo más a la derecha */
+  width: fit-content;        /* Se adapta exactamente al ancho de la imagen */
+  height: fit-content;       /* Se adapta exactamente al alto de la imagen */
+  background: rgba(5, 7, 10, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 153, 255, 0.35);
+  border-radius: 16px;
+  padding: 0;                /* Sin relleno sobrante */
+  overflow: hidden;          /* Mantiene las esquinas redondeadas con la imagen */
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 153, 255, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  
+  /* Estado oculto */
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.92) translateX(-15px);
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Imagen dentro del contenedor */
+.img-preview-plus {
+  width: 360px;              /* Ajusta este valor si deseas la imagen más grande o pequeña */
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Aparición al hacer hover */
+.hover-target-plus:hover .preview-plus-container {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1) translateX(0);
+}
+
+/* =========================================
+   SECCIÓN 3: EVOLUTION PLUS (COMPACTA Y A LA IZQUIERDA)
+   ========================================= */
+
+   
+.seccion-plus {
+  position: relative;
+  background-color: #05070a;
+  padding: 0 5%;
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* ENVIAMOS TODO A LA IZQUIERDA */
+  overflow: hidden;
+}
+
+/* Convertimos el gradiente radial viejo en un overlay lineal a la izquierda */
+.bg-plus-gradient {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(90deg, rgba(5, 7, 10, 0.95) 0%, rgba(5, 7, 10, 0.85) 48%, transparent 100%);
+  z-index: 2;
+}
+
+.fondo-plus-img {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: right center; /* Anclamos la foto a la derecha */
+  opacity: 1; /* Hacemos visible la imagen */
+  filter: brightness(0.8); /* Oscurecemos un poco para buen contraste */
+  z-index: 1;
+}
+
+.contenedor-plus {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 680px; /* LIMITAMOS EL ANCHO PARA LIBERAR LA FOTO */
+  display: flex;
+  flex-direction: column; /* APILAMOS EL TEXTO Y LAS TARJETAS */
+  gap: 26px; /* Aire generoso entre el titular y el bloque de datos */
+}
+
+/* --- Encabezado --- */
+.header-plus {
+  text-align: left; /* Alineamos a la izquierda */
+  margin-bottom: 0;
+}
+
+.titulo-plus {
+  font-family: 'Baby Monsta', sans-serif;
+  font-weight: 400;
+  font-size: 2.4rem;
+  color: #ffffff;
+  margin: 0 0 5px 0;
+  letter-spacing: 1px;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #00d4ff, #0077ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.subtitulo-plus {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem; /* REDUCIDO */
+  color: #cccccc;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* --- Layout de Tarjetas: bento asimétrico (perfil angosto | análisis ancho) --- */
+.grid-layout-plus {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.glass-card-plus {
+  background: rgba(5, 7, 10, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 15px 20px; /* MÁS COMPACTO */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.glass-card-plus:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 153, 255, 0.3); /* Borde azul suave al hover */
+}
+
+/* --- Tarjeta Target: columna vertical, etiqueta del perfil anclada al pie --- */
+.glass-card-plus.target-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.glass-card-plus.target-card .icono-target {
+  margin-bottom: 0;
+  font-size: 2.2rem;
+  color: #0099ff;
+}
+
+.glass-card-plus.target-card h3 {
+  font-family: 'Antonio', sans-serif;
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: 1px;
+  text-wrap: balance;
+}
+
+.glass-card-plus.target-card p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  color: #cccccc;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.glass-card-plus.target-card p strong {
+  color: #ffffff;
+}
+
+.glass-card-plus.target-card .divisor-line {
+  display: none; /* Ocultamos esta línea decorativa para ganar espacio */
+}
+
+/* Las etiquetas bajan al fondo de la tarjeta y la compareración manda */
+.glass-card-plus.target-card .tags-perfil {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 153, 255, 0.2);
+}
+
+.glass-card-plus.target-card .desc-extra {
+  margin-top: 4px;
+  padding-top: 4px;
+  border-top: 1px solid rgba(0, 153, 255, 0.2);
+}
+
+/* --- Estructura Ventajas y Desventajas: el eje de la comparación pasa a vertical --- */
+.comparativa-header h3 {
+  font-family: 'Antonio', sans-serif;
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin: 0 0 16px 0;
+  text-align: left; /* Alineado a la izquierda */
+  letter-spacing: 1px;
+}
+
+.comparativa-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 14px;
+}
+
+.divisor-vertical {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+  width: 100%;
+  height: 1px;
+}
+
+.titulo-ventaja, .titulo-desventaja {
+  font-family: 'Antonio', sans-serif;
+  font-size: 1.1rem; /* REDUCIDO */
+  margin: 0 0 10px 0;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.titulo-ventaja { color: #1abc9c; }
+.titulo-desventaja { color: #ff4d6d; }
+
+.lista-pros-cons {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* REDUCIDO */
+}
+
+.lista-pros-cons li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 8px 12px; /* REDUCIDO */
+  border-radius: 8px;
+  border-left: 3px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.lista-pros-cons.pros li { border-left-color: rgba(26, 188, 156, 0.3); }
+.lista-pros-cons.pros li:hover { background: rgba(26, 188, 156, 0.08); border-left-color: #1abc9c; transform: translateX(3px); }
+.lista-pros-cons.pros i { color: #1abc9c; margin-top: 2px; font-size: 0.85rem; }
+
+.lista-pros-cons.cons li { border-left-color: rgba(255, 77, 109, 0.3); }
+.lista-pros-cons.cons li:hover { background: rgba(255, 77, 109, 0.08); border-left-color: #ff4d6d; transform: translateX(3px); }
+.lista-pros-cons.cons i { color: #ff4d6d; margin-top: 2px; font-size: 0.85rem; }
+
+.lista-pros-cons span {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75rem; /* REDUCIDO */
+  color: #dddddd;
+  line-height: 1.3;
+}
+
+.lista-pros-cons span strong {
+  color: #ffffff;
+}
+
+
+
+
+/* =========================================
+   SECCIÓN 4: EVOLUTION ESSENTIAL (ALINEADO A LA DERECHA)
+   ========================================= */
+.seccion-essential {
+  position: relative;
+  background-color: #080b12;
+  padding: 0 5%;
+  height: 100vh;  
+  min-height: 100vh;
+  display: flex;
+  align-items: center; /* Centramos verticalmente */
+  justify-content: flex-end; /* TODO A LA DERECHA */
+  overflow: hidden;
+}
+
+.fondo-essential-img {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: left center; /* La foto se ancla a la izquierda */
+  filter: brightness(0.85); /* Quitamos el desenfoque (blur) */
+  transform: scale(1);
+  z-index: 1;
+}
+
+.overlay-essential {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  /* Degradado oscuro a la derecha para leer bien, transparente a la izquierda */
+  background: linear-gradient(270deg, rgba(8, 11, 18, 0.95) 0%, rgba(8, 11, 18, 0.85) 45%, transparent 100%);
+  z-index: 2;
+}
+
+.contenedor-essential {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 680px; /* LIMITAMOS EL ANCHO PARA LIBERAR LA FOTO */
+  display: flex;
+  flex-direction: column; /* APILAMOS VERTICALMENTE */
+  gap: 15px; /* Reducido para ahorrar espacio vertical */
+}
+
+/* --- Encabezado --- */
+.header-essential {
+  text-align: left; /* A la izquierda */
+  margin-bottom: 0;
+}
+
+.titulo-essential {
+  font-family: 'Baby Monsta', sans-serif;
+  font-weight: 400;
+  font-size: 2.4rem; /* Tamaño coherente */
+  color: #ffffff;
+  margin: 0 0 5px 0;
+  letter-spacing: 1px;
+}
+
+.titulo-essential strong {
+  color: #00d4ff;
+}
+
+.desc-essential {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem; /* Reducido */
+  color: #cccccc;
+  max-width: 100%;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* --- Layout de Tarjetas --- */
+.grid-layout-essential {
+  display: flex;
+  flex-direction: column; /* Apiladas verticalmente */
+  gap: 15px; /* Reducido */
+}
+
+.glass-card-essential {
+  background: rgba(4, 11, 20, 0.6); 
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 15px 20px; /* Reducimos rellenos */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.glass-card-essential:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 212, 255, 0.3);
+}
+
+/* --- Tarjeta Target con Grid Interno (Ahorra altura) --- */
+.glass-card-essential.target-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: 
+    "icon title"
+    "icon desc";
+  column-gap: 15px;
+  row-gap: 3px;
+  align-items: center;
+}
+
+.glass-card-essential.target-card .icono-target {
+  grid-area: icon;
+  margin-bottom: 0;
+  font-size: 2.2rem;
+  color: #00d4ff;
+}
+
+.glass-card-essential.target-card h3 {
+  grid-area: title;
+  font-family: 'Antonio', sans-serif;
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.glass-card-essential.target-card p {
+  grid-area: desc;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  color: #cccccc;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* =========================================
+   COMPARATIVA COMPACTA EN ESSENTIAL
+   ========================================= */
+.seccion-essential .comparativa-header h3 {
+  font-family: 'Antonio', sans-serif;
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin: 0 0 10px 0; /* Acercamos el título a las listas */
+  text-align: left; /* Alineamos izquierda para consistencia */
+  letter-spacing: 1px;
+}
+
+.seccion-essential .comparativa-grid {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  gap: 15px; /* Más compacto */
+}
+
+.seccion-essential .titulo-ventaja, 
+.seccion-essential .titulo-desventaja {
+  font-size: 1.1rem; 
+  margin: 0 0 10px 0;
+}
+
+.seccion-essential .lista-pros-cons {
+  gap: 8px; /* Juntamos los items de la lista */
+}
+
+.seccion-essential .lista-pros-cons li {
+  padding: 8px 12px; /* Listas más delgadas */
+  gap: 10px;
+  border-radius: 8px;
+}
+
+.seccion-essential .lista-pros-cons span {
+  font-size: 0.75rem; /* Texto pequeño para que entre perfecto */
+  line-height: 1.3;
+}
+
+
+/* =========================================
+   HOVER PREVIEW EVOLUTION ESSENTIAL (SEC-3)
+   ========================================= */
+
+.hover-target-essential {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.hover-target-essential .titulo-essential {
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.hover-target-essential:hover .titulo-essential {
+  transform: translateX(4px);
+  text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+}
+
+/* Contenedor flotante izquierdo (reflejado para la composición derecha) */
+.preview-essential-container {
+  position: absolute;
+  top: -20px;
+  left: auto;
+  right: calc(100% + 450px); /* Se abre hacia el lado de la foto */
+  width: fit-content;
+  height: fit-content;
+  background: rgba(5, 7, 10, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(0, 212, 255, 0.4);
+  border-radius: 18px;
+  padding: 12px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), 0 0 35px rgba(0, 212, 255, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 100;
+  
+  /* Estado oculto */
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.92) translateX(15px);
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Imagen ajustada y limpia */
+.img-preview-essential {
+  width: 380px;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  object-fit: cover;
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.6));
+}
+
+/* Leyenda inferior de opciones disponibles */
+.leyenda-opciones-essential {
+  width: 100%;
+  margin-top: 12px;
+  padding: 8px 10px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.leyenda-opciones-essential h4 {
+  font-family: 'Antonio', sans-serif;
+  font-size: 0.9rem;
+  color: #ffffff;
+  letter-spacing: 1.5px;
+  margin: 0 0 6px 0;
+  text-align: center;
+}
+
+.leyenda-opciones-essential ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.leyenda-opciones-essential li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75rem;
+  color: #cccccc;
+}
+
+.leyenda-opciones-essential strong {
+  color: #ffffff;
+}
+
+/* Puntos indicadores de color */
+.punto-color {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px currentColor;
+}
+
+.punto-color.violeta {
+  background-color: #9b59b6;
+  color: #9b59b6;
+}
+
+.punto-color.azul {
+  background-color: #3498db;
+  color: #3498db;
+}
+
+.punto-color.verde {
+  background-color: #2ecc71;
+  color: #2ecc71;
+}
+
+/* Aparición al hacer hover */
+.hover-target-essential:hover .preview-essential-container {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1) translateX(0);
+}
+
+/* Ocultar en dispositivos táctiles/móviles para evitar errores */
+@media (max-width: 1100px) {
+  .preview-essential-container {
+    display: none;
+  }
+}
+
+
+/* =========================================
+   SECCIÓN 5: PERFILES DE OPTIMIZACIÓN
+   ========================================= */
+.seccion-opciones {
+  position: relative;
+  background-color: #030407; /* El fondo más oscuro para dar la sensación de cierre */
+  padding: 0 5%;
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.bg-opciones {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: radial-gradient(circle at center, rgba(0, 212, 255, 0.03) 0%, transparent 70%);
+  z-index: 1;
+}
+
+.contenedor-opciones {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.header-opciones {
+  text-align: center;
+}
+
+.titulo-opciones {
+  font-family: 'Baby Monsta', sans-serif;
+  font-weight: 400;
+  font-size: 2.8rem;
+  color: #ffffff;
+  margin: 0 0 15px 0;
+  letter-spacing: 1px;
+}
+
+.titulo-opciones strong {
+  color: #00d4ff; /* Mantenemos el Cyan como acento principal */
+}
+
+.subtitulo-opciones {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  color: #cccccc;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Tarjetas de Perfiles */
+.grid-perfiles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.perfil-card {
+  background: rgba(20, 25, 35, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.lente-bg-hover {
+  position: absolute;
+  top: 0; left: 0; 
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  transform: scale(1.1);
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  z-index: 1;
+}
+
+/* Un degradado oscuro arriba y abajo para que el título y la barra de color sigan siendo legibles */
+.overlay-card-hover {
+  position: absolute;
+  top: 0; left: 0; 
+  width: 100%; height: 100%;
+  background: linear-gradient(180deg, rgba(20,25,35,0.95) 0%, rgba(20,25,35,0.1) 50%, rgba(20,25,35,0.9) 100%);
+  opacity: 0;
+  transition: all 0.5s ease;
+  z-index: 2;
+}
+.card-content-z {
+  position: relative;
+  z-index: 3;
+  transition: opacity 0.3s ease, transform 0.4s ease;
+}
+
+/* --- ANIMACIONES AL HACER HOVER --- */
+
+/* 1. Revelar la imagen y hacerle un sutil zoom-out */
+.perfil-card:hover .card-content-z {
+  opacity: 0;
+  transform: translateY(15px); /* Se desliza suavemente hacia abajo mientras desaparece */
+  pointer-events: none; /* Evita que el texto invisible interfiera */
+}
+
+/* 2. Revelar el overlay oscuro */
+.perfil-card:hover .overlay-card-hover {
+  opacity: 1;
+}
+
+/* 3. Desaparecer el texto descriptivo para ver bien el lente de la imagen */
+.desc-hover-hide {
+  transition: opacity 0.3s ease, transform 0.4s ease;
+}
+
+.perfil-card:hover .desc-hover-hide {
+  opacity: 0;
+  transform: translateY(15px); /* Se desliza hacia abajo mientras desaparece */
+}
+
+.perfil-card:hover {
+  transform: translateY(-10px);
+  background: rgba(30, 40, 55, 0.8);
+}
+
+.icono-perfil {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.perfil-card:hover .icono-perfil {
+  transform: scale(1.1);
+}
+
+.perfil-card h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  color: #ffffff;
+  margin: 0 0 15px 0;
+  font-weight: 400;
+}
+
+.perfil-card h3 strong {
+  font-family: 'Antonio', sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+  display: block;
+  margin-top: 5px;
+}
+
+.perfil-card p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: #aaaaaa;
+  line-height: 1.6;
+  margin: 0 0 25px 0;
+}
+
+.indicador-color {
+  width: 50px;
+  height: 4px;
+  border-radius: 2px;
+  margin: 0 auto;
+  transition: width 0.3s ease;
+}
+
+.perfil-card:hover .indicador-color {
+  width: 100px;
+}
+
+/* Colores específicos inspirados en los puntos del folleto */
+.card-cerca .icono-perfil { color: #d81b60; } /* Tono rosado/cálido */
+.card-cerca:hover { border-color: rgba(216, 27, 96, 0.4); box-shadow: 0 15px 30px rgba(216, 27, 96, 0.15); }
+.card-cerca .indicador-color { background: #d81b60; }
+.card-cerca h3 strong { color: #d81b60; }
+
+.card-intermedio .icono-perfil { color: #1976d2; } /* Azul clásico */
+.card-intermedio:hover { border-color: rgba(25, 118, 210, 0.4); box-shadow: 0 15px 30px rgba(25, 118, 210, 0.15); }
+.card-intermedio .indicador-color { background: #1976d2; }
+.card-intermedio h3 strong { color: #1976d2; }
+
+.card-lejos .icono-perfil { color: #00bfa5; } /* Verde agua / Teal */
+.card-lejos:hover { border-color: rgba(0, 191, 165, 0.4); box-shadow: 0 15px 30px rgba(0, 191, 165, 0.15); }
+.card-lejos .indicador-color { background: #00bfa5; }
+.card-lejos h3 strong { color: #00bfa5; }
+
+/* Cierre de página */
+.cierre-evolution {
+  text-align: center;
+  margin-top: 20px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.logo-cierre {
+  height: 25px;
+  opacity: 0.5;
+  margin-bottom: 10px;
+  transition: opacity 0.3s ease;
+}
+
+.cierre-evolution:hover .logo-cierre {
+  opacity: 1;
+}
+
+.cierre-evolution p {
+  font-family: 'Antonio', sans-serif;
+  color: #00d4ff;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+
+
+
+
+/* =========================================
+   HOVER PREVIEW EVOLUTION PRO 2.0 (SEC-4)
+   ========================================= */
+
+.hover-target-pro2 {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.hover-target-pro2 .titulo-pro2 {
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.hover-target-pro2:hover .titulo-pro2 {
+  transform: translateX(4px);
+  text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+}
+
+/* Contenedor flotante a la derecha */
+.preview-pro2-container {
+  position: absolute;
+  top: -20px;
+  left: calc(100% + 650px);  /* Empuja el contenedor a la derecha libre */
+  width: fit-content;        /* Ajuste ceñido al contenido */
+  height: fit-content;
+  background: rgba(5, 7, 10, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(0, 212, 255, 0.4);
+  border-radius: 18px;
+  padding: 12px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), 0 0 35px rgba(0, 212, 255, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 100;
+  
+  /* Estado oculto */
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.92) translateX(-15px);
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Imagen aumentada */
+.img-preview-pro2 {
+  width: 390px;              /* Tamaño ampliado del diagrama */
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  object-fit: cover;
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.6));
+}
+
+/* Leyenda inferior de opciones disponibles */
+.leyenda-opciones-pro2 {
+  width: 100%;
+  margin-top: 12px;
+  padding: 8px 10px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.leyenda-opciones-pro2 h4 {
+  font-family: 'Antonio', sans-serif;
+  font-size: 0.9rem;
+  color: #ffffff;
+  letter-spacing: 1.5px;
+  margin: 0 0 6px 0;
+  text-align: center;
+}
+
+.leyenda-opciones-pro2 ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.leyenda-opciones-pro2 li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75rem;
+  color: #cccccc;
+}
+
+.leyenda-opciones-pro2 strong {
+  color: #ffffff;
+}
+
+/* Aparición en Hover */
+.hover-target-pro2:hover .preview-pro2-container {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1) translateX(0);
+}
+
+/* Ocultar en dispositivos móviles/tablets para no superponer interfaz */
+@media (max-width: 1100px) {
+  .preview-pro2-container {
+    display: none;
+  }
+}
+
+
+
+
+
+
+
+
+/* =========================================
+   SECCIÓN 6: EXPERTOS EN PROGRESIVOS
+   ========================================= */
+.seccion-progresivos {
+  position: relative;
+  background-color: #05070a;
+  padding: 0 5%;
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.fondo-progresivos {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover;
+  filter: brightness(0.9) blur(2px); /* Oscurecemos para que resalte el texto */
+  z-index: 1;
+}
+
+.overlay-prog {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  /* Degradado que oscurece mucho a la izquierda (texto) y aclara a la derecha */
+  background: linear-gradient(90deg, #05070a 0%, rgba(5,7,10,0.8) 50%, transparent 100%);
+  z-index: 2;
+}
+
+/* Tres bandas: titular arriba a la izquierda, diagrama a la derecha, zonas al pie */
+.contenedor-progresivos {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 1300px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
+  grid-template-areas:
+    "titulo   visual"
+    "regla    visual"
+    "subtitulo visual"
+    "desc     visual"
+    "zonas    zonas";
+  gap: 0 56px;
+  align-items: start;
+}
+
+/* --- Lado Izquierdo --- */
+.info-prog {
+  display: contents;
+}
+
+.hover-target-prog { grid-area: titulo; }
+.info-prog .linea-cyan { grid-area: regla; }
+.subtitulo-prog { grid-area: subtitulo; }
+.desc-prog { grid-area: desc; }
+.visual-prog { grid-area: visual; }
+.zonas-vision { grid-area: zonas; }
+
+.info-prog h2 {
+  font-family: 'Baby Monsta', sans-serif;
+  font-weight: 400;
+  font-size: 2.8rem;
+  color: #ffffff;
+  line-height: 1.1;
+  margin: 0 0 15px 0;
+  letter-spacing: 1px;
+  text-wrap: balance;
+}
+
+.info-prog h2 strong {
+  color: #00d4ff;
+}
+
+.subtitulo-prog {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: #e0e0e0;
+  margin: 0 0 20px 0;
+  line-height: 1.4;
+}
+
+.subtitulo-prog strong {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.desc-prog {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.05rem;
+  color: #cccccc;
+  line-height: 1.6;
+  margin-bottom: 0;
+  max-width: 58ch;
+}
+
+/* Las zonas de visión pasan a ser una banda horizontal de 3 columnas */
+.zonas-vision {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 34px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.zona-item {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 18px 22px;
+  border-radius: 12px;
+  border-top: 1px solid rgba(0, 212, 255, 0.28);
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+
+.zona-item:hover {
+  background: rgba(0, 212, 255, 0.07);
+  border-top-color: #00d4ff;
+  transform: translateY(-3px);
+}
+
+.zona-icon {
+  font-size: 1.8rem;
+  color: #00d4ff;
+  width: 40px;
+  text-align: center;
+}
+
+.zona-text h4 {
+  font-family: 'Antonio', sans-serif;
+  font-size: 1.2rem;
+  color: #ffffff;
+  margin: 0 0 5px 0;
+  letter-spacing: 1px;
+}
+
+.zona-text p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: #aaaaaa;
+  margin: 0;
+}
+
+/* --- Lado Derecho: Diagrama del Lente --- */
+.visual-prog {
+  flex: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lente-demostracion {
+  position: relative;
+  width: 320px;
+  height: 250px;
+}
+
+/* Damos forma de lente con CSS */
+.cristal-progresivo {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border: 2px solid rgba(0, 212, 255, 0.5);
+  /* Forma redondeada típica de un cristal óptico */
+  border-radius: 30% 50% 50% 40% / 40% 40% 60% 60%;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 0 20px rgba(255,255,255,0.2);
+  position: relative;
+}
+
+/* Líneas Guía del Diagrama (Como en tu imagen) */
+.linea-guia {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.linea-guia .punto {
+  width: 8px; height: 8px;
+  background-color: #00d4ff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #00d4ff;
+}
+
+.linea-guia span {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 1px;
+  background: rgba(0,0,0,0.6);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* Posiciones de las zonas */
+.guia-lejos { top: 20%; }
+.guia-intermedia { top: 50%; }
+.guia-cerca { top: 80%; }
+
+
+
+/* --- ANIMACIONES AL HACER HOVER --- */
+
+/* 1. Revelar la imagen de fondo y hacerle un sutil zoom-out */
+.perfil-card:hover .lente-bg-hover {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* 2. Revelar el overlay oscuro (ayuda a darle contraste) */
+.perfil-card:hover .overlay-card-hover {
+  opacity: 1;
+}
+
+/* 3. Desaparecer TODO el contenido (ícono, título, texto) al hacer hover */
+.perfil-card:hover .card-content-z {
+  opacity: 0;
+  transform: translateY(15px); /* Se desliza suavemente hacia abajo */
+  pointer-events: none; /* Evita que el texto invisible interfiera */
+}
+
+/* 4. Efecto de elevación de la tarjeta */
+.perfil-card:hover {
+  transform: translateY(-10px);
+  background: rgba(30, 40, 55, 0.8);
+}
+
+/* ===================================================
+   HOVER INTERACTIVO: 3 LENTES (MONO, BI, MULTIFOCAL)
+   =================================================== */
+
+.hover-target-prog {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  z-index: 60;
+  margin-bottom: 5px;
+}
+
+.titulo-prog-hover {
+  font-family: 'Baby Monsta', sans-serif;
+  font-weight: 400;
+  font-size: 2.8rem;
+  color: #ffffff;
+  line-height: 1.1;
+  margin: 0;
+  letter-spacing: 1px;
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.titulo-prog-hover strong {
+  color: #00d4ff;
+}
+
+.hover-target-prog:hover .titulo-prog-hover {
+  transform: translateX(4px);
+  text-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+}
+
+/* Contenedor flotante a la derecha (Columna de 3 cristales) */
+.preview-prog-container {
+  position: absolute;
+  top: 15px;                  /* Bajado para no tapar ni colisionar arriba */
+  left: calc(100% + 220px);   /* Centrado en la zona derecha */
+  width: 360px;               /* Ampliado de 280px a 360px */
+  background: rgba(5, 7, 10, 0.92);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1.5px solid rgba(0, 212, 255, 0.45);
+  border-radius: 22px;
+  padding: 24px 20px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.85), 0 0 35px rgba(0, 212, 255, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;                  /* Espaciado más amplio entre cristales */
+  z-index: 100;
+  
+  /* Estado oculto */
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.92) translateX(-15px);
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Al hacer hover sobre el título se despliega el esquema vertical */
+.hover-target-prog:hover .preview-prog-container {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1) translateX(0);
+}
+
+/* Tarjeta individual por cada tipo de lente */
+.item-comparativa-lente {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.nombre-tipo-lente {
+  font-family: 'Antonio', sans-serif;
+  font-size: 1.15rem;         /* Título de lente más legible */
+  color: #00d4ff;
+  letter-spacing: 2px;
+}
+
+/* Marco orgánico del cristal óptico */
+.marco-lente-simulacion {
+  position: relative;
+  width: 310px;               /* Aumentado de 240px a 310px */
+  height: 145px;              /* Aumentado de 120px a 145px */
+  border-radius: 35% 45% 45% 35% / 40% 40% 60% 60%;
+  border: 2px solid rgba(0, 212, 255, 0.6);
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.2);
+  background: #000;
+}
+
+.img-lente-cerro {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* --- Etiquetas de texto internas sobre el cerro --- */
+.zona-tag {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 1px;
+  background: rgba(0, 0, 0, 0.65);
+  padding: 2px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.tag-arriba { top: 12px; }
+.tag-intermedia { top: 58px; }
+.tag-abajo { bottom: 12px; }
+.tag-centro-abajo { bottom: 16px; }
+
+/* --- 2. Simulación Bifocal: Línea segmentada divisoria --- */
+.linea-bifocal-corte {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 210px;
+  height: 56px;
+  border-top: 2px dashed #00d4ff;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  background: rgba(0, 212, 255, 0.08);
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* --- 3. Simulación Multifocal / Progresivo: Aberraciones laterales difuminadas --- */
+.aberracion-lateral {
+  position: absolute;
+  bottom: 0;
+  width: 80px;
+  height: 95px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  pointer-events: none;
+  z-index: 4;
+}
+
+.aberracion-izq {
+  left: 0;
+  background: radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.4) 0%, rgba(0, 212, 255, 0.15) 50%, transparent 80%);
+  border-top-right-radius: 55px;
+  border-right: 1px dashed rgba(255, 255, 255, 0.4);
+}
+
+.aberracion-der {
+  right: 0;
+  background: radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.4) 0%, rgba(0, 212, 255, 0.15) 50%, transparent 80%);
+  border-top-left-radius: 55px;
+  border-left: 1px dashed rgba(255, 255, 255, 0.4);
+}
+
+.badge-prog-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.4);
+  color: #00d4ff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 6px 16px;
+  border-radius: 30px;
+  margin-bottom: 15px; /* Espacio limpio antes del título */
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+}
+
+/* Desactivar el popup en pantallas táctiles y móviles para evitar solapamientos */
+@media (max-width: 1100px) {
+  .preview-prog-container {
+    display: none;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================
+   SECCIÓN 7: TABLA DE RENDIMIENTO
+   ========================================= */
+/* =========================================
+   SECCIÓN 7: TABLA DE RENDIMIENTO
+   ========================================= */
+/* =========================================
+   SECCIÓN 7: TABLA DE RENDIMIENTO
+   ========================================= */
+.seccion-rendimiento {
+  position: relative;
+  background-color: #05070a;
+  /* Reducimos el padding superior y aseguramos 100px abajo para esquivar las flechas siempre */
+  padding: 10px 5% 100px; 
+  height: 100vh; 
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centrado, pero con contenido compacto nunca tocará los bordes */
+  align-items: center;
+  overflow: hidden;
+}
+
+.img-fondo-rendimiento {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0.25; 
+  z-index: 1;
+}
+
+.bg-rendimiento {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: radial-gradient(circle at center top, rgba(138, 43, 226, 0.2) 0%, rgba(5, 7, 10, 0.9) 70%);
+  z-index: 2;
+}
+
+.contenedor-rendimiento {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 1200px; /* Ligeramente más angosto para acompañar las tarjetas compactas */
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+/* Cabecera alineada a la izquierda, como portada de tabla */
+.header-rendimiento {
+  text-align: left;
+}
+
+.badge-cyan {
+  display: inline-block;
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.4);
+  color: #00d4ff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 5px 15px;
+  border-radius: 30px;
+  margin-bottom: 8px;
+}
+
+.titulo-rendimiento {
+  font-family: 'Baby Monsta', sans-serif;
+  font-weight: 400;
+  font-size: 2.2rem; /* Escala ajustada para no robar tanta altura */
+  color: #ffffff;
+  margin: 0 0 8px 0;
+  letter-spacing: 1px;
+}
+
+.titulo-rendimiento strong {
+  color: #00d4ff;
+}
+
+.subtitulo-rendimiento {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.05rem;
+  color: #cccccc;
+  max-width: 62ch;
+  margin: 0;
+}
+
+/* --- Las 3 tarjetas se apilan como filas de un ranking (leaderboard) --- */
+.grid-rendimiento {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tarjeta-rendimiento {
+  background: rgba(20, 25, 35, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 20px 26px;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+  display: grid;
+  grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+  column-gap: 34px;
+  align-items: center;
+}
+
+/* El mejor diseño del ranking se lleva el acento */
+.tarjeta-rendimiento.card-pro {
+  background: rgba(0, 212, 255, 0.05);
+  border-color: rgba(0, 212, 255, 0.3);
+}
+
+.tarjeta-rendimiento:hover {
+  transform: translateY(-8px);
+  background: rgba(30, 40, 55, 0.8);
+  border-color: rgba(0, 212, 255, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 212, 255, 0.15);
+}
+
+/* Cabecera de la Tarjeta: nombre a la izquierda, puntuación a la derecha */
+.tarjeta-header {
+  text-align: left;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 18px;
+}
+
+.tarjeta-header h3 {
+  font-family: 'Antonio', sans-serif;
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.tarjeta-header h3 span {
+  color: #00d4ff; 
+}
+
+/* Caja de Valoración Optimización */
+.caja-valoracion {
+  background: linear-gradient(135deg, rgba(119, 97, 219, 0.4) 0%, rgba(0, 212, 255, 0.2) 100%);
+  border: 1px solid rgba(119, 97, 219, 0.5);
+  border-radius: 12px;
+  padding: 8px 16px; /* Compactamos la caja de puntaje */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0px;
+  white-space: nowrap;
+}
+
+.label-val {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #e0e0e0;
+  letter-spacing: 1px;
+}
+
+.numero-val {
+  font-family: 'Antonio', sans-serif;
+  font-size: 1.6rem; /* Achicamos los números para que encajen perfectos */
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+/* Cuerpo de la Tarjeta: las 3 métricas en columnas comparables entre diseños */
+.tarjeta-body {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px 26px;
+  align-items: start;
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  padding-left: 34px;
+  margin-left: -17px; /* La línea cae en el centro del corredor */
+}
+
+.titulo-barras {
+  grid-column: 1 / -1;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 2px;
+  margin: 0 0 2px 0;
+}
+
+.grupo-barra {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.barra-labels {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem; /* Letras de las barras un poco más finas */
+  color: #cccccc;
+}
+
+/* Las barras de progreso */
+.barra-track {
+  width: 100%;
+  height: 6px; /* Barras más delgadas y elegantes */
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.2); 
+}
+
+.barra-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #7b61ff 0%, #00d4ff 100%);
+  border-radius: 10px;
+  /* El truco: La barra tiene su 'width' definido, pero limitamos visualmente a 0 al inicio */
+  max-width: 0; 
+}
+
+.animar-izquierda.visible .barra-fill {
+  animation: cargarBarras 1.5s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+.grupo-barra:nth-child(2) .barra-fill { animation-delay: 0.4s; }
+.grupo-barra:nth-child(3) .barra-fill { animation-delay: 0.6s; }
+.grupo-barra:nth-child(4) .barra-fill { animation-delay: 0.8s; }
+
+@keyframes cargarBarras {
+  0% { max-width: 0; }
+  100% { max-width: 100%; }
+}
+
+.fill-50 { width: 50%; }
+.fill-60 { width: 60%; }
+.fill-70 { width: 70%; }
+.fill-80 { width: 80%; }
+.fill-85 { width: 85%; }
+.fill-90 { width: 90%; }
+.fill-95 { width: 95%; }
+.fill-100 { width: 100%; }
+
+.tarjeta-rendimiento:hover .barra-fill {
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.8);
+}
+
+/* =========================================
+   SECCIÓN 8: HERO VARILUX (PORTADA)
+   ========================================= */
+.hero-varilux {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  /* Un fondo azul noche muy profundo, distinto al negro de Evolution */
+  background-color: #040b14; 
+  overflow: hidden;
+}
+
+/* La fotografía deja de ser un lavado a sangre y se convierte en panel enmarcado */
+.bg-varilux-hero {
+  position: absolute;
+  top: 38px; right: 38px; bottom: 38px; left: 50%;
+  border-radius: 26px;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+}
+
+.bg-varilux-hero img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+  /* Reutilizamos la animación suave de zoom de la primera portada */
+  animation: zoomFondoEvo 20s infinite alternate linear; 
+}
+
+.overlay-varilux {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  /* Viñeta suave: el rostro queda limpio dentro de su panel */
+  background: linear-gradient(180deg, rgba(4, 11, 20, 0.5) 0%, rgba(4, 11, 20, 0.04) 38%, rgba(4, 11, 20, 0.42) 100%);
+}
+
+.contenedor-hero-varilux {
+  position: relative;
+  z-index: 5;
+  width: 50%;
+  height: 100%;
+  max-width: 760px;
+  padding: 92px 6% 76px 5%;
+  display: flex;
+  flex-direction: column;
+}
+
+.pre-title-varilux {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  /* Usamos un tono azul acero/celeste propio de la marca Varilux */
+  color: #8ab4f8; 
+  letter-spacing: 4px;
+  margin: 0 0 18px 0;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(138, 180, 248, 0.2);
+  text-transform: uppercase;
+}
+
+.logo-hero-varilux {
+  max-width: 340px; /* Tamaño imponente para la marca */
+  width: 100%;
+  margin-top: auto;
+  margin-bottom: 25px;
+  /* TRUCO MAGICO: Invertimos el logo gris oscuro a blanco brillante y le damos sombra */
+  filter: brightness(0) invert(1) drop-shadow(0 4px 10px rgba(0,0,0,0.4));
+}
+
+.titulo-varilux {
+  font-family: 'Baby Monsta', sans-serif;
+  font-weight: 400;
+  font-size: 3.2rem;
+  color: #ffffff;
+  line-height: 1.1;
+  margin: 0 0 25px 0;
+  letter-spacing: 1px;
+}
+
+.titulo-varilux strong {
+  color: #8ab4f8; /* Acento en la segunda línea */
+}
+
+.linea-separador-varilux {
+  width: 80px;
+  height: 4px;
+  background: #8ab4f8;
+  border-radius: 2px;
+  margin-bottom: 30px;
+  box-shadow: 0 0 15px rgba(138, 180, 248, 0.4);
+}
+
+.desc-varilux {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  color: #d1d5db;
+  max-width: 46ch;
+  line-height: 1.6;
+  margin-bottom: auto;
+}
+
+/* RESPONSIVE: el panel vuelve a ser una banda superior y el texto baja */
+@media (max-width: 1000px) {
+  .hero-varilux {
+    height: auto;
+    min-height: 100vh;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+  .bg-varilux-hero {
+    position: relative;
+    top: auto; right: auto; bottom: auto; left: auto;
+    width: 100%;
+    height: 42vh;
+    min-height: 250px;
+    border-radius: 0 0 24px 24px;
+    box-shadow: none;
+  }
+  .contenedor-hero-varilux {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    padding: 44px 5% 60px;
+  }
+  .logo-hero-varilux {
+    margin-top: 0;
+    max-width: 260px;
+  }
+  .desc-varilux {
+    margin-bottom: 0;
+  }
+}
+
+/* =========================================
+   SECCIÓN 9: VARILUX X SERIES
+   ========================================= *//* =========================================
+   SECCIÓN 9: VARILUX X SERIES (ALINEADO A LA IZQUIERDA)
+   ========================================= */
+.seccion-varilux-x {
+  position: relative;
+  background-color: #040b14;
+  /* El aire lo lleva cada bloque: la banda de datos llega al borde */
+  padding: 0;
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* FORZAMOS QUE TODO SE VAYA A LA IZQUIERDA */
+  overflow: hidden;
+}
+
+.fondo-x-img {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: right center; /* Anclamos a la modelo a la derecha */
+  filter: brightness(0.85); /* Quitamos el blur para que la foto sea nítida */
+  transform: scale(1);
+  z-index: 1;
+}
+
+.overlay-x {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  /* Degradado fuerte a la izquierda para el texto, transparente a la derecha para ver a la modelo */
+  background: linear-gradient(90deg, rgba(4, 11, 20, 0.95) 0%, rgba(4, 11, 20, 0.8) 50%, transparent 100%);
+  z-index: 2;
+}
+
+/* Tres bandas: encabezado, narrativa, y ficha de datos a todo el ancho */
+.contenedor-x {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto auto auto;
+  align-content: center;
+  gap: 18px;
+}
+
+/* --- Encabezado --- */
+.header-x {
+  text-align: left;
+  padding: 0 5%;
+}
+
+/* El layout intermedio se disuelve: sus hijos pasan a ser bandas */
+.grid-layout-x {
+  display: contents;
+}
+
+.info-lado-x {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 0 5%;
+  max-width: 720px;
+}
+
+.badge-varilux {
+  display: inline-block;
+  background: rgba(138, 180, 248, 0.1);
+  border: 1px solid rgba(138, 180, 248, 0.4);
+  color: #8ab4f8;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 5px 15px;
+  border-radius: 30px;
+  margin-bottom: 10px;
+}
+
+.titulo-x {
+  font-family: 'Baby Monsta', sans-serif;
+  font-weight: 400;
+  font-size: 2.5rem; /* Un poco más compacto */
+  color: #ffffff;
+  margin: 5px 0;
+  letter-spacing: 1px;
+}
+
+.titulo-x strong {
+  color: #8ab4f8; 
+}
+
+.subtitulo-x {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  color: #cccccc;
+  margin: 0;
+}
+
+/* --- Layout Principal (Apilado Verticalmente) --- */
+.grid-layout-x {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.info-lado-x {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.desc-x {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: #e0e0e0;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.desc-x strong {
+  color: #ffffff;
+}
+
+.tit-tech-x {
+  font-family: 'Antonio', sans-serif;
+  font-size: 1.4rem;
+  color: #8ab4f8;
+  margin: 5px 0 0 0;
+  letter-spacing: 1px;
+}
+
+.grid-tech-x {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tech-badge {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(138, 180, 248, 0.2);
+  padding: 8px 15px; /* Más compacto para que entren bien las 4 */
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.tech-badge i {
+  color: #8ab4f8;
+  font-size: 1.1rem;
+}
+
+.tech-badge:hover {
+  background: rgba(138, 180, 248, 0.15);
+  border-color: #8ab4f8;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(138, 180, 248, 0.2);
+}
+
+.specs-x {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 5px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  color: #aaaaaa;
+}
+
+.specs-x strong {
+  color: #ffffff;
+}
+
+.divisor-punto {
+  width: 5px;
+  height: 5px;
+  background-color: #8ab4f8;
+  border-radius: 50%;
+}
+
+/* --- Ficha de datos: banda transversal a todo el ancho --- */
+.glass-card-x {
+  background: rgba(4, 11, 20, 0.74);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 0;
+  border-top: 1px solid rgba(138, 180, 248, 0.22);
+  border-bottom: 1px solid rgba(138, 180, 248, 0.12);
+  border-radius: 0;
+  padding: 18px 5%;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+  transition: border-color 0.3s ease;
+  display: grid;
+  grid-template-columns: minmax(0, 210px) minmax(0, 1fr);
+  align-items: center;
+  column-gap: 30px;
+}
+
+.glass-card-x:hover {
+  transform: none;
+  border-color: rgba(138, 180, 248, 0.22);
+}
+
+.tit-beneficios-x {
+  font-family: 'Antonio', sans-serif;
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin: 0;
+  text-align: left;
+  letter-spacing: 1px;
+}
+
+.grid-beneficios-x {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.ben-item-x {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 12px 14px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+    /* Vertical: la banda es baja y ancha */
+  align-items: flex-start;
+  text-align: left;
+  gap: 9px;
+  transition: all 0.3s ease;
+}
+
+.ben-item-x i {
+  font-size: 1.4rem;
+  color: #8ab4f8;
+  transition: transform 0.3s ease;
+  min-width: 0; /* Alineado al borde izquierdo de la banda */
+  text-align: left;
+}
+
+.ben-item-x span {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  color: #dddddd;
+  line-height: 1.3;
+}
+
+.ben-item-x:hover {
+  background: rgba(138, 180, 248, 0.1);
+  border-color: #8ab4f8;
+}
+
+.ben-item-x:hover i {
+  transform: scale(1.15);
+  color: #ffffff;
+}
+/* RESPONSIVE: la banda de datos baja a 2 y luego 1 columna */
+@media (max-width: 1100px) {
+  .seccion-varilux-x {
+    height: auto;
+    min-height: 100vh;
+  }
+  .contenedor-x {
+    height: auto;
+    padding: 90px 0 0;
+  }
+  .glass-card-x {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 16px;
+  }
+  .grid-beneficios-x {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 700px) {
+  .grid-beneficios-x {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .info-lado-x {
+    max-width: 100%;
+  }
+}
+
+/* =========================================
+   SECCIÓN 10: VARILUX PHYSIO 3.0 (ALINEADO A LA IZQUIERDA)
+   ========================================= */
+.seccion-varilux-physio {
+  position: relative;
+  background-color: #040b14;
+  padding: 40px 5%;
+  /* La sección crece si el contenido no cabe: nada se recorta */
+  height: auto;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* FORZAMOS QUE TODO SE VAYA A LA IZQUIERDA */
+  overflow: hidden;
+}
+
+.fondo-physio-img {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: right center; /* Asegura que la cara se ancle a la derecha */
+  filter: brightness(0.85); /* Quitamos el blur para que la foto sea clara */
+  transform: scale(1);
+  z-index: 1;
+}
+
+.overlay-physio {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  /* Degradado fuerte a la izquierda para leer, transparente a la derecha para ver la foto */
+  background: linear-gradient(90deg, rgba(4, 11, 20, 0.95) 0%, rgba(4, 11, 20, 0.8) 45%, transparent 100%);
+  z-index: 2;
+}
+
+/* Dossier en 2 columnas: la narrativa manda, la ficha acompaña */
+.contenedor-physio {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 700px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.24fr) minmax(0, 0.76fr);
+  grid-template-areas:
+    "head  ficha"
+    "info  ficha";
+  gap: 18px 30px;
+  align-items: stretch;
+}
+
+.header-physio { 
+  text-align: left; 
+  grid-area: head;
+}
+
+.titulo-physio {
+  font-family: 'Baby Monsta', sans-serif;
+  font-weight: 400;
+  font-size: 2.1rem;
+  color: #ffffff;
+  margin: 5px 0;
+  letter-spacing: 1px;
+}
+.titulo-physio strong { color: #8ab4f8; }
+
+.subtitulo-physio {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  color: #cccccc;
+  margin: 0;
+}
+
+/* El layout intermedio se disuelve: sus hijos pasan a ser columnas */
+.grid-layout-physio {
+  display: contents;
+}
+
+.info-lado-physio {
+  grid-area: info;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.desc-physio {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: #e0e0e0;
+  line-height: 1.5;
+  margin: 0;
+}
+.desc-physio strong { color: #ffffff; }
+
+.tit-tech-physio {
+  font-family: 'Antonio', sans-serif;
+  font-size: 1.4rem;
+  color: #8ab4f8;
+  margin: 5px 0 0 0;
+  letter-spacing: 1px;
+}
+
+/* Tecnologías lado a lado: en la columna ancha entran sin recortar */
+.grid-tech-physio {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.tech-badge-physio {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(138, 180, 248, 0.2);
+  padding: 12px 14px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+}
+.tech-badge-physio i {
+  color: #8ab4f8;
+  font-size: 1.6rem;
+}
+.tech-badge-physio div {
+  display: flex;
+  flex-direction: column;
+}
+.tech-badge-physio strong {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: #ffffff;
+}
+.tech-badge-physio span {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75rem;
+  color: #aaaaaa;
+}
+
+.specs-physio {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: auto; /* Se ancla al pie de la columna y equilibra la ficha */
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  color: #aaaaaa;
+  flex-wrap: wrap;
+}
+.specs-physio strong { color: #ffffff; }
+
+/* --- Ficha de la columna derecha --- */
+.glass-card-physio {
+  grid-area: ficha;
+  background: rgba(4, 11, 20, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(138, 180, 248, 0.15);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+  transition: border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.glass-card-physio:hover {
+  transform: none;
+  border-color: rgba(138, 180, 248, 0.4);
+}
+
+.tit-beneficios-physio {
+  font-family: 'Antonio', sans-serif;
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin: 0 0 4px 0;
+  text-align: left;
+  letter-spacing: 1px;
+}
+
+/* Los 4 beneficios pasan a lista con filetes, sin cajas, repartida en toda la altura */
+.grid-beneficios-physio {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  flex: 1;
+  align-content: space-between;
+  margin-top: 10px;
+}
+
+.ben-item-physio {
+  background: transparent;
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 0;
+  padding: 14px 2px;
+  display: flex;
+  flex-direction: row; 
+  align-items: center;
+  text-align: left;
+  gap: 14px;
+  transition: all 0.3s ease;
+}
+.ben-item-physio:first-child {
+  border-top: 0;
+}
+.ben-item-physio i {
+  font-size: 1.4rem;
+  color: #8ab4f8;
+  min-width: 0;
+  transition: transform 0.3s ease;
+}
+.ben-item-physio span {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  color: #dddddd;
+  line-height: 1.3;
+}
+.ben-item-physio:hover {
+  background: rgba(138, 180, 248, 0.06);
+  border-color: rgba(138, 180, 248, 0.1);
+}
+.ben-item-physio:hover i {
+  transform: translateX(3px);
+}
+
+/* RESPONSIVE: el dossier se apila */
+@media (max-width: 1000px) {
+  .seccion-varilux-physio {
+    padding: 100px 5% 60px;
+  }
+  .contenedor-physio {
+    max-width: 100%;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "head"
+      "info"
+      "ficha";
+    gap: 20px;
+  }
+  .specs-physio {
+    margin-top: 5px;
+  }
+  .grid-beneficios-physio {
+    align-content: start;
+  }
+}
+@media (max-width: 600px) {
+  .grid-tech-physio {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* =========================================
+   SECCIÓN 11: VARILUX COMFORT MAX
+   ========================================= */
+/* =========================================
+   SECCIÓN 11: VARILUX COMFORT MAX (ALINEADO A LA IZQUIERDA)
+   ========================================= */
+.seccion-varilux-comfort {
+  position: relative;
+  background-color: #040b14;
+  padding: 40px 5%;
+  /* Crece si el contenido no cabe: nada se recorta */
+  height: auto;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+
+.fondo-comfort-img {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: right center; /* Asegura que la modelo se ancle a la derecha */
+  filter: brightness(0.85); /* Quitamos el blur para que la foto sea clara */
+  transform: scale(1);
+  z-index: 1;
+}
+
+.overlay-comfort {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  /* Degradado fuerte a la izquierda para leer, transparente a la derecha para ver la foto */
+  background: linear-gradient(90deg, rgba(4, 11, 20, 0.95) 0%, rgba(4, 11, 20, 0.86) 52%, transparent 100%);
+  z-index: 2;
+}
+
+/* Poster de tres bandas separadas por filetes, sin cajas */
+.contenedor-comfort {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 680px;
+  display: grid;
+  grid-template-rows: auto auto auto;
+  align-content: center;
+}
+
+.header-comfort { 
+  text-align: left; 
+  padding-bottom: 22px;
+}
+
+.titulo-comfort {
+  font-family: 'Baby Monsta', sans-serif;
+  font-weight: 400;
+  font-size: 2.5rem;
+  color: #ffffff;
+  margin: 5px 0;
+  letter-spacing: 1px;
+}
+.titulo-comfort strong { color: #8ab4f8; }
+
+.subtitulo-comfort {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  color: #cccccc;
+  margin: 0;
+}
+
+/* El layout intermedio se disuelve: la narrativa es la banda central */
+.grid-layout-comfort {
+  display: contents;
+}
+
+.info-lado-comfort {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 22px 0 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.desc-comfort {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: #e0e0e0;
+  line-height: 1.5;
+  margin: 0;
+}
+.desc-comfort strong { color: #ffffff; }
+
+.tit-tech-comfort {
+  font-family: 'Antonio', sans-serif;
+  font-size: 1.4rem;
+  color: #8ab4f8;
+  margin: 5px 0 0 0;
+  letter-spacing: 1px;
+}
+
+/* Tecnologías: dos tarjetas verticales, icono arriba y texto abajo */
+.grid-tech-comfort {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); 
+  gap: 15px;
+}
+
+.tech-badge-comfort {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(138, 180, 248, 0.2);
+  padding: 16px 18px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  transition: all 0.3s ease;
+}
+.tech-badge-comfort i {
+  color: #8ab4f8;
+  font-size: 1.6rem;
+}
+.tech-badge-comfort div {
+  display: flex;
+  flex-direction: column;
+}
+.tech-badge-comfort strong {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: #ffffff;
+}
+.tech-badge-comfort span {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75rem;
+  color: #aaaaaa;
+}
+
+.specs-comfort {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 2px;
+  padding-top: 0;
+  border-top: 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  color: #aaaaaa;
+  flex-wrap: wrap;
+}
+.specs-comfort strong { color: #ffffff; }
+
+/* La ficha deja de ser tarjeta: es una tira de 4 columnas con filete */
+.glass-card-comfort {
+  background: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: 0;
+  border-radius: 0;
+  padding: 20px 0 0;
+  box-shadow: none;
+  transition: none;
+}
+
+.glass-card-comfort:hover {
+  transform: none;
+  border-color: rgba(138, 180, 248, 0.15);
+}
+
+.tit-beneficios-comfort {
+  font-family: 'Antonio', sans-serif;
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin: 0 0 14px 0;
+  text-align: left;
+  letter-spacing: 1px;
+}
+
+/* Beneficios en una tira horizontal de 4 */
+.grid-beneficios-comfort {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.ben-item-comfort {
+  background: transparent;
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0;
+  padding: 14px 2px 0;
+  display: flex;
+  flex-direction: column; 
+  align-items: flex-start;
+  text-align: left;
+  gap: 9px;
+  transition: all 0.3s ease;
+}
+.ben-item-comfort i {
+  font-size: 1.4rem;
+  color: #8ab4f8;
+  transition: transform 0.3s ease;
+}
+.ben-item-comfort span {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  color: #dddddd;
+  line-height: 1.3;
+}
+.ben-item-comfort:hover {
+  background: rgba(138, 180, 248, 0.06);
+  border-color: rgba(138, 180, 248, 0.35);
+}
+.ben-item-comfort:hover i {
+  transform: translateY(-2px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1000px) {
+  .seccion-varilux-comfort {
+    padding: 100px 5% 60px;
+  }
+  .contenedor-comfort {
+    max-width: 100%;
+  }
+  .grid-beneficios-comfort {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+}
+@media (max-width: 600px) {
+  .grid-tech-comfort {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+
+/* =========================================
+   SECCIÓN 12: COMPARATIVA DE LENTES
+   ========================================= */
+.seccion-comparativa-lentes {
+  position: relative;
+  background-color: #040b14;
+  padding: 24px 5% 96px; /* Padding seguro */
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.fondo-comparativa-img {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover;
+  filter: blur(2px) brightness(0.9);
+  transform: scale(1.05);
+  z-index: 1;
+}
+
+.overlay-comparativa {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: radial-gradient(circle at center, rgba(138, 180, 248, 0.05) 0%, rgba(4, 11, 20, 0.95) 80%);
+  z-index: 2;
+}
+
+.contenedor-comparativa {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 1350px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 44px;
+}
+
+/* --- Encabezado: banda editorial (marca a la izquierda, statement a la derecha) --- */
+.header-comparativa {
+  display: grid;
+  grid-template-columns: auto minmax(0, 620px);
+  justify-content: space-between;
+  align-items: center;
+  gap: 48px;
+  max-width: none;
+  margin: 0;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(138, 180, 248, 0.16);
+}
+
+.logo-pequeno-varilux {
+  height: 40px;
+  margin-bottom: 0;
+  filter: brightness(0) invert(1) drop-shadow(0 2px 5px rgba(0,0,0,0.5));
+}
+
+.desc-general-comparativa {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.05rem;
+  color: #cccccc;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* --- Grid de 3 Tarjetas: la solución pesa más que las dos limitaciones --- */
+.grid-3-lentes {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 0.92fr) minmax(0, 1.16fr);
+  gap: 28px;
+  align-items: stretch;
+}
+
+.tarjeta-lente {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 34px 32px 38px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+}
+
+.tarjeta-lente:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(138, 180, 248, 0.3);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Contenedor circular para la imagen que pondrás luego */
+.imagen-lente-placeholder {
+  width: 100%;
+  max-width: 250px;         /* Ancho amplio para que el lente se luzca */
+  height: 170px;            /* Altura suficiente para que se note en detalle */
+  background: transparent;
+  border-radius: 12px;      /* Borde suave en lugar de 50% para no cortar la montura */
+  margin: 0 0 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.tarjeta-lente:hover .imagen-lente-placeholder {
+  transform: scale(1.08); /* Zoom sutil al cristal en hover */
+}
+
+.img-circular-lente {
+  width: 81%;
+  height: 100%;
+  object-fit: cover;        /* 'cover' llena todo el espacio y agranda la vista del lente */
+  object-position: center;
+  opacity: 1;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.5));
+}
+
+.contenido-tarjeta-lente {
+  width: 100%;
+}
+
+.contenido-tarjeta-lente h3 {
+  font-family: 'Antonio', sans-serif;
+  font-size: 1.6rem;
+  color: #ffffff;
+  margin: 0 0 15px 0;
+  letter-spacing: 1px;
+  text-wrap: balance;
+}
+
+.contenido-tarjeta-lente p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  color: #aaaaaa;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Tarjeta Destacada (Varilux) */
+.tarjeta-destacada-varilux {
+  background: rgba(138, 180, 248, 0.08);
+  border: 1px solid rgba(138, 180, 248, 0.4);
+  box-shadow: 0 10px 30px rgba(138, 180, 248, 0.1);
+  padding: 40px 38px 44px;
+  transform: scale(1.03); /* Ligeramente más grande */
+}
+
+.tarjeta-destacada-varilux .imagen-lente-placeholder {
+  max-width: 320px;
+  height: 200px;
+  margin-bottom: 30px;
+}
+
+.tarjeta-destacada-varilux:hover {
+  transform: scale(1.05) translateY(-5px);
+  background: rgba(138, 180, 248, 0.12);
+  border-color: #8ab4f8;
+  box-shadow: 0 15px 40px rgba(138, 180, 248, 0.25);
+}
+
+.tarjeta-destacada-varilux h3 {
+  color: #8ab4f8;
+}
+
+.tarjeta-destacada-varilux p {
+  color: #cccccc;
+}
+
+.badge-recomendado {
+  position: absolute;
+  top: -14px;
+  left: 38px;
+  background: linear-gradient(90deg, #1976d2, #8ab4f8);
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 6px 15px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(138, 180, 248, 0.4);
+}
+
+@media (max-width: 1100px) {
+  .contenedor-comparativa {
+    gap: 32px;
+  }
+  .header-comparativa {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 32px;
+  }
+  .grid-3-lentes {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 0.9fr) minmax(0, 1.2fr);
+    gap: 20px;
+  }
+  .tarjeta-lente {
+    padding: 28px 24px 30px;
+  }
+  .tarjeta-destacada-varilux {
+    padding: 32px 28px 36px;
+  }
+  .badge-recomendado {
+    left: 28px;
+  }
+}
+
+/* =========================================
+   NUEVA SECCIÓN: XPERIENCE IA
+   ========================================= */
+.seccion-xperience-ia {
+  position: relative;
+  background-color: #030407;
+  /* El texto lleva su propio aire: el panel de la imagen llega al borde */
+  padding: 0;
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.fondo-ia-img {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0.90; /* Sutil para no opacar el resplandor morado */
+  z-index: 1;
+}
+
+.bg-ia-gradient {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  /* Oscurecemos un poco los bordes para que la foto de fondo se mezcle mejor */
+  background: radial-gradient(circle at right center, rgba(138, 43, 226, 0.2) 0%, rgba(3, 4, 7, 0.9) 80%);
+  z-index: 2;
+}
+
+.contenedor-ia {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: none;
+}
+
+/* Editorial split: columna de texto | panel de imagen a sangre */
+.grid-ia {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: 0;
+  align-items: stretch;
+  min-height: 100vh;
+}
+
+.info-ia {
+  padding: 0 5%;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.badge-ia {
+  display: inline-block;
+  background: rgba(138, 43, 226, 0.1);
+  border: 1px solid rgba(138, 43, 226, 0.4);
+  color: #c484ff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 8px 18px;
+  border-radius: 30px;
+  margin-bottom: 15px;
+}
+
+.titulo-ia {
+  font-family: 'Baby Monsta', sans-serif;
+  font-weight: 400;
+  font-size: 3.4rem;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1;
+  letter-spacing: 1px;
+}
+
+.titulo-ia strong {
+  background: linear-gradient(90deg, #c484ff, #8a2be2);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.linea-purpura {
+  width: 60px;
+  height: 4px;
+  background: #8a2be2;
+  border-radius: 2px;
+  margin: 20px 0;
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.6);
+}
+
+.subtitulo-ia {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+  color: #dddddd;
+  margin: 0 0 20px 0;
+}
+.subtitulo-ia strong { color: #ffffff; font-weight: 700; }
+
+.desc-ia {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.05rem;
+  color: #cccccc;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+/* Las dos capacidades pasan a ser una banda de dos columnas con filete */
+.lista-ia {
+  list-style: none;
+  padding: 0; margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 24px;
+}
+
+.lista-ia li {
+  display: flex; align-items: flex-start; gap: 14px;
+  font-family: 'Poppins', sans-serif; color: #e0e0e0; font-size: 0.95rem;
+  line-height: 1.45;
+  padding-top: 16px;
+  border-top: 1px solid rgba(196, 132, 255, 0.28);
+}
+
+.lista-ia li i {
+  color: #c484ff; font-size: 1.2rem;
+  line-height: 1.2;
+}
+
+/* Panel de imagen a sangre, con costura fina contra el texto */
+.visual-ia {
+  display: flex;
+}
+
+.placeholder-imagen-ia {
+  --scan-travel: calc(100vh - 15px);
+  width: 100%; 
+  height: 100%;
+  background: rgba(138, 43, 226, 0.05);
+  border: 0;
+  border-left: 1px solid rgba(138, 43, 226, 0.28);
+  border-radius: 0;
+  position: relative; overflow: hidden;
+}
+
+.img-ia-real {
+  width: 100%; height: 100%; object-fit: cover;
+  opacity: 1; /* PON ESTO EN 1 CUANDO TENGAS LA FOTO */
+}
+
+/* Efecto escáner futurista sobre la imagen */
+.overlay-scan {
+  position: absolute; top: 0; left: 0; width: 100%; height: 15px;
+  background: rgba(196, 132, 255, 0.4);
+  box-shadow: 0 0 15px #c484ff; filter: blur(2px);
+  animation: scanIA 3s infinite linear alternate;
+}
+
+@keyframes scanIA {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(var(--scan-travel, 335px)); }
+}
+
+/* =========================================
+   NUEVA SECCIÓN: PROGRESIVOS OCUPACIONALES
+   ========================================= *//* =========================================
+   NUEVA SECCIÓN: PROGRESIVOS OCUPACIONALES
+   ========================================= */
+.seccion-ocupacionales {
+  position: relative;
+  background-color: #05070a;
+  /* LA CLAVE: Quitamos los paddings verticales fijos para que el centrado sea automático */
+  padding: 0 5%;
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centrado vertical matemático */
+  align-items: center;
+  overflow: hidden;
+}
+
+/* NUEVA IMAGEN DE FONDO */
+.fondo-ocup-img {
+  position: absolute; 
+  top: 0; left: 0; 
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0.70; 
+  z-index: 1;
+}
+
+.bg-ocupacionales {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background: radial-gradient(circle at top, rgba(0, 212, 255, 0.05) 0%, rgba(5,7,10,0.95) 70%);
+  z-index: 2;
+}
+
+.contenedor-ocupacionales {
+  position: relative; 
+  z-index: 5; 
+  width: 100%; 
+  max-width: 1400px;
+  display: flex; 
+  flex-direction: column; 
+  gap: 30px; 
+  /* COMPENSACIÓN ÓPTICA: Subimos todo el bloque un poco para alejarlo de los botones inferiores */
+  margin-top: -60px; 
+}
+
+.header-ocupacionales { text-align: center; margin-bottom: 0; }
+
+.titulo-ocupacionales {
+  font-family: 'Baby Monsta', sans-serif;
+  font-weight: 400; 
+  font-size: 2.2rem; /* Reducido para ahorrar altura */
+  color: #ffffff;
+  margin: 0 0 10px 0; letter-spacing: 1px;
+}
+.titulo-ocupacionales strong { color: #00d4ff; }
+
+.subtitulo-ocupacionales {
+  font-family: 'Poppins', sans-serif; 
+  font-size: 0.95rem; /* Reducido */
+  color: #cccccc; margin: 0;
+}
+
+/* Cabecera en banda: título a la izquierda, promise a la derecha */
+.header-ocupacionales {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 4px 40px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.header-ocupacionales .subtitulo-ocupacionales {
+  text-align: right;
+}
+
+.linea-cyan.centro { grid-column: 1 / -1; margin: 12px 0 0; }
+
+/* Bento 2x2: cada producto es una tarjeta horizontal, imagen a la izquierda */
+.grid-4-ocupacionales {
+  display: grid;
+  grid-template-columns: minmax(0, 1.22fr) minmax(0, 1fr);
+  gap: 20px;
+  align-items: stretch;
+}
+
+.tarjeta-ocupacional {
+  background: rgba(20, 25, 35, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px; overflow: hidden;
+  transition: all 0.4s ease;
+  display: grid;
+  grid-template-columns: minmax(0, 0.42fr) minmax(0, 0.58fr);
+  align-items: stretch;
+}
+
+.tarjeta-ocupacional:hover {
+  transform: translateY(-8px);
+  background: rgba(30, 40, 55, 0.9);
+  border-color: rgba(138, 43, 226, 0.4);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+}
+
+.img-placeholder-ocup {
+  width: 100%; 
+  /* El alto lo marca la fila: la imagen acompaña al bloque de texto */
+  min-height: 178px;
+  background: rgba(0,0,0,0.4); 
+  border-right: 1px solid rgba(255,255,255,0.06);
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+  overflow: hidden;
+}
+
+.img-placeholder-ocup img {
+  width: 100%; 
+  height: 100%; 
+  /* LA CLAVE: contain hace que la imagen se vea completa siempre, 
+     sin recortes, añadiendo espacio a los lados si es necesario */
+  object-fit: contain; 
+  object-position: center; 
+  opacity: 1; 
+  transition: transform 0.5s ease; 
+}
+
+.tarjeta-ocupacional:hover .img-placeholder-ocup img {
+  transform: scale(1.05);
+}
+
+.contenido-ocup {
+  padding: 16px 20px;
+  display: flex; flex-direction: column; justify-content: center; flex-grow: 1;
+}
+
+.contenido-ocup h3 {
+  font-family: 'Antonio', sans-serif; 
+  font-size: 1.3rem; /* Título más compacto */
+  color: #ffffff;
+  margin: 0 0 8px 0; letter-spacing: 1px;
+}
+.contenido-ocup h3 strong { color: #00d4ff; }
+
+.desc-ocup {
+  font-family: 'Poppins', sans-serif; 
+  font-size: 0.75rem; 
+  color: #aaaaaa;
+  line-height: 1.4; margin: 0 0 12px 0; flex-grow: 1;
+}
+
+.info-duo {
+  display: flex; flex-direction: column; gap: 8px; margin-bottom: 15px;
+  padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.info-bloque {
+  display: flex; align-items: flex-start; gap: 8px;
+  font-family: 'Poppins', sans-serif; font-size: 0.75rem; color: #cccccc; line-height: 1.3;
+}
+.info-bloque i { color: #555555; font-size: 0.9rem; margin-top: 2px; }
+.info-bloque.destaque i { color: #c484ff; }
+.info-bloque.destaque span { color: #c484ff; }
+
+/* =========================================
+   BARRAS ANIMADAS PÚRPURAS
+   ========================================= */
+.barras-ocup { display: flex; flex-direction: column; gap: 6px; }
+
+.barra-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+}
+.barra-row span {
+  font-family: 'Poppins', sans-serif; font-size: 0.7rem; color: #ffffff; width: 60px;
+}
+
+.track {
+  flex-grow: 1; height: 5px; /* Barras más finas y elegantes */
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px; overflow: hidden;
+}
+
+/* La barra animada con color púrpura */
+.barra-fill-purpura {
+  height: 100%; border-radius: 10px;
+  background: linear-gradient(90deg, #7b61ff 0%, #c484ff 100%);
+  max-width: 0; /* Inicia en 0 para la animación */
+}
+
+/* Activación de la animación al hacer scroll */
+.animar-izquierda.visible .barra-fill-purpura {
+  animation: cargarBarras 1.5s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+/* Retrasos en cascada: Lejos (1ero), Intermedio (2do), Cerca (3ero) */
+.barra-row:nth-child(1) .barra-fill-purpura { animation-delay: 0.2s; }
+.barra-row:nth-child(2) .barra-fill-purpura { animation-delay: 0.4s; }
+.barra-row:nth-child(3) .barra-fill-purpura { animation-delay: 0.6s; }
+
+/* Tamaños ajustables */
+.fill-20 { width: 20%; }
+.fill-40 { width: 40%; }
+.fill-60 { width: 60%; }
+.fill-80 { width: 80%; }
+.fill-90 { width: 90%; }
+.fill-100 { width: 100%; }
+
+/* RESPONSIVE */
+@media (max-width: 1000px) {
+  .grid-4-ocupacionales { grid-template-columns: minmax(0, 1fr); }
+  .seccion-ocupacionales { height: auto; padding: 100px 5% 80px; }
+  .header-ocupacionales {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    text-align: center;
+    gap: 10px;
+  }
+  .header-ocupacionales .subtitulo-ocupacionales { text-align: center; }
+  .header-ocupacionales .linea-cyan.centro { margin: 4px auto 0; }
+}
+@media (max-width: 600px) {
+  .grid-4-ocupacionales { grid-template-columns: 1fr; }
+  .tarjeta-ocupacional {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .img-placeholder-ocup {
+    min-height: 0;
+    height: 190px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 1000px) {
+  .grid-ia {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+    text-align: center;
+  }
+  .info-ia {
+    padding: 110px 5% 40px;
+    max-width: 100%;
+  }
+  .lista-ia {
+    text-align: left;
+  }
+  .placeholder-imagen-ia {
+    --scan-travel: 285px;
+    height: 300px;
+    border-left: 0;
+    border-top: 1px solid rgba(138, 43, 226, 0.28);
+  }
+  .lista-ia { align-items: center; }
+  .visual-ia { justify-content: center; }
+}
+
+@media (max-width: 600px) {
+  .grid-4-ocupacionales { grid-template-columns: 1fr; }
+  .titulo-ia { font-size: 3.4rem; }
+  .titulo-ocupacionales { font-size: 2.2rem; }
+}
+
+/* =========================================
+   DISEÑO RESPONSIVO EXTRA PARA ESTA SECCIÓN
+   ========================================= */
+@media (max-width: 900px) {
+  .subtitulo-rendimiento {
+    white-space: normal; /* En celular sí le permitimos bajar de línea */
+    font-size: 0.95rem;
+  }
+  .contenedor-rendimiento {
+    max-width: 100%;
+    gap: 20px;
+  }
+  .grid-rendimiento {
+    gap: 14px;
+  }
+  .tarjeta-rendimiento {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 16px;
+    padding: 18px 20px;
+  }
+  .tarjeta-body {
+    border-left: 0;
+    padding-left: 0;
+    margin-left: 0;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+}
+/* =========================================
+   DISEÑO RESPONSIVO (Tablets y Celulares)
+   ========================================= */
+@media (max-width: 900px) {
+  
+  /* --- NAVBAR --- */
+  .navbar {
+    padding: 15px 20px;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .nav-links {
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-links a {
+    font-size: 0.95rem;
+  }
+
+  /* --- SEC 1: HERO EVOLUTION --- */
+  .hero-evolution-premium {
+    height: auto;
+    padding: 120px 0 50px;
+  }
+  .contenedor-hero-evolution {
+    justify-content: center;
+    text-align: center;
+  }
+  .hero-evo-textos {
+    display: block;
+    max-width: 100%;
+    padding: 0;
+  }
+  .hero-evo-textos::before {
+    display: none;
+  }
+  .logo-hero-evo {
+    max-width: 250px;
+    margin: 0 auto 20px;
+  }
+  .titulo-dinamico-evo {
+    font-size: 3.6rem;
+  }
+  .desc-hero-evo {
+    max-width: 100%;
+    margin: 0 auto;
+    padding-top: 0;
+    border-top: none;
+  }
+  .btn-premium-evo {
+    margin: 0 auto;
+  }
+
+  /* --- SEC 12: COMPARATIVA DE LENTES --- */
+  .seccion-comparativa-lentes {
+    height: auto;
+    padding: 110px 5% 60px;
+  }
+  .header-comparativa {
+    grid-template-columns: minmax(0, 1fr);
+    justify-content: start;
+    gap: 20px;
+  }
+  .grid-3-lentes {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+  }
+  .tarjeta-destacada-varilux {
+    transform: none;
+  }
+  .tarjeta-destacada-varilux:hover {
+    transform: translateY(-5px);
+  }
+  .tarjeta-destacada-varilux .imagen-lente-placeholder {
+    max-width: 260px;
+    height: 180px;
+  }
+
+  /* --- SEC 2: EVOLUTION PRO 2.0 --- */
+  .seccion-pro-2 {
+    height: auto;
+    padding: 100px 5% 50px;
+  }
+  .contenedor-pro2 {
+    grid-template-columns: minmax(0, 1fr);
+    text-align: center;
+    gap: 32px;
+  }
+  .info-pro2 {
+    align-items: center; display: flex; flex-direction: column; max-width: 100%;
+  }
+  .info-pro2 h2 {
+    font-size: 2.2rem;
+  }
+  .linea-cyan {
+    margin: 0 auto 25px;
+  }
+  .caja-destaque-pro2 {
+    flex-direction: column;
+    text-align: center;
+    margin-top: 0;
+  }
+  .grid-beneficios-pro2 {
+    grid-template-columns: 1fr; /* Una columna */
+    width: 100%;
+  }
+  .beneficio-card {
+    text-align: left;
+  }
+
+  /* --- SEC 3: EVOLUTION PLUS --- */
+  .seccion-plus {
+    height: auto;
+    padding: 100px 5% 50px;
+  }
+  .titulo-plus {
+    font-size: 2.4rem;
+  }
+  .grid-layout-plus {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .glass-card-plus.target-card .tags-perfil {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 14px;
+  }
+  .glass-card-plus {
+    padding: 25px 20px;
+    text-align: center;
+  }
+  .icono-target {
+    margin-bottom: 15px;
+  }
+  .lista-beneficios-plus li {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-left: none;
+    border-top: 3px solid transparent;
+  }
+  .lista-beneficios-plus li:hover {
+    transform: translateY(-5px);
+    border-left-color: transparent;
+    border-top-color: #00d4ff;
+  }
+
+  /* --- SEC 4: EVOLUTION ESSENTIAL --- */
+  .seccion-essential {
+    height: auto;
+    padding: 100px 5% 50px;
+  }
+  .contenedor-essential {
+    flex-direction: column;
+    text-align: center;
+  }
+  .titulo-essential {
+    font-size: 2.4rem;
+  }
+  .caja-target-essential {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .grid-ben-essential {
+    grid-template-columns: 1fr; /* Una columna */
+  }
+  .ben-item {
+    justify-content: center;
+    text-align: center;
+    border-left: none;
+    border-bottom: 2px solid transparent;
+  }
+  .ben-item:hover {
+    transform: translateY(-5px);
+    border-left-color: transparent;
+    border-bottom-color: #00d4ff;
+  }
+
+  /* --- SEC 5: PERFILES DE OPTIMIZACIÓN --- */
+  .seccion-opciones {
+    height: auto;
+    padding: 100px 5% 50px;
+  }
+  .titulo-opciones {
+    font-size: 2.8rem;
+  }
+  .grid-perfiles {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .perfil-card {
+    padding: 30px 20px;
+    background: rgba(30, 40, 55, 0.8);
+  }
+  
+  /* Ajuste crucial para pantallas táctiles (Sin Hover) */
+  .card-content-z {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    pointer-events: auto !important;
+  }
+  .desc-hover-hide {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+  .lente-bg-hover {
+    opacity: 0.25 !important; /* Muestra el lente suavemente al fondo siempre */
+    transform: scale(1) !important;
+  }
+  .overlay-card-hover {
+    opacity: 1 !important;
+  }
+  .indicador-color {
+    width: 80px; /* Expandido por defecto */
+  }
+
+  /* --- SEC 6: EXPERTOS EN PROGRESIVOS --- */
+  .seccion-progresivos {
+    height: auto;
+    padding: 100px 5% 50px;
+  }
+  .contenedor-progresivos {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "titulo"
+      "regla"
+      "subtitulo"
+      "desc"
+      "visual"
+      "zonas";
+    text-align: center;
+    gap: 0 0;
+  }
+  .info-prog h2 {
+    font-size: 2.8rem;
+  }
+  .info-prog .linea-cyan {
+    margin: 0 auto;
+  }
+  .subtitulo-prog {
+    font-size: 1.15rem;
+  }
+  .desc-prog {
+    max-width: 100%;
+  }
+  .zona-item {
+    flex-direction: column;
+    text-align: center;
+  }
+  .zonas-vision {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+  .visual-prog {
+    width: 100%;
+    transform: scale(0.9); /* Evita que el diagrama cause scroll horizontal */
+  }
+
+  /* --- CONTROLES DE PRESENTACIÓN --- */
+  .controles-presentacion {
+    bottom: 20px;
+    right: 20px;
+    gap: 10px;
+  }
+  .btn-flecha {
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+  }
+}
+
+/* =========================================================================
+   TODO ENCAJA EN UNA PANTALLA
+   Once de las catorce secciones declaraban `height: 100vh` +
+   `overflow: hidden` y las otras tres `min-height` con padding fijo. Todas
+   son pantallas de la presentacion (las flechas del pager saltan de una a
+   otra), asi que el bloque completo de cada una tiene que caber en el alto
+   de la ventana. Con alturas y rellenos fijos, en una ventana baja lo que
+   sobraba se recortaba: titulos a media palabra, la ultima fila de una
+   reticula o el texto de una ficha.
+
+   Aqui las catorce pasan a `min-height` --pantalla completa cuando el
+   contenido es corto, crecimiento cuando no lo es-- y el ritmo vertical
+   (padding de seccion, huecos y las cuatro cajas de altura fija) se mide
+   con la altura disponible. Los fondos absolutos se fijan con `inset: 0`
+   para que sigan cubriendo aunque la seccion crezca.
+
+   Los paddings horizontales de cada seccion se respetan tal cual: aqui solo
+   se tocan los verticales. Ninguna animacion se toca (los lentes, los
+   barridos de las tarjetas, los reveals y los hovers animan transform,
+   opacity y filter).
+   ========================================================================= */
+
+.hero-evolution-premium,
+.seccion-comparativa-lentes,
+.seccion-plus,
+.seccion-essential,
+.seccion-pro-2,
+.seccion-progresivos,
+.seccion-rendimiento,
+.seccion-xperience-ia,
+.seccion-ocupacionales,
+.hero-varilux,
+.seccion-varilux-x,
+.seccion-varilux-physio,
+.seccion-varilux-comfort {
+  height: auto;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Las piezas full-bleed (hero, varilux-x, xperience-ia) no llevan padding
+   vertical: su aire va dentro de las columnas. El resto toma el aire de
+   aqui, con la franja del pager incluida al final. */
+.hero-evolution-premium,
+.seccion-varilux-x,
+.seccion-xperience-ia {
+  padding-top: clamp(24px, 3vh, 44px);
+  padding-bottom: clamp(56px, 8vh, 100px);
+}
+
+.seccion-comparativa-lentes,
+.seccion-plus,
+.seccion-essential,
+.seccion-pro-2,
+.seccion-progresivos,
+.seccion-rendimiento,
+.seccion-ocupacionales,
+.seccion-varilux-physio,
+.seccion-varilux-comfort {
+  padding-top: clamp(40px, 5vh, 72px);
+  padding-bottom: clamp(64px, 9vh, 120px);
+}
+
+.hero-varilux {
+  padding-top: clamp(28px, 4vh, 56px);
+  padding-bottom: clamp(56px, 8vh, 100px);
+}
+
+/* --- Cajas de altura fija: el motivo real de los recortes --- */
+.imagen-lente-placeholder {
+  height: clamp(120px, 20vh, 170px);
+}
+
+.img-placeholder-ocup {
+  /* La caja de base declara `min-height`, asi que el tope tiene que venir
+     tambien en min-height: un `height` mas pequeno no haria nada. */
+  min-height: clamp(126px, 21vh, 178px);
+}
+
+.marco-lente-simulacion {
+  height: clamp(105px, 17vh, 145px);
+}
+
+.lente-demostracion {
+  height: clamp(170px, 30vh, 250px);
+}
+
+/* --- 12. COMPARATIVA DE LENTES: LAS FOTOS DE PRODUCTO, SIN RECORTAR ---
+   Las tres tarjetas de "Lentes para cerca / Lentes bifocales / Vision
+   Varilux" metian la foto del lente con `object-fit: cover` en una caja
+   apaisada: la montura salia cortada por arriba y por abajo, que es justo
+   lo que un lente no puede hacer. `contain` muestra el producto entero; la
+   caja es transparente, asi que el espacio que sobra no se ve.
+   Ademas la tarjeta destacada tenia su propia altura de imagen (200px) y se
+   comia el aire de las otras dos: ahora las tres comparten la misma
+   escala y la destacada se diferencia por el ancho, no por el recorte. */
+.img-circular-lente {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  padding: 4% 0;
+}
+
+.tarjeta-destacada-varilux .imagen-lente-placeholder {
+  height: clamp(150px, 25vh, 210px);
+}
+
+/* El ritmo de la comparativa tambien se aprieta: son tres columnas de texto
+   largo y, con el padding fijo, la tercera se salia de la pantalla. */
+.contenedor-comparativa {
+  gap: clamp(24px, 4vh, 44px);
+}
+
+.header-comparativa {
+  gap: clamp(20px, 3vw, 48px);
+  padding-bottom: clamp(18px, 2.8vh, 32px);
+}
+
+.logo-pequeno-varilux {
+  height: clamp(28px, 4.2vh, 40px);
+}
+
+.desc-general-comparativa {
+  font-size: clamp(0.88rem, 1.6vh, 1.05rem);
+  line-height: 1.55;
+}
+
+.grid-3-lentes {
+  gap: clamp(16px, 2.2vw, 28px);
+}
+
+.tarjeta-lente {
+  padding: clamp(20px, 3.2vh, 34px) clamp(18px, 2.4vw, 32px) clamp(22px, 3.6vh, 38px);
+}
+
+.imagen-lente-placeholder {
+  margin-bottom: clamp(14px, 2.4vh, 26px);
+}
+
+.contenido-tarjeta-lente h3 {
+  font-size: clamp(1.15rem, 2.6vh, 1.6rem);
+  margin-bottom: clamp(8px, 1.4vh, 15px);
+}
+
+.contenido-tarjeta-lente p {
+  font-size: clamp(0.76rem, 1.4vh, 0.85rem);
+  line-height: 1.5;
+}
+
+.tarjeta-destacada-varilux {
+  padding: clamp(24px, 3.8vh, 40px) clamp(22px, 2.8vw, 38px) clamp(26px, 4.2vh, 44px);
+}
+
+/* --- 7. TABLA DE RENDIMIENTO: LAS TRES FILAS DEL RANKING ---
+   La seccion declaraba `padding: 10px 5% 100px` con la idea de esquivar las
+   flechas, pero 10px arriba no es margen: con las tres tarjetas de
+   ranking apiladas, la tercera se salia por abajo. El aire de arriba se
+   mide con la altura disponible y el del final es la franja del pager. */
+.seccion-rendimiento {
+  padding-top: clamp(36px, 4.5vh, 64px);
+}
+
+.contenedor-rendimiento {
+  gap: clamp(14px, 2.2vh, 26px);
+}
+
+.grid-rendimiento {
+  gap: clamp(9px, 1.5vh, 16px);
+}
+
+.badge-rendimiento {
+  margin-bottom: clamp(5px, 0.9vh, 8px);
+  padding: clamp(4px, 0.7vh, 5px) clamp(11px, 1.2vw, 15px);
+}
+
+.titulo-rendimiento {
+  font-size: clamp(1.7rem, 4.2vh, 2.4rem);
+  margin-bottom: clamp(6px, 1.2vh, 12px);
+}
+
+.subtitulo-rendimiento {
+  font-size: clamp(0.9rem, 1.6vh, 1.05rem);
+  line-height: 1.5;
+}
+
+.tarjeta-rendimiento {
+  padding: clamp(12px, 2.2vh, 20px) clamp(18px, 2.2vw, 26px);
+  column-gap: clamp(20px, 2.4vw, 34px);
+}
+
+.tarjeta-header h3 {
+  font-size: clamp(1.15rem, 2.6vh, 1.5rem);
+}
+
+.caja-valoracion {
+  padding: clamp(6px, 1.2vh, 10px) clamp(10px, 1.4vw, 16px);
+}
+
+.numero-valoracion {
+  font-size: clamp(1.2rem, 2.6vh, 1.6rem);
+}
+
+.tarjeta-body {
+  gap: clamp(4px, 0.9vh, 6px) clamp(18px, 2.2vw, 26px);
+  padding-left: clamp(20px, 2.6vw, 34px);
+  margin-left: clamp(-12px, -1.4vw, -17px);
+}
+
+.titulo-barras {
+  font-size: clamp(0.74rem, 1.3vh, 0.85rem);
+  margin-bottom: clamp(1px, 0.3vh, 2px);
+}
+
+.grupo-barra {
+  gap: clamp(2px, 0.5vh, 3px);
+}
+
+.barra-track {
+  height: clamp(4px, 0.9vh, 6px);
+}
+
+/* --- 9. PROGRESIVOS OCUPACIONALES: LAS CUATRO FICHAS ---
+   Aqui el recorte tenia dos causas. La primera era un hack: el bloque
+   llevaba `margin-top: -60px` para esquivar las flechas, lo que empujaba
+   el titular hacia arriba hasta cortada. Con la franja del pager ya
+   resuelta abajo, ese margen solo estorba: se elimina. La segunda era el
+   ritmo: cuatro fichas con foto, dos datos y tres barras no caben en una
+   pantalla con los valores fijos. */
+.contenedor-ocupacionales {
+  margin-top: 0;
+  gap: clamp(16px, 2.4vh, 30px);
+}
+
+.titulo-ocupacionales {
+  font-size: clamp(1.6rem, 3.2vh, 2.2rem);
+}
+
+.subtitulo-ocupacionales {
+  font-size: clamp(0.85rem, 1.5vh, 0.95rem);
+  line-height: 1.5;
+}
+
+.grid-4-ocupacionales {
+  gap: clamp(12px, 2vh, 20px);
+}
+
+.tarjeta-ocupacional {
+  grid-template-columns: minmax(0, 0.4fr) minmax(0, 0.6fr);
+}
+
+.contenido-ocup {
+  padding: clamp(11px, 1.8vh, 16px) clamp(14px, 1.8vw, 20px);
+}
+
+.contenido-ocup h3 {
+  font-size: clamp(1.05rem, 2.1vh, 1.3rem);
+  margin-bottom: clamp(5px, 0.9vh, 8px);
+}
+
+.desc-ocup {
+  font-size: clamp(0.7rem, 1.25vh, 0.75rem);
+  line-height: 1.4;
+  margin-bottom: clamp(8px, 1.3vh, 12px);
+}
+
+.info-duo {
+  gap: clamp(5px, 0.9vh, 8px);
+  margin-bottom: clamp(9px, 1.5vh, 15px);
+  padding-bottom: clamp(8px, 1.3vh, 12px);
+}
+
+.info-bloque {
+  font-size: clamp(0.7rem, 1.25vh, 0.75rem);
+}
+
+.barras-ocup {
+  gap: clamp(4px, 0.8vh, 6px);
+}
+
+/* --- Los rellenos mas grandes de la pagina --- */
+.hero-evo-textos {
+  padding-bottom: 0;
+}
+
+/* Este bloque va despues de los media queries de la pagina, asi que
+   devuelve el aire de movil (100-120px arriba para la barra de navegacion)
+   y conserva la franja del pager al final. */
+@media (max-width: 900px) {
+  .seccion-comparativa-lentes,
+  .seccion-plus,
+  .seccion-essential,
+  .seccion-pro-2,
+  .seccion-progresivos,
+  .seccion-rendimiento,
+  .seccion-ocupacionales,
+  .seccion-varilux-physio,
+  .seccion-varilux-comfort,
+  .hero-varilux,
+  .seccion-varilux-x,
+  .seccion-xperience-ia {
+    padding-top: 100px;
+    padding-bottom: 96px;
+  }
+
+  .hero-evolution-premium {
+    padding-top: 120px;
+    padding-bottom: 96px;
+  }
+}

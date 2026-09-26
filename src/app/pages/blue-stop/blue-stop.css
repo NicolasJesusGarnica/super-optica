@@ -1,0 +1,2296 @@
+:host {
+  display: block;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.navbar {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1000; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 60px; 
+  /* Cambio de Rojo a Amarillo corporativo de Super Óptica */
+  background-color: #ffffff; 
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);  
+  transform: translateY(-100%);
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.navbar::after {
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  background: transparent;
+}
+
+.navbar:hover {
+  transform: translateY(0);
+}
+
+.logo-container img {
+  height: 35px; /* Aumenta este valor si lo quieres aún más grande (ej: 70px) */
+  cursor: pointer;
+  filter: none; /* Esto quita la sombra / drop-shadow por completo */
+  transition: transform 0.3s ease;
+}
+
+.nav-links {
+  display: flex;
+  gap: 35px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links a {
+  /* Color azul oscuro corporativo para contrastar sobre el fondo amarillo */
+  color: #05051B;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif; 
+  font-size: 1.1rem; 
+  font-weight: 700; 
+  letter-spacing: 1px;
+  transition: 0.3s;
+  padding: 5px 12px;
+  border-radius: 4px;
+}
+
+.nav-links a:hover {
+  color: #090A22;
+  background-color: #FFCC00; 
+}
+
+
+
+.nav-links {
+  display: flex;
+  gap: 35px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links a {
+  color: #090A22;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif; 
+  font-size: 1.1rem; 
+  font-weight: 600; 
+  letter-spacing: 1px;
+  transition: 0.3s;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+
+/* =========================================
+   IMPORTACIÓN DE NUEVA FUENTE
+   ========================================= */
+@font-face {
+  font-family: 'Baby Monsta';
+  /* El archivo vive en /fonts, no en /assets: sin esto la fuente no cargaba */
+  src: url('/fonts/BABY%20MONSTA.OTF') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* =========================================
+   SECCIÓN 1: HERO SUPER-ÓPTICA (3 PANELES A SANGRE)
+   ========================================= */
+.super-hero-digital {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  padding: 0;
+  background-color: #05051B;
+  display: grid;
+  /* Fracciones exactas: con flex-basis el padding en % se sumaba aparte
+     y el retrato se quedaba sin ancho. */
+  grid-template-columns: minmax(0, 32%) minmax(0, 1fr) minmax(0, 36%);
+  align-items: stretch;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* --- MARCA + TÍTULO (a la izquierda, sobre foto desenfocada) --- */
+.super-hero-marca {
+  position: relative;
+  z-index: 3;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 7%;
+  background-color: #05051B;
+}
+
+/* Solo la foto: sin velo ni degradado encima. El oscurecido va en el filtro. */
+.super-hero-marca::before {
+  content: '';
+  position: absolute;
+  inset: -70px;
+  z-index: -1;
+  background-image: url('/assets/asec-9.jpg');
+  background-size: 170% auto;
+  background-position: 30% 40%;
+  filter: blur(46px) brightness(0.4) saturate(0.85);
+  transform: scale(1.2);
+}
+
+.badge-tratamiento img {
+  width: 132px;
+  margin-bottom: 26px;
+  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.7));
+}
+
+/* Regla vertical que ata el titular, como en el modelo */
+.subtitulo-poppins,
+.titulo-monster {
+  border-left: 2px solid rgba(255, 255, 255, 0.9);
+  padding-left: 18px;
+}
+
+.subtitulo-poppins {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: 1px;
+  line-height: 1.3;
+  max-width: 14ch;
+}
+
+.titulo-monster {
+  font-family: 'Baby Monsta', sans-serif;
+  font-size: 2.1rem;
+  color: #22d3ee;
+  line-height: 1.1;
+  margin: 0;
+  padding-top: 8px;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+
+/* --- RETRATO (centro, a sangre) --- */
+.super-hero-retrato {
+  position: relative;
+  z-index: 2;
+  box-sizing: border-box;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.super-hero-retrato img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 18%; /* Encuadre el rostro, no el pecho */
+  filter: contrast(1.05) saturate(1.04);
+}
+
+/* --- PANEL DE CONTENIDO (a la derecha) --- */
+.super-hero-panel {
+  position: relative;
+  z-index: 3;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 8%;
+  background-color: #05051B;
+}
+
+.titulo-panel-azul {
+  font-family: 'Baby Monsta', sans-serif;
+  font-size: 2.4rem;
+  color: #ffffff;
+  margin: 0 0 14px 0;
+  line-height: 1;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.linea-cian-hero {
+  width: 76px;
+  height: 3px;
+  background-color: #22d3ee;
+  margin-bottom: 24px;
+}
+
+.super-hero-panel p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.97rem;
+  color: #c7c9de;
+  line-height: 1.5; /* Interlineado corto: el bloque ocupa menos alto */
+  margin: 0;
+  max-width: 38ch; /* Measure más corta: menos palabra por línea */
+}
+
+/* --- RESPONSIVE: los tres paneles se apilan --- */
+@media (max-width: 1100px) {
+  .super-hero-digital {
+    height: auto;
+    min-height: 100vh;
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .super-hero-marca {
+    padding: 90px 6% 40px;
+  }
+  .super-hero-retrato {
+    height: 46vh;
+    min-height: 300px;
+  }
+  .super-hero-panel {
+    padding: 40px 6% 70px;
+  }
+  .super-hero-panel p {
+    max-width: 60ch;
+  }
+  .badge-tratamiento img {
+    width: 108px;
+    margin-bottom: 20px;
+  }
+  .subtitulo-poppins {
+    font-size: 1.25rem;
+  }
+  .titulo-monster {
+    font-size: 1.8rem;
+  }
+  .titulo-panel-azul {
+    font-size: 2rem;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================
+   SECCIÓN 2: ANÁLISIS DEL OJO (NUEVO LAYOUT)
+   ========================================= */
+.super-analisis-ojo {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #05051B;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: 100px 5%;
+  box-sizing: border-box;
+}
+
+/* Tratamiento crudo a la imagen de fondo */
+.fondo-ojo-brutal {
+  position: absolute;
+  top: 0; left: 0; 
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  z-index: 1;
+  /* La volvemos blanco y negro contrastada para que el UI amarillo explote visualmente */
+  filter: grayscale(100%) contrast(1.2); 
+}
+
+.overlay-duro {
+  position: absolute;
+  top: 0; left: 0; 
+  width: 100%; height: 100%;
+  background-color: rgba(5, 5, 27, 0.85); /* Azul corporativo con alta opacidad */
+  z-index: 2;
+}
+
+.logo-flotante-brutal {
+  position: absolute;
+  top: 100px; /* Debajo del navbar */
+  left: 5%;
+  z-index: 10;
+}
+
+.logo-flotante-brutal img {
+  width: 80px;
+  filter: none
+}
+
+/* --- ESTRUCTURA DEL ESCÁNER (HUD) --- */
+.contenedor-hud-brutal {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  height: 500px;
+  z-index: 5;
+}
+
+.mira-central {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circulo-brutal {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.circulo-brutal.exterior {
+  width: 380px; 
+  height: 380px;
+  border: 6px dashed #FFCC00; /* Línea punteada amarilla gruesa */
+  animation: girarMecanico 20s linear infinite;
+}
+
+.circulo-brutal.interior {
+  width: 220px; 
+  height: 220px;
+  border: 8px solid #ffffff;
+  /* Borde doble estilo brutalista */
+  box-shadow: 0 0 0 10px #05051B, inset 0 0 0 10px #05051B; 
+}
+
+.punto-mira {
+  width: 24px; 
+  height: 24px;
+  background-color: #FFCC00;
+  border: 4px solid #05051B;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+@keyframes girarMecanico {
+  100% { transform: rotate(360deg); }
+}
+
+/* --- PANELES DE INFORMACIÓN --- */
+.panel-hud-duro {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+}
+
+/* Posicionamiento lateral */
+.panel-izq { 
+  left: 0; 
+  flex-direction: row-reverse; 
+}
+.panel-der { 
+  right: 0; 
+}
+
+/* Líneas sólidas en lugar de neón difuminado */
+.linea-conectora-dura {
+  width: 100px;
+  height: 8px;
+  background-color: #05051B; /* Interior oscuro */
+  border-top: 4px solid #ffffff;
+  border-bottom: 4px solid #ffffff;
+}
+
+.panel-izq .linea-conectora-dura { border-color: #FFCC00; } /* Línea amarilla izq */
+
+/* Tarjetas informativas cuadradas */
+.tarjeta-hud {
+  padding: 30px 35px;
+  border: 4px solid #05051B;
+  max-width: 400px;
+}
+
+.solid-yellow {
+  background-color: #FFCC00;
+  box-shadow: -12px 12px 0px #ffffff;
+}
+
+.solid-white {
+  background-color: #ffffff;
+  box-shadow: 12px 12px 0px #FFCC00;
+}
+
+.titulo-monster-hud {
+  font-family: 'Baby Monsta', sans-serif;
+  font-size: 3rem;
+  margin: 0 0 15px 0;
+  line-height: 1;
+  color: #05051B;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.lista-hud-dura {
+  list-style: none; 
+  padding: 0; 
+  margin: 0;
+}
+
+.lista-hud-dura li {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  color: #05051B;
+  font-weight: 600;
+  margin-bottom: 12px;
+  display: flex;
+  gap: 12px;
+  line-height: 1.4;
+}
+
+.lista-hud-dura li i {
+  margin-top: 4px;
+  font-size: 1.2rem;
+}
+
+/* --- RESPONSIVO PARA LA SECCIÓN 2 --- */
+@media (max-width: 1000px) {
+  .contenedor-hud-brutal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    gap: 40px;
+    margin-top: 60px;
+  }
+  
+  .logo-flotante-brutal {
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .mira-central {
+    position: relative;
+    transform: none;
+    top: auto; left: auto;
+    width: 250px; height: 250px;
+    margin: 30px 0;
+  }
+  
+  .circulo-brutal.exterior { width: 250px; height: 250px; border-width: 4px; }
+  .circulo-brutal.interior { width: 140px; height: 140px; border-width: 5px; box-shadow: 0 0 0 6px #05051B, inset 0 0 0 6px #05051B;}
+  
+  .panel-hud-duro {
+    position: relative;
+    transform: none;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+  
+  .panel-izq, .panel-der {
+    left: auto; right: auto;
+  }
+  
+  /* Convertimos las líneas horizontales en verticales */
+  .linea-conectora-dura {
+    width: 8px; height: 40px;
+    border-top: none; border-bottom: none;
+    border-left: 4px solid #ffffff; border-right: 4px solid #ffffff;
+  }
+  .panel-izq .linea-conectora-dura { border-color: #FFCC00; }
+  
+  .tarjeta-hud {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  /* Normalizamos la sombra para móviles */
+  .solid-yellow { box-shadow: 8px 8px 0px #ffffff; }
+  .solid-white { box-shadow: 8px 8px 0px #FFCC00; }
+}
+
+/* =========================================
+   SECCIÓN 3: FUENTES DE LUZ (NUEVO LAYOUT)
+   ========================================= */
+.super-fuentes-luz {
+  position: relative;
+  width: 100%;
+  min-height: 80vh;
+  /* Fondo amarillo vibrante para romper la oscuridad de la sección anterior */
+  background-color: #FFCC00; 
+  padding: 120px 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  /* Bordes gruesos para separar secciones brutalistamente */
+  border-top: 8px solid #05051B; 
+  border-bottom: 8px solid #05051B;
+}
+
+.contenedor-fuentes-super {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 1300px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+/* --- CABECERA --- */
+.cabecera-fuentes-super {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.iso-fuentes {
+  width: 100px;
+  margin-bottom: 20px;
+  /* Sombra blanca dura para resaltar en el fondo amarillo */
+  filter: drop-shadow(4px 4px 0px #ffffff);
+}
+
+.titulo-monster-fuentes {
+  font-family: 'Baby Monsta', sans-serif;
+  font-size: 5.5rem;
+  color: #05051B;
+  line-height: 1;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  /* Sombra sólida blanca */
+  text-shadow: 4px 4px 0px #ffffff;
+}
+
+.titulo-monster-fuentes span {
+  color: #ffffff;
+  /* Sombra sólida oscura para la segunda línea */
+  text-shadow: 4px 4px 0px #05051B;
+}
+
+/* --- GRILLA DE TARJETAS (Animadas) --- */
+.grid-fuentes-super {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.tarjeta-fuente-super {
+  background-color: #ffffff;
+  border: 5px solid #05051B;
+  width: 220px;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  /* Sombra dura estilo Neo-Brutalismo */
+  box-shadow: 12px 12px 0px #05051B;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  cursor: crosshair; /* Cursor técnico */
+}
+
+/* Hover Interactivo: Invierte los colores y "levanta" la tarjeta */
+.tarjeta-fuente-super:hover {
+  transform: translate(-6px, -6px);
+  box-shadow: 18px 18px 0px #05051B;
+  background-color: #05051B;
+}
+
+.icono-fuente-caja {
+  font-size: 4rem;
+  color: #05051B;
+  margin-bottom: 20px;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+/* Al hacer hover, el ícono se vuelve amarillo */
+.tarjeta-fuente-super:hover .icono-fuente-caja {
+  color: #FFCC00;
+  transform: scale(1.1);
+}
+
+.tarjeta-fuente-super p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #05051B;
+  margin: 0;
+  letter-spacing: 1px;
+  line-height: 1.3;
+  transition: color 0.2s ease;
+}
+
+/* Al hacer hover, el texto se vuelve blanco */
+.tarjeta-fuente-super:hover p {
+  color: #ffffff;
+}
+
+/* --- RESPONSIVO PARA MÓVILES --- */
+@media (max-width: 1000px) {
+  .titulo-monster-fuentes {
+    font-size: 3.5rem;
+  }
+  .grid-fuentes-super {
+    gap: 25px;
+  }
+  .tarjeta-fuente-super {
+    width: 100%;
+    max-width: 320px;
+    flex-direction: row; /* Las hacemos horizontales en celular para ahorrar espacio */
+    padding: 20px 25px;
+    justify-content: flex-start;
+    gap: 25px;
+    box-shadow: 8px 8px 0px #05051B;
+  }
+  .tarjeta-fuente-super:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 12px 12px 0px #05051B;
+  }
+  .icono-fuente-caja {
+    margin-bottom: 0;
+    font-size: 2.8rem;
+  }
+  .tarjeta-fuente-super p {
+    text-align: left;
+    font-size: 1rem;
+  }
+}
+
+.seccion-fuentes-luz {
+  position: relative;
+  padding: 100px 5%;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #05080f;
+}
+
+.fondo-fuentes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+
+.overlay-fuentes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(5,8,15,0.95) 0%, rgba(10,25,50,0.8) 100%);
+  z-index: 2;
+}
+
+.contenedor-fuentes {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 1200px;
+}
+
+
+.cabecera-fuentes {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 80px;
+}
+
+.logo-lateral img {
+  width: 150px;
+  filter: drop-shadow(0 0 10px rgba(255, 247, 0, 0.3));
+}
+
+.titulo-fuentes h2 {
+  font-family: 'Baby Monsta', sans-serif;
+  font-size: 3.5rem;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: 2px;
+  font-style: italic;
+}
+
+.linea-subtitulo {
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, #FFCC00 0%, rgba(0,212,255,0) 100%);
+  margin-top: 10px;
+}
+
+
+.grid-iconos-fuentes {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.item-fuente {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  position: relative;
+}
+
+
+.item-fuente i {
+  font-size: 3.5rem;
+  color: #ffffff;
+  margin-bottom: 20px;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.item-fuente:hover i {
+  color: #FFCC00;
+  transform: translateY(-10px);
+  filter: drop-shadow(0 0 15px rgba(229, 255, 0, 0.6));
+}
+
+.item-fuente p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #cccccc;
+  margin: 0 0 20px 0;
+  letter-spacing: 1px;
+  min-height: 40px;
+}
+
+
+.linea-punteada {
+  width: 2px;
+  height: 150px;
+ 
+  border-left: 2px dashed #FFCC00;
+  opacity: 0.6;
+ 
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+}
+
+
+
+
+/* =========================================
+   SECCIÓN CONSECUENCIAS (Pantalla Completa)
+   ========================================= */
+.seccion-consecuencias {
+  position: relative;
+  width: 100%;
+  padding: 0 5%; 
+  box-sizing: border-box; /* <-- AÑADE ESTA LÍNEA */
+  height: 100vh; 
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #05080f;
+}
+
+.fondo-consecuencias {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 1;
+}
+
+
+.overlay-consecuencias {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(5,8,15,0.7) 0%, rgba(5,8,15,0.95) 100%);
+  z-index: 2;
+}
+
+/* =========================================
+   CONTENEDOR PRINCIPAL (Centrado Perfecto)
+   ========================================= */
+.contenedor-consecuencias {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto; /* Esto garantiza que no se incline ni a izquierda ni a derecha */
+  text-align: center;
+}
+
+
+.texto-principal-consecuencias p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.6;
+  /* Margen de 140px abajo para hacer espacio a las imágenes */
+  margin: 0 auto 140px auto; 
+  max-width: 900px;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+
+.grid-iconos-consecuencias {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  gap: 20px;
+}
+.item-consecuencia {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* ¡CLAVE! Volvemos a anclar la imagen a cada ícono individual */
+  position: relative; 
+}
+
+.imagen-flotante {
+  position: absolute;
+  /* La imagen sube a partir del ícono */
+  bottom: calc(100% + 30px);
+  
+  /* Tamaño grande pero ajustado para que entren perfecto */
+  width: 650px; 
+  max-width: 85vw;
+  height: 320px; 
+  
+  opacity: 0;
+  visibility: hidden;
+  
+  background-color: #05080f;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid rgba(242, 255, 0, 0.6);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 40px rgba(212, 255, 0, 0.4);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  z-index: 20;
+  pointer-events: none; 
+}
+
+.imagen-flotante img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
+.item-consecuencia:nth-child(1) .imagen-flotante {
+  left: -20px; 
+  transform: translateY(20px) scale(0.95);
+}
+.item-consecuencia:nth-child(1):hover .imagen-flotante {
+  transform: translateY(0) scale(1);
+}
+
+/* 2 y 3. Íconos del Medio: La imagen se centra en ellos */
+.item-consecuencia:nth-child(2) .imagen-flotante,
+.item-consecuencia:nth-child(3) .imagen-flotante {
+  left: 50%;
+  transform: translateX(-50%) translateY(20px) scale(0.95);
+}
+.item-consecuencia:nth-child(2):hover .imagen-flotante,
+.item-consecuencia:nth-child(3):hover .imagen-flotante {
+  transform: translateX(-50%) translateY(0) scale(1);
+}
+
+/* 4. Ícono Derecho (Degeneración): La imagen se ancla a la derecha */
+.item-consecuencia:nth-child(4) .imagen-flotante {
+  right: -20px;
+  left: auto;
+  transform: translateY(20px) scale(0.95);
+}
+.item-consecuencia:nth-child(4):hover .imagen-flotante {
+  transform: translateY(0) scale(1);
+}
+
+
+/* Los íconos originales (aseguramos su diseño) */
+.item-consecuencia i {
+  font-size: 3.5rem;
+  color: #FFCC00;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 10px rgba(246, 255, 0, 0.4));
+  transition: transform 0.3s, filter 0.3s;
+}
+
+/* --- LA ANIMACIÓN AL PASAR EL RATÓN --- */
+.item-consecuencia:hover .imagen-flotante {
+  opacity: 1;
+  visibility: visible;
+}
+
+.item-consecuencia i {
+  font-size: 3.5rem;
+  color: #FFCC00;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 10px rgba(212, 255, 0, 0.4));
+  transition: transform 0.3s, filter 0.3s;
+}
+
+.item-consecuencia:hover i {
+  transform: translateY(-10px) scale(1.1);
+  filter: drop-shadow(0 0 20px rgba(255, 251, 0, 0.8));
+}
+
+.item-consecuencia p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #cccccc;
+  margin: 0;
+  letter-spacing: 1px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+
+
+.seccion-por-que {
+  position: relative;
+  width: 100%;
+  padding: 100px 5%;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #05080f;
+}
+
+.fondo-por-que {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+
+.overlay-por-que {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(170deg, rgba(5,8,15,0.6) 0%, rgba(5,8,15,0.95) 100%, #05080f 100%);
+  z-index: 2;
+}
+
+.contenedor-por-que {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 1300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+
+.panel-por-que-izq {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.caja-cristal-por-que {
+  background: linear-gradient(135deg, rgba(46, 41, 10, 0.6) 0%, rgba(20, 20, 5, 0.8) 100%);
+  backdrop-filter: blur(10px);
+  padding: 40px 50px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 230, 0, 0.2);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.titulo-por-que {
+  font-family: 'Baby Monsta', sans-serif;
+  font-size: 3rem;
+  color: #ffffff;
+  margin: 0 0 20px 0;
+  letter-spacing: 2px;
+  font-style: italic;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.logo-por-que {
+  width: 180px;
+  filter: drop-shadow(0 0 10px rgba(255, 247, 0, 0.3));
+}
+
+
+.panel-por-que-der {
+  flex: 1.5;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.lista-beneficios-final {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.lista-beneficios-final li {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+  transition: transform 0.3s ease;
+}
+
+.lista-beneficios-final li {
+  display: flex;
+  justify-content: flex-end;
+  /* NO poner position: relative aquí para que la imagen flote respecto a la sección */
+}
+
+.contenido-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: transform 0.3s ease;
+  position: relative; /* ¡NUEVO! Esencial para anclar la línea conectora */
+}
+
+.lista-beneficios-final li:hover .contenido-item {
+  transform: translateX(-10px);
+}
+
+/* =========================================
+   IMAGEN GIGANTE FLOTANTE (Antes y Después)
+   ========================================= */
+/* =========================================
+   IMAGEN GIGANTE FLOTANTE (Antes y Después)
+   ========================================= */
+.imagen-beneficio-flotante {
+  position: absolute;
+  
+  /* La magia matemática: empuja la imagen hacia la izquierda cruzando 
+     el espacio (50px) y el equivalente al tamaño del panel izquierdo */
+  left: calc(-66.66% - 50px); 
+  top: 50%;
+  
+  /* Arranca invisible y un poquito más chica */
+  transform: translateY(-50%) scale(0.95);
+  opacity: 0;
+  visibility: hidden;
+  
+  /* Medidas ajustadas para calcar el tamaño exacto del recuadro "¿POR QUÉ?" */
+  width: 650px; 
+  height: 540px;
+  
+  background-color: #05080f;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid rgba(242, 255, 0, 0.6);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.9), 0 0 40px rgba(242, 255, 0, 0.4);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  z-index: 20; 
+  pointer-events: none;
+}
+ 
+.imagen-beneficio-flotante img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Contain asegura que se vea todo el antes y después sin recortar */
+}
+
+/* Magia: Al hacer hover en el li, la imagen de la izquierda aparece */
+.lista-beneficios-final li:hover .contenido-item::before {
+  width: 280px; /* Ajusta este valor si querés que la línea sea más larga o corta */
+  opacity: 0.7;
+}
+
+.lista-beneficios-final li:hover .imagen-beneficio-flotante {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) scale(1);
+}
+
+.contenido-item::before {
+  content: '';
+  position: absolute;
+  right: 100%; /* Nace exactamente a la izquierda del texto */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0; /* Arranca invisible y sin tamaño */
+  height: 0;
+  border-top: 3px dashed #FFCC00; /* La línea punteada color cyan */
+  opacity: 0;
+  margin-right: 25px; /* Separación entre el texto y el inicio de la línea */
+  transition: width 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.4s ease;
+  pointer-events: none; /* Para que no interfiera con el mouse */
+  filter: drop-shadow(0 0 6px rgba(255, 251, 0, 0.8)); /* Brillo premium */
+}
+
+.lista-beneficios-final li:hover .contenido-item::before {
+  width: 280px; /* Ajusta este valor si querés que la línea sea más larga o corta */
+  opacity: 0.7;
+}
+
+.texto-beneficio {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-align: right;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.8);
+}
+
+.icono-beneficio-lista {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgba(208, 255, 0, 0.1);
+  border: 1px solid rgba(238, 255, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 15px rgba(246, 255, 0, 0.2);
+}
+
+.icono-beneficio-lista i {
+  font-size: 1.5rem;
+  color: #FFCC00;
+}
+
+
+
+
+
+
+
+
+/* =========================================
+   SECCIÓN 6: ESPECTRO DUAL (TURQUESA VS VIOLETA)
+   ========================================= */
+/* =========================================
+   SECCIÓN 5: PROTECCIÓN ABSOLUTA (Animación Gigante)
+   ========================================= */
+.seccion-espectro-dual {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  background-color: #05080f; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 5%;
+  overflow: hidden;
+}
+
+.fondo-espectro {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.contenedor-espectro-unico {
+  position: relative; /* ¡CLAVE! Faltaba esto para que el z-index funcione */
+  z-index: 3;         /* Ahora el contenido flota por encima del fondo y el overlay */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1300px;
+  gap: 60px;
+}
+
+/* --- Textos (Lado Izquierdo) --- */
+.info-bloqueo-total {
+  flex: 1;
+  max-width: 550px;
+}
+
+.info-bloqueo-total h2 {
+  font-family: 'Baby Monsta', sans-serif;
+  font-size: 4rem;
+  color: #ffffff;
+  margin: 0 0 15px 0;
+  letter-spacing: 1px;
+  line-height: 1.1;
+}
+
+.info-bloqueo-total h2 strong {
+  color: #FFCC00;
+  text-shadow: 0 0 15px rgba(255, 247, 0, 0.4);
+}
+
+.texto-diferenciador {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.15rem;
+  color: #cccccc;
+  line-height: 1.7;
+  margin-bottom: 35px;
+}
+
+.texto-diferenciador strong {
+  color: #ffffff;
+}
+
+.lista-bloqueo {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.lista-bloqueo li {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.05rem;
+  color: #dddddd;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.lista-bloqueo li i {
+  color: #FFCC00;
+  font-size: 1.5rem;
+  width: 35px;
+  text-align: center;
+  filter: drop-shadow(0 0 10px rgba(226, 226, 43, 0.6));
+}
+
+/* --- Simulador Gigante (Lado Derecho) --- */
+.simulador-gigante {
+  flex: 1.2;
+  position: relative;
+  height: 550px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 50%, rgba(138, 43, 226, 0.08) 0%, transparent 65%);
+  border-radius: 30px;
+  border: 1px solid rgba(255,255,255,0.05);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 0 40px rgba(138, 43, 226, 0.15);
+  overflow: hidden;
+}
+
+.lente-cristal-gigante {
+  position: relative;
+  width: 180px;  /* Lente mucho más grande */
+  height: 320px;
+  border-radius: 40% 60% 50% 50% / 50% 50% 60% 40%;
+  background: rgba(10, 25, 50, 0.3);
+  backdrop-filter: blur(10px);
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-left: 6px solid rgba(255, 255, 255, 0.8);
+  box-shadow: inset 10px 0 30px rgba(255,255,255,0.1), 0 25px 50px rgba(0,0,0,0.6);
+  z-index: 5;
+}
+
+.patron-hex-blue {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='30' height='51.96' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 12.99L15 21.65 0 12.99V-4.33L15-12.99l15 8.66V12.99zm0 34.64l-15 8.66-15-8.66V30.31l15-8.66 15 8.66v17.32zM15 25.98l-15 8.66V21.65l15-8.66 15 8.66v12.99L15 25.98z' fill='rgba(0,212,255,0.1)' fill-rule='evenodd'/%3E%3C/svg%3E");
+  opacity: 0.6;
+}
+
+.fuente-luz-violeta-gigante {
+  position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+  width: 80px; height: 200px; background: #8a2be2; filter: blur(50px); opacity: 0.5;
+}
+
+/* --- ANIMACIONES DE LUZ GIGANTES --- */
+.haz-luz-gigante {
+  position: absolute;
+  display: flex;
+  gap: 20px;
+  font-size: 2.8rem; /* Rayos enormes */
+  z-index: 4;
+}
+
+.haz-luz-gigante i { opacity: 0; }
+
+.entrada-viol-gigante i { color: #8a2be2; text-shadow: 0 0 25px #8a2be2; animation: ondaChocaGigante 2s infinite linear; }
+.entrada-viol-gigante i:nth-child(2) { animation-delay: 0.2s; }
+.entrada-viol-gigante i:nth-child(3) { animation-delay: 0.4s; }
+.entrada-viol-gigante { left: 10%; }
+
+.rebote-gigante i { color: #ff3366; text-shadow: 0 0 25px #ff3366; animation: ondaRebotaGigante 2s infinite linear 1s; }
+.rebote-gigante i:nth-child(2) { animation-delay: 1.2s; }
+.rebote-gigante i:nth-child(3) { animation-delay: 1.4s; }
+.rebote-gigante { left: 40%; top: 65%; transform: rotate(-35deg); }
+
+.escudo-bloqueo-gigante {
+  position: absolute; left: -10px; top: 20%; width: 20px; height: 60%;
+  background: #8a2be2; filter: blur(10px);
+  animation: destelloEscudoGigante 2s infinite linear;
+}
+
+@keyframes ondaChocaGigante {
+  0% { transform: translateX(-50px); opacity: 0; }
+  45% { opacity: 1; }
+  50% { transform: translateX(100px); opacity: 0; } 
+  100% { transform: translateX(100px); opacity: 0; }
+}
+
+@keyframes ondaRebotaGigante {
+  0% { transform: translateX(0); opacity: 1; }
+  50% { transform: translateX(-100px); opacity: 0; }
+  100% { transform: translateX(-100px); opacity: 0; }
+}
+
+@keyframes destelloEscudoGigante {
+  0%, 40% { opacity: 0; }
+  45% { opacity: 1; box-shadow: 0 0 50px 25px #8a2be2; }
+  60%, 100% { opacity: 0; }
+}
+/* --- TEXTOS E INFO --- */
+.info-luz {
+  padding: 25px 30px; /* Reducido drásticamente para ganar espacio */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.badge-luz {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+.turquesa-badge { background: rgba(0, 212, 255, 0.15); color: #00d4ff; border: 1px solid rgba(0, 212, 255, 0.3); }
+.violeta-badge { background: rgba(138, 43, 226, 0.15); color: #c484ff; border: 1px solid rgba(138, 43, 226, 0.3); }
+
+.info-luz h3 {
+  font-family: 'Baby Monsta', sans-serif;
+  font-size: 1.8rem; /* Reducido para que ocupe menos alto */
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.info-luz h3 strong { color: #ffffff; }
+
+.linea-separadora { width: 50px; height: 3px; margin: 12px 0; border-radius: 2px; }
+.linea-separadora.turq { background-color: #00d4ff; }
+.linea-separadora.viol { background-color: #8a2be2; }
+
+.info-luz p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem; /* Texto apenas más chico */
+  color: #cccccc;
+  line-height: 1.5;
+  margin: 0;
+}
+
+
+.overlay-espectro {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(5,8,15,0.9) 0%, rgba(10,20,40,0.7) 100%);
+  z-index: 2;
+}
+
+
+
+
+
+
+
+/* =========================================
+   SECCIÓN 7: ESCUDO MULTICAPA (3D)
+   ========================================= */
+.seccion-capas-proteccion {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  background-color: #05080f; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.fondo-capas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.overlay-capas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(5,8,15,0.9) 0%, rgba(10,25,46,0.7) 100%);
+  z-index: 2;
+}
+
+.contenedor-capas {
+  position: relative; /* ¡Súper importante para que no quede detrás del fondo! */
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1300px;
+  padding: 0 5%;
+  gap: 50px;
+}
+
+/* --- Info Izquierda --- */
+.info-capas-izq {
+  flex: 1;
+  max-width: 450px;
+}
+
+.logo-capas {
+  height: 200px;
+  margin-bottom: 30px;
+  filter: drop-shadow(0 0 10px rgba(255, 247, 0, 0.4));
+}
+
+.info-capas-izq h2 {
+  font-family: 'Baby Monsta', sans-serif;
+  font-size: 3.5rem;
+  color: #ffffff;
+  line-height: 1.1;
+  margin: 0 0 15px 0;
+  letter-spacing: 1px;
+}
+
+.info-capas-izq h2 strong {
+  color: #FFCC00;
+}
+
+.info-capas-izq p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  color: #cccccc;
+  line-height: 1.7;
+}
+
+.info-capas-izq p strong {
+  color: #ffffff;
+}
+
+/* --- Escena 3D Derecha --- */
+.escena-3d-capas {
+  flex: 1.5;
+  position: relative;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  perspective: 1200px; /* Clave para el efecto 3D */
+}
+
+.nucleo-3d {
+  position: relative;
+  width: 180px;
+  height: 280px;
+  transform-style: preserve-3d;
+  /* Posición de reposo (inclinada) */
+  transform: rotateX(15deg) rotateY(-35deg) rotateZ(5deg);
+  transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: crosshair;
+  z-index: 10;
+  left: 10%;
+}
+
+/* Al pasar el mouse, el bloque entero rota un poco para mejor ángulo */
+.escena-3d-capas:hover .nucleo-3d {
+  transform: rotateX(5deg) rotateY(-50deg) rotateZ(0deg);
+}
+
+/* Estructura base de las capas */
+.lente-capa {
+  position: absolute;
+  top: 0; left: 0; 
+  width: 100%; height: 100%;
+  border-radius: 40% 60% 50% 50% / 50% 50% 60% 40%;
+  transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.5s, box-shadow 0.5s;
+  border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+/* 4. Capa Antireflejo (Atrás) */
+.capa-4-antireflejo {
+  background: rgba(0, 212, 255, 0.05);
+  box-shadow: inset 0 0 30px rgba(0, 212, 255, 0.2);
+  transform: translateZ(-20px);
+}
+
+/* 3. Capa Hidrofóbica (Gotitas) */
+.capa-3-hidro {
+  background-image: radial-gradient(rgba(255,255,255,0.4) 1px, transparent 1px);
+  background-size: 15px 15px;
+  background-color: rgba(10, 25, 50, 0.3);
+  transform: translateZ(0px);
+}
+
+/* 2. Capa Antiestática (Malla) */
+.capa-2-antiestatica {
+  background: rgba(10, 20, 40, 0.2);
+  transform: translateZ(20px);
+  overflow: hidden;
+}
+.patron-hex-malla {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='34.64' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 8.66L10 14.43 0 8.66V-2.89l10-5.77 10 5.77V8.66zm0 23.09l-10 5.77-10-5.77V20.21l10-5.77 10 5.77v11.55zM10 17.32l-10 5.77V14.43l10-5.77 10 5.77v8.66L10 17.32z' fill='rgba(0,212,255,0.15)' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+/* 1. Capa Antirayas (Frente - Cristal puro) */
+.capa-1-antirayas {
+  background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(0, 212, 255, 0.1) 100%);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-left: 5px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 15px 0 30px rgba(255,255,255,0.2);
+  backdrop-filter: blur(2px);
+  transform: translateZ(40px);
+}
+
+/* LA MAGIA: EXPANDIR CAPAS EN HOVER */
+.escena-3d-capas:hover .capa-4-antireflejo { transform: translateZ(-120px); box-shadow: 0 0 30px rgba(0, 212, 255, 0.4); border-color: #00d4ff; }
+.escena-3d-capas:hover .capa-3-hidro { transform: translateZ(-30px); border-color: #00d4ff; }
+.escena-3d-capas:hover .capa-2-antiestatica { transform: translateZ(60px); border-color: #00d4ff; }
+.escena-3d-capas:hover .capa-1-antirayas { transform: translateZ(150px); border-color: #ffffff; }
+
+/* --- HUD TEXTOS Y LÍNEAS CONECTORAS --- */
+.etiquetas-hud-capas {
+  position: absolute;
+  right: 0;
+  top: 10%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 55%;
+  pointer-events: none; /* No interfieren con el mouse */
+}
+
+.hud-item {
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.5s ease;
+}
+
+.linea-conectora {
+  width: 0;
+  height: 1px;
+  background-color: #FFCC00;
+  box-shadow: 0 0 8px #FFCC00;
+  margin-right: 20px;
+  transition: width 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+}
+
+/* Puntito al inicio de la línea */
+.linea-conectora::before {
+  content: ''; position: absolute; left: -4px; top: -3px;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #ffffff; box-shadow: 0 0 10px #FFCC00;
+}
+
+.hud-texto h4 {
+  font-family: 'Baby Monsta', sans-serif;
+  font-size: 1.3rem;
+  color: #ffffff;
+  margin: 0 0 5px 0;
+  letter-spacing: 1px;
+}
+
+.hud-texto p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  color: #FFCC00;
+  margin: 0;
+}
+
+/* Al hacer hover en el contenedor 3D, aparecen los textos y crecen las líneas */
+.escena-3d-capas:hover .hud-item { opacity: 1; transform: translateX(0); }
+
+/* Tamaños de línea escalonados para seguir el 3D */
+.escena-3d-capas:hover .item-antirayas .linea-conectora { width: 40px; transition-delay: 0.1s; }
+.escena-3d-capas:hover .item-antiestatica .linea-conectora { width: 90px; transition-delay: 0.2s; }
+.escena-3d-capas:hover .item-hidro .linea-conectora { width: 140px; transition-delay: 0.3s; }
+.escena-3d-capas:hover .item-antireflejo .linea-conectora { width: 190px; transition-delay: 0.4s; }
+
+.escena-3d-capas:hover .hud-item:nth-child(1) { transition-delay: 0.1s; }
+.escena-3d-capas:hover .hud-item:nth-child(2) { transition-delay: 0.2s; }
+.escena-3d-capas:hover .hud-item:nth-child(3) { transition-delay: 0.3s; }
+.escena-3d-capas:hover .hud-item:nth-child(4) { transition-delay: 0.4s; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.animar-izquierda {
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.animar-izquierda.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* =========================================
+   CONTROLES DE PRESENTACIÓN (Flechas)
+   ========================================= */
+.controles-presentacion {
+  position: fixed;
+  bottom: 40px;  /* Lo bajamos a la esquina inferior */
+  right: 50px;   /* Pegado a la derecha, debajo de los textos */
+  display: flex;
+  flex-direction: row; /* Ahora se alinean horizontalmente (Izquierda/Derecha) */
+  gap: 20px; /* Espacio entre los dos botones */
+  z-index: 9999; 
+}
+
+.btn-flecha {
+  background: rgba(238, 255, 0, 0.1);
+  border: 1px solid rgba(255, 251, 0, 0.4);
+  color: #FFCC00;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  backdrop-filter: blur(5px); 
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.btn-flecha:hover {
+  background: rgba(238, 255, 0, 0.4);
+  color: #ffffff;
+  transform: scale(1.15);
+  box-shadow: 0 0 20px rgba(255, 247, 0, 0.6);
+}
+
+.btn-flecha.oculto {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.5);
+}
+
+
+/* =========================================================================
+   TODO ENCAJA EN UNA PANTALLA
+   Cuatro de las siete secciones declaraban `height: 100vh` +
+   `overflow: hidden`: el hero, la de consecuencias, la de espectro dual y
+   la de capas. Con eso, si el bloque no cabia exactamente en una pantalla,
+   lo que sobraba se recortaba y el texto se volvia invisible. Las otras
+   tres ya usaban `min-height`, pero con 100px de padding fijo: en una
+   ventana baja ese padding solo ya empujaba el contenido fuera.
+
+   Aqui todas pasan a `min-height` (pantalla completa cuando el contenido es
+   corto, crecimiento cuando no lo es) y el ritmo vertical --padding,
+   huecos, cuerpos y las cuatro cajas de altura fija-- se mide con la altura
+   disponible. Los fondos absolutos se fijan con `inset: 0` para que sigan
+   cubriendo aunque la seccion crezca.
+
+   No se toca ninguna animacion: el nucleo 3D, los reflejos de las imagenes
+   flotantes, el escudete y las transiciones de hover animan transform y
+   opacity, nada de lo que cambia aqui.
+   ========================================================================= */
+
+.super-hero-digital,
+.super-analisis-ojo,
+.seccion-fuentes-luz,
+.seccion-consecuencias,
+.seccion-espectro-dual,
+.seccion-capas-proteccion,
+.seccion-por-que {
+  height: auto;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* El hero y la seccion de capas son piezas full-bleed: sin padding, para que
+   los paneles toquen los bordes. Su aire va dentro de las columnas. */
+.super-hero-digital,
+.seccion-capas-proteccion {
+  padding-top: clamp(24px, 3vh, 40px);
+  padding-bottom: clamp(56px, 8vh, 96px);
+}
+
+.super-analisis-ojo,
+.seccion-fuentes-luz,
+.seccion-consecuencias,
+.seccion-por-que {
+  padding-top: clamp(44px, 6vh, 100px);
+  /* La franja del final es donde aterriza el pager fixed, no el ultimo
+     renglon de texto. */
+  padding-bottom: clamp(64px, 9vh, 120px);
+}
+
+.seccion-espectro-dual {
+  padding-top: clamp(36px, 5vh, 72px);
+  padding-bottom: clamp(64px, 9vh, 120px);
+}
+
+/* Los fondos absolutos tienen que seguir cubriendo aunque la seccion
+   crezca, asi que se fijan con inset en vez de depender de la altura. */
+.fondo-ojo-brutal,
+.overlay-duro,
+.fondo-fuentes,
+.overlay-fuentes,
+.fondo-consecuencias,
+.overlay-consecuencias,
+.fondo-por-que,
+.overlay-por-que,
+.fondo-espectro,
+.overlay-espectro,
+.fondo-capas,
+.overlay-capas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* --- 2. EL HUD DEL OJO: el visor de 500px era el que empujaba --- */
+.contenedor-hud-brutal {
+  height: clamp(300px, 46vh, 500px);
+}
+
+.circulo-brutal.exterior {
+  width: clamp(220px, 34vh, 380px);
+  height: clamp(220px, 34vh, 380px);
+}
+
+.circulo-brutal.interior {
+  width: clamp(120px, 19vh, 220px);
+  height: clamp(120px, 19vh, 220px);
+}
+
+.lista-hud-dura li {
+  padding: clamp(7px, 1.2vh, 12px) 0;
+}
+
+.lista-hud-dura li i {
+  width: clamp(30px, 4.2vh, 42px);
+  height: clamp(30px, 4.2vh, 42px);
+  min-width: clamp(30px, 4.2vh, 42px);
+  font-size: clamp(0.85rem, 1.5vh, 1.05rem);
+}
+
+/* --- 3. FUENTES DE LUZ --- */
+.cabecera-fuentes-super {
+  margin-bottom: clamp(20px, 3.4vh, 34px);
+}
+
+.titulo-monster-fuentes {
+  font-size: clamp(1.6rem, 3.6vh, 2.6rem);
+}
+
+.grid-fuentes-super {
+  gap: clamp(14px, 2vw, 24px);
+}
+
+.tarjeta-fuente-super {
+  padding: clamp(16px, 2.6vh, 26px) clamp(14px, 1.6vw, 20px);
+}
+
+.tarjeta-fuente-super p {
+  font-size: clamp(0.78rem, 1.4vh, 0.88rem);
+  line-height: 1.5;
+}
+
+.item-fuente i {
+  width: clamp(40px, 6vh, 56px);
+  height: clamp(40px, 6vh, 56px);
+  min-width: clamp(40px, 6vh, 56px);
+  font-size: clamp(1rem, 1.8vh, 1.25rem);
+}
+
+.item-fuente p {
+  font-size: clamp(0.78rem, 1.4vh, 0.88rem);
+  line-height: 1.45;
+}
+
+/* --- 3. FUENTES DE LUZ: LOS ICONOS VUELVEN A TENER TAMAÑO ---
+   Aqui el icono es el `<i>` de Font Awesome, en linea. Al ponerle width y
+   height no paso nada --a un elemento en linea no se le aplica el ancho-- y
+   el glifo se quedo en 16px: cinco pictogramas diminutos bajo unos titulos
+   de 14px. Ahora el `<i>` es la caja (display:flex la convierte en bloque)
+   y el glifo se mide dentro de ella. Es el mismo sistema que usan
+   `.icono-beneficio-lista` y los iconos de las demas secciones: circulo con
+   fondo tenue, borde y glifo centrado. */
+.item-fuente i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(46px, 6.6vh, 60px);
+  height: clamp(46px, 6.6vh, 60px);
+  min-width: clamp(46px, 6.6vh, 60px);
+  font-size: clamp(1.2rem, 2.3vh, 1.55rem);
+  color: #FFCC00;
+  border-radius: 50%;
+  background: rgba(255, 204, 0, 0.1);
+  border: 1px solid rgba(255, 204, 0, 0.32);
+  margin-bottom: clamp(12px, 2vh, 20px);
+}
+
+.item-fuente:hover i {
+  color: #ffffff;
+  background: rgba(255, 204, 0, 0.22);
+  border-color: rgba(255, 204, 0, 0.6);
+}
+
+/* El hilo punteado que baja de cada fuente es decorativo: con 150px fijos
+   colgaba fuera de la pantalla. Ahora se mide con el alto disponible. */
+.linea-punteada {
+  height: clamp(50px, 12vh, 150px);
+}
+
+/* --- 4. CONSECUENCIAS: la retícula de 3 iconos con imagen flotante --- */
+.contenedor-consecuencias {
+  gap: clamp(20px, 3.4vh, 40px);
+}
+
+.texto-principal-consecuencias p {
+  font-size: clamp(0.88rem, 1.6vh, 1.05rem);
+  line-height: 1.55;
+  /* El margen de abajo no es decorativo: es el hueco que necesita la
+     imagen que sube al pasar el mouse. Antes valia 140px fijos mientras la
+     imagen media 320px de alto, asi que se montaba encima del parrafo. El
+     hueco se calcula ahora con la misma medida que la imagen. */
+  margin-bottom: calc(clamp(150px, 23vh, 230px) + 26px);
+}
+
+.grid-iconos-consecuencias {
+  gap: clamp(12px, 2vw, 24px);
+}
+
+.item-consecuencia {
+  padding: clamp(14px, 2.4vh, 22px) 0 0;
+}
+
+.item-consecuencia p {
+  font-size: clamp(0.78rem, 1.4vh, 0.88rem);
+  line-height: 1.45;
+}
+
+/* Los cuatro iconos de consecuencias son, igual que los de la seccion 3,
+   glifos sueltos: 3.5rem de tipografia sin caja. Se les da el mismo
+   sistema circular del resto de la pagina para que las dos secciones se
+   lean como una sola. */
+.item-consecuencia i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(46px, 6.6vh, 60px);
+  height: clamp(46px, 6.6vh, 60px);
+  min-width: clamp(46px, 6.6vh, 60px);
+  font-size: clamp(1.2rem, 2.3vh, 1.55rem);
+  color: #FFCC00;
+  border-radius: 50%;
+  background: rgba(255, 204, 0, 0.1);
+  border: 1px solid rgba(255, 204, 0, 0.32);
+  margin-bottom: clamp(12px, 2vh, 20px);
+}
+
+.item-consecuencia:hover i {
+  color: #ffffff;
+  background: rgba(255, 204, 0, 0.22);
+  border-color: rgba(255, 204, 0, 0.6);
+}
+
+/* La imagen que sube al pasar el mouse: 650x320 fijos la empujaban fuera de
+   la seccion y la dejaban encima del parrafo. Ahora es una tarjeta de
+   proportions contenidas y con el margen del parrafo medido a su altura. */
+.imagen-flotante {
+  width: clamp(300px, 30vw, 420px);
+  height: clamp(150px, 23vh, 230px);
+  bottom: calc(100% + 26px);
+}
+
+/* --- 5. ESPECTRO DUAL: el simulador de 550px --- */
+.contenedor-espectro-unico {
+  gap: clamp(24px, 4vw, 60px);
+}
+
+.info-bloqueo-total h2 {
+  font-size: clamp(1.8rem, 4.2vh, 3rem);
+}
+
+.texto-diferenciador {
+  font-size: clamp(0.88rem, 1.6vh, 1.05rem);
+  line-height: 1.55;
+  margin-bottom: clamp(16px, 2.6vh, 26px);
+}
+
+.lista-bloqueo {
+  gap: clamp(9px, 1.7vh, 16px);
+}
+
+.lista-bloqueo li {
+  padding: clamp(9px, 1.6vh, 16px) 0;
+}
+
+.lista-bloqueo li i {
+  width: clamp(30px, 4.2vh, 42px);
+  height: clamp(30px, 4.2vh, 42px);
+  min-width: clamp(30px, 4.2vh, 42px);
+  font-size: clamp(0.85rem, 1.5vh, 1.05rem);
+}
+
+.simulador-gigante {
+  height: clamp(300px, 48vh, 550px);
+}
+
+.lente-cristal-gigante {
+  width: clamp(150px, 24vh, 250px);
+  height: clamp(240px, 38vh, 400px);
+}
+
+/* --- 6. CAPAS DE PROTECCION: la escena 3D de 500px --- */
+.contenedor-capas {
+  gap: clamp(24px, 4vw, 50px);
+}
+
+.info-capas-izq h2 {
+  font-size: clamp(1.7rem, 3.8vh, 2.6rem);
+}
+
+.info-capas-izq p {
+  font-size: clamp(0.85rem, 1.6vh, 1rem);
+  line-height: 1.55;
+}
+
+.escena-3d-capas {
+  height: clamp(300px, 44vh, 500px);
+}
+
+.nucleo-3d {
+  width: clamp(120px, 16vw, 180px);
+  height: clamp(190px, 34vh, 280px);
+}
+
+/* Las etiquetas del HUD se posicionan en % del nucleo: al encoger el
+   nucleo se recolocan solas. */
+.etiquetas-hud-capas {
+  gap: clamp(8px, 1.6vh, 20px);
+}
+
+.hud-texto h4 {
+  font-size: clamp(0.78rem, 1.5vh, 0.95rem);
+}
+
+.hud-texto p {
+  font-size: clamp(0.7rem, 1.3vh, 0.8rem);
+  line-height: 1.4;
+}
+
+/* --- 7. POR QUE: la lista de beneficios con imagen que cruza --- */
+.contenedor-por-que {
+  gap: clamp(24px, 4vw, 50px);
+}
+
+.caja-cristal-por-que {
+  padding: clamp(22px, 3.4vh, 40px);
+}
+
+.titulo-por-que {
+  font-size: clamp(1.7rem, 3.8vh, 2.6rem);
+}
+
+.lista-beneficios-final {
+  gap: clamp(8px, 1.5vh, 16px);
+}
+
+.lista-beneficios-final li {
+  padding: clamp(10px, 1.8vh, 18px) 0;
+}
+
+.texto-beneficio {
+  font-size: clamp(0.78rem, 1.4vh, 0.9rem);
+  line-height: 1.45;
+}
+
+.imagen-beneficio-flotante {
+  width: clamp(380px, 46vw, 650px);
+}
+
+/* Este bloque va despues de los media queries por seccion, asi que devuelve
+   el aire de movil (100px arriba para la barra de navegacion) y conserva la
+   franja del pager al final. */
+@media (max-width: 900px) {
+  .super-analisis-ojo,
+  .seccion-fuentes-luz,
+  .seccion-consecuencias,
+  .seccion-por-que,
+  .seccion-espectro-dual {
+    padding-top: 100px;
+    padding-bottom: 96px;
+  }
+}
+
+
+/* =========================================
+   DISEÑO RESPONSIVO (Tablets y Celulares)
+   ========================================= */
+@media (max-width: 900px) {
+  
+  /* --- NAVBAR --- */
+  .navbar {
+    padding: 15px 20px;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .nav-links {
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-links a {
+    font-size: 0.95rem;
+  }
+
+  /* --- SEC 1: VIDA DIGITAL --- */
+  .seccion-vida-digital {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    justify-content: center;
+    padding-top: 100px; /* Espacio para que el navbar no tape el contenido */
+  }
+  .panel-izquierdo, .panel-derecho {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    height: auto;
+    border: none;
+    background: rgba(5, 10, 20, 0.6);
+    padding: 30px 5%;
+  }
+  .contenido-panel {
+    padding: 20px 0;
+    align-items: center;
+    text-align: center;
+  }
+  .textos-panel {
+    padding-left: 0;
+  }
+  .linea-decorativa {
+    display: none; /* Quitamos la línea vertical para centrar el texto */
+  }
+  .logo-panel {
+    width: 130px;
+    margin-bottom: 15px;
+  }
+  .textos-panel h2, .panel-derecho h2 {
+    font-size: 2.2rem;
+    text-align: center;
+  }
+  .linea-cyan {
+    margin: 0 auto 15px auto;
+  }
+  
+  /* --- SEC 2: ANÁLISIS OJO --- */
+  .logo-flotante {
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .info-hud h3 {
+    font-size: 2rem;
+    text-align: center;
+  }
+  
+  /* --- SEC 3: FUENTES DE LUZ --- */
+  .seccion-fuentes-luz {
+    padding: 120px 5% 50px;
+  }
+  .titulo-fuentes h2 {
+    font-size: 2.2rem;
+  }
+  .logo-lateral img {
+    width: 100px;
+  }
+  
+  /* --- SEC 4: CONSECUENCIAS --- */
+  .seccion-consecuencias {
+    height: auto;
+    padding: 120px 5% 80px;
+  }
+  .texto-principal-consecuencias p {
+    font-size: 1.1rem;
+    margin-bottom: 50px;
+  }
+  .grid-iconos-consecuencias {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+  }
+  .item-consecuencia {
+    min-width: 140px;
+    flex: 1 1 40%; /* Dos columnas en celular */
+  }
+  /* Desactivar imágenes flotantes enormes en pantallas táctiles para evitar desbordamientos */
+  .imagen-flotante {
+    display: none !important; 
+  }
+  .item-consecuencia i {
+    font-size: 2.5rem;
+  }
+  
+  /* --- SEC 5: ESPECTRO DUAL --- */
+  .seccion-espectro-dual {
+    height: auto;
+    padding: 120px 5% 50px;
+  }
+  .cabecera-espectro h2 {
+    font-size: 2.2rem;
+  }
+  
+  /* --- SEC 6: CAPAS PROTECCIÓN --- */
+  .seccion-capas-proteccion {
+    height: auto;
+    padding: 120px 5% 50px;
+  }
+  .info-capas-izq {
+    text-align: center;
+    max-width: 100%;
+  }
+  .info-capas-izq h2 {
+    font-size: 2.2rem;
+  }
+  .escena-3d-capas {
+    height: 350px;
+  }
+  
+  /* --- SEC 7: POR QUÉ --- */
+  .seccion-por-que {
+    height: auto;
+    padding: 120px 5% 50px;
+  }
+  .titulo-por-que {
+    font-size: 2.2rem;
+  }
+  .caja-cristal-por-que {
+    padding: 30px;
+  }
+  /* Desactivar imágenes gigantes y líneas conectadas por hover en móvil */
+  .imagen-beneficio-flotante, .contenido-item::before {
+    display: none !important;
+  }
+  .icono-beneficio-lista {
+    width: 40px;
+    height: 40px;
+  }
+  .icono-beneficio-lista i {
+    font-size: 1.2rem;
+  }
+  
+  /* --- CONTROLES DE FLECHAS --- */
+  .controles-presentacion {
+    bottom: 20px;
+    right: 20px;
+    gap: 10px;
+  }
+  .btn-flecha {
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+  }
+
+  /* El bloque de "nada se corta" va antes que este media query, asi que aqui
+     se devuelve la franja del pager: los 50px de abajo se quedan cortos
+     para un boton de 45px. */
+  .super-analisis-ojo,
+  .seccion-fuentes-luz,
+  .seccion-consecuencias,
+  .seccion-por-que,
+  .seccion-espectro-dual,
+  .super-hero-digital,
+  .seccion-capas-proteccion {
+    padding-bottom: 96px;
+  }
+}

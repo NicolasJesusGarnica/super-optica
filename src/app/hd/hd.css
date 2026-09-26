@@ -1,0 +1,2124 @@
+:host {
+  display: block;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.navbar {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1000; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 60px; 
+  /* Cambio de Rojo a Amarillo corporativo de Super Óptica */
+  background-color: #ffffff; 
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);  
+  transform: translateY(-100%);
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.navbar::after {
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  background: transparent;
+}
+
+.navbar:hover {
+  transform: translateY(0);
+}
+
+.logo-container img {
+  height: 35px; /* Aumenta este valor si lo quieres aún más grande (ej: 70px) */
+  cursor: pointer;
+  filter: none; /* Esto quita la sombra / drop-shadow por completo */
+  transition: transform 0.3s ease;
+}
+
+.nav-links {
+  display: flex;
+  gap: 35px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links a {
+  /* Color azul oscuro corporativo para contrastar sobre el fondo amarillo */
+  color: #05051B;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif; 
+  font-size: 1.1rem; 
+  font-weight: 700; 
+  letter-spacing: 1px;
+  transition: 0.3s;
+  padding: 5px 12px;
+  border-radius: 4px;
+}
+
+.nav-links a:hover {
+  color: #090A22;
+  background-color: #FFCC00; 
+}
+
+
+
+.nav-links {
+  display: flex;
+  gap: 35px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links a {
+  color: #090A22;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif; 
+  font-size: 1.1rem; 
+  font-weight: 600; 
+  letter-spacing: 1px;
+  transition: 0.3s;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.controles-presentacion {
+  position: fixed;
+  bottom: 40px;  /* Lo bajamos a la esquina inferior */
+  right: 50px;   /* Pegado a la derecha, debajo de los textos */
+  display: flex;
+  flex-direction: row; /* Ahora se alinean horizontalmente (Izquierda/Derecha) */
+  gap: 20px; /* Espacio entre los dos botones */
+  z-index: 9999; 
+}
+
+.btn-flecha {
+  background: rgba(225, 0, 255, 0.1);
+  border: 1px solid rgba(255, 0, 132, 0.4);
+  color: #ff00ee;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  backdrop-filter: blur(5px); 
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.btn-flecha:hover {
+  background: rgba(255, 0, 144, 0.4);
+  color: #ffffff;
+  transform: scale(1.15);
+  box-shadow: 0 0 20px rgba(255, 0, 144, 0.6);
+}
+
+.btn-flecha.oculto {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.5);
+}
+
+
+
+/* =========================================
+   SECCIÓN HERO HD (GATO NEON)
+   ========================================= */
+.hero-hd {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* <-- CAMBIO CLAVE: Centra el contenido verticalmente */
+  padding: 0 5%; /* <-- Quitamos el padding inferior exagerado */
+  background-color: #030407;
+  overflow: hidden;
+}
+
+.bg-hd-container {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.bg-hd-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  /* Animación premium de zoom lento para darle vida al fondo */
+  animation: zoomInFondo 20s infinite alternate linear;
+}
+
+.overlay-hd {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  /* Subimos la zona oscura (hasta el 60%) para que siga protegiendo el texto en su nueva posición */
+  background: linear-gradient(to top, rgba(3, 4, 7, 0.95) 0%, rgba(3, 4, 7, 0.8) 60%, rgba(3, 4, 7, 0) 100%);
+  z-index: 2;
+}
+
+@keyframes zoomInFondo {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.15); }
+}
+
+.contenido-hd {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Todo alineado a la izquierda */
+}
+
+.logo-hd {
+  width: 320px; 
+  /* Reducimos la separación entre el logo y la línea neón para compactar el bloque visual */
+  margin-bottom: 20px; 
+  filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.6));
+}
+
+.texto-hd {
+  max-width: 700px;
+}
+
+.linea-neon {
+  width: 80px;
+  height: 4px;
+  /* Gradiente cyan a magenta, copiando los colores exactos de las luces del gato */
+  background: linear-gradient(90deg, #00d4ff, #ff00ee);
+  border-radius: 2px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 15px rgba(255, 0, 238, 0.6);
+}
+
+.texto-hd h1 {
+  font-family: 'Baby Monsta', sans-serif;
+  font-weight: 400;
+  font-size: 2.8rem;
+  color: #ffffff;
+  margin: 0 0 15px 0;
+  letter-spacing: 2px;
+  line-height: 1.1;
+}
+
+.texto-hd h1 strong {
+  /* Hacemos que la palabra "ABSOLUTA" tenga el mismo gradiente neón */
+  background: linear-gradient(90deg, #00d4ff, #ff00ee);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.texto-hd p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.15rem;
+  color: #d1d5db;
+  line-height: 1.6;
+  margin: 0;
+  font-weight: 300;
+}
+
+/* Animación de entrada elegante desde abajo */
+
+
+
+
+/* =========================================
+   DISEÑO RESPONSIVO (Tablets y Celulares)
+   ========================================= */
+@media (max-width: 900px) {
+  .hero-hd {
+    justify-content: center; /* En móviles centramos todo */
+    padding: 0 5% 50px;
+    text-align: center;
+  }
+  .contenido-hd {
+    align-items: center;
+  }
+  .logo-hd {
+    width: 250px;
+  }
+  .linea-neon {
+    margin: 0 auto 20px;
+  }
+  .texto-hd h1 {
+    font-size: 2.8rem;
+  }
+  .texto-hd p {
+    font-size: 1rem;
+  }
+}
+
+
+/* =========================================
+   SECCIÓN 2: COMPARATIVA HD
+   ========================================= */
+.sec-comparativa {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0 5%;
+}
+
+.bg-sec2 {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  /* Ligero movimiento de fondo */
+  animation: paneoFondo 25s infinite alternate ease-in-out;
+}
+
+@keyframes paneoFondo {
+  0% { transform: scale(1) translateX(0); }
+  100% { transform: scale(1.1) translateX(-20px); }
+}
+
+.contenedor-dos-columnas {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 1300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+}
+
+/* --- TARJETA IZQUIERDA (Glassmorphism) --- */
+.tarjeta-glass {
+  flex: 1;
+  max-width: 550px;
+  background: rgba(10, 12, 20, 0.7); /* Fondo oscuro semitransparente */
+  backdrop-filter: blur(20px); /* Efecto cristal premium */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 50px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.logo-hd-sec2 {
+  width: 220px;
+  margin-bottom: 20px;
+}
+
+.linea-neon-corta {
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, #00d4ff, #ff00ee);
+  border-radius: 2px;
+  margin-bottom: 30px;
+}
+
+.evolucion-visual {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 35px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 15px 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.icono-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #888; /* Color apagado para el viejo */
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  gap: 8px;
+}
+
+.icono-box i {
+  font-size: 1.8rem;
+}
+
+.icono-box.activo {
+  color: #fff; /* Resalta el nuevo */
+  text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+}
+
+.icono-box.activo i {
+  color: #00d4ff;
+}
+
+.icono-flecha {
+  color: #ff00ee;
+  font-size: 1.2rem;
+  animation: latidoFlecha 1.5s infinite;
+}
+
+@keyframes latidoFlecha {
+  0%, 100% { transform: translateX(0); opacity: 0.5; }
+  50% { transform: translateX(5px); opacity: 1; }
+}
+
+.tarjeta-glass h2 {
+  font-family: 'Baby Monsta', sans-serif;
+  font-weight: 400;
+  font-size: 2.2rem;
+  color: #ffffff;
+  line-height: 1.1;
+  margin: 0 0 15px 0;
+  letter-spacing: 1px;
+}
+
+.texto-gradiente {
+  background: linear-gradient(90deg, #00d4ff, #ff00ee);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.subtitulo-hd {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: #00d4ff;
+  margin-bottom: 15px;
+}
+
+.desc-hd {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: #d1d5db;
+  line-height: 1.6;
+  font-weight: 300;
+  margin: 0;
+}
+
+/* --- COLUMNA DERECHA (Placeholder Lente) --- */
+.contenedor-lente {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.placeholder-lente {
+  width: 100%;
+  max-width: 500px;
+  height: 350px;
+  border: 2px dashed rgba(255, 0, 238, 0.4);
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(5px);
+  position: relative;
+  overflow: hidden;
+}
+
+.placeholder-lente i {
+  font-size: 3rem;
+  color: rgba(255, 255, 255, 0.3);
+  margin-bottom: 15px;
+}
+
+.placeholder-lente p {
+  color: rgba(255, 255, 255, 0.5);
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+}
+
+.brillo-interno {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: #ff00ee;
+  filter: blur(80px);
+  opacity: 0.3;
+  z-index: -1;
+}
+
+.contenedor-lente {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imagen-lente-sec2 {
+  width: 100%;
+  max-width: 550px; /* Tamaño ideal para que haga balance con la tarjeta izquierda */
+  height: auto;
+  object-fit: contain;
+  /* Sombra elegante para separarlo del fondo pastel */
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.15));
+  /* Animación flotante premium */
+  animation: flotarLente 4s ease-in-out infinite;
+}
+
+/* Efecto de levitación suave */
+@keyframes flotarLente {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+/* --- RESPONSIVO --- */
+@media (max-width: 900px) {
+  .contenedor-dos-columnas {
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 50px;
+  }
+  .tarjeta-glass {
+    padding: 30px;
+  }
+  .tarjeta-glass h2 {
+    font-size: 2.2rem;
+  }
+  .placeholder-lente {
+    height: 250px;
+  }
+}
+/* =========================================
+   SECCIÓN 3: COMPARATIVA LENTES (SIN CONTENEDOR)
+   ========================================= */
+.sec-lentes {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0 5%;
+}
+
+.bg-sec3 {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  opacity: 0.9;
+}
+
+/* Tarjeta Central (Totalmente transparente) */
+.tarjeta-comparativa {
+  position: relative;
+  z-index: 5;
+  width: 80%;
+  max-width: 1100px;
+  /* Eliminamos el fondo oscuro, el borde y el blur para que se vea el fondo */
+  background: transparent; 
+  padding: 60px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header-comparativa {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.header-comparativa h2 {
+  font-family: 'Baby Monsta', sans-serif;
+  font-weight: 400;
+  font-size: 2.4rem;
+  /* Texto oscuro para contrastar con el fondo claro */
+  color: #121826; 
+  letter-spacing: 2px;
+  margin: 0 0 15px 0;
+}
+
+.header-comparativa h2 strong {
+  /* El gradiente se mantiene porque resalta excelente sobre fondos claros */
+  background: linear-gradient(90deg, #00d4ff, #ff00ee);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.linea-neon-centro {
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #00d4ff, #ff00ee);
+  border-radius: 2px;
+  margin: 0 auto;
+  box-shadow: 0 0 10px rgba(255, 0, 238, 0.4);
+}
+
+/* Grid de Comparativa */
+.grid-lentes {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.columna-lente {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.columna-lente h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  /* Gris oscuro elegante para el subtítulo */
+  color: #475569; 
+  letter-spacing: 2px;
+  margin-bottom: 25px;
+  height: 45px; 
+  display: flex;
+  align-items: flex-end;
+  font-weight: 600;
+}
+
+.logo-hd-sec3 {
+  height: 45px;
+  object-fit: contain;
+  margin-bottom: 25px;
+  /* TRUCO: Oscurecemos el logo blanco con un filtro para que se lea sobre el celeste */
+  filter: brightness(0) invert(0.15) drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+/* Placeholders adaptados a fondo claro */
+.caja-lente {
+  width: 100%;
+  max-width: 400px;
+  height: 250px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.5); /* Fondo semiblanco para dar base */
+  backdrop-filter: blur(5px);
+}
+
+/* Estilo para el Tradicional (gris y sutil) */
+.tradicional .caja-lente {
+  border: 2px dashed rgba(0, 0, 0, 0.2);
+  color: rgba(0, 0, 0, 0.4);
+}
+
+/* Estilo para el HD (Brillante, premium) */
+.hd-premium .caja-lente {
+  border: 2px solid #00d4ff;
+  box-shadow: 0 10px 30px rgba(0, 212, 255, 0.15);
+  color: #ff00ee; /* Icono en magenta para resaltar */
+}
+
+.caja-lente i { font-size: 3rem; }
+.caja-lente p { 
+  font-family: 'Poppins', sans-serif; 
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Separador VS adaptado */
+.separador-vs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding-top: 50px; 
+}
+
+.linea-v {
+  width: 1px;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.15); /* Líneas divisorias oscuras */
+}
+
+.separador-vs span {
+  font-family: 'Antonio', sans-serif;
+  font-size: 1.5rem;
+  color: #ffffff;
+  background: linear-gradient(135deg, #00d4ff, #ff00ee);
+  padding: 10px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(255, 0, 238, 0.3);
+}
+
+/* Footer descriptivo adaptado */
+.footer-comparativa {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.footer-comparativa p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  /* Texto oscuro para lectura óptima */
+  color: #334155; 
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+.footer-comparativa strong {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+/* --- CONTENEDORES DE LAS IMÁGENES FORMA DE LENTE --- */
+.lente-foto-container {
+  width: 100%;
+  max-width: 480px; /* Ancho para que se vea bien el paisaje */
+  height: 280px;
+  position: relative;
+  /* Creamos una forma ovalada asimétrica simulando un cristal de lente */
+  border-radius: 45% 45% 55% 55% / 55% 55% 45% 45%;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.lente-foto-container:hover {
+  transform: translateY(-10px);
+}
+
+.lente-foto-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Enfocamos hacia el centro-abajo para que se vean los flamencos */
+  object-position: center 70%; 
+}
+
+/* --- FILTROS VISUALES --- */
+
+/* 1. Lente Tradicional (Opaco y borroso) */
+.lente-opaco img {
+  filter: blur(2.5px) grayscale(35%) contrast(0.8) brightness(0.9);
+}
+
+.lente-opaco .borde-cristal {
+  border: 3px solid rgba(148, 163, 184, 0.5); /* Borde gris apagado */
+}
+
+/* 2. Lente Evolutions HD (Nítido y vibrante) */
+.lente-nitido img {
+  filter: contrast(1.15) saturate(1.4) brightness(1.05); /* Colores súper vivos */
+}
+
+.lente-nitido .borde-glow {
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 
+    inset 0 0 20px rgba(0, 212, 255, 0.5),
+    0 0 30px rgba(255, 0, 238, 0.4);
+}
+
+/* Borde superpuesto para que no lo tape la imagen */
+.borde-cristal {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  border-radius: inherit;
+  pointer-events: none; /* Para que el hover funcione en la imagen */
+  z-index: 2;
+}
+
+/* Efecto de destello de luz en el lente HD */
+.destello-lente-sec3 {
+  position: absolute;
+  top: 8%;
+  right: 12%;
+  width: 50px;
+  height: 50px;
+  background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 60%);
+  border-radius: 50%;
+  z-index: 3;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+/* RESPONSIVO */
+@media (max-width: 900px) {
+  .grid-lentes {
+    flex-direction: column;
+    align-items: center;
+  }
+  .separador-vs {
+    flex-direction: row;
+    padding-top: 0;
+    width: 100%;
+  }
+  .linea-v {
+    width: 30%;
+    height: 1px;
+  }
+  .tarjeta-comparativa {
+    padding: 40px 25px;
+    height: 85vh; 
+    overflow-y: auto;
+  }
+  .header-comparativa h2 {
+    font-size: 2.4rem;
+  }
+}
+
+/* =========================================
+   SECCIÓN 4: TECNOLOGÍA DIGITAL (FONDO LIMPIO)
+   ========================================= */
+.sec-tecnologia {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0 5%;
+}
+
+/* --- CONTENEDORES DE IMÁGENES LENTES SEC-4 --- */
+.contenedor-imagen-tec {
+  width: 100%;
+  max-width: 480px; /* Tamaño ideal para que luzcan los detalles del cristal */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.contenedor-imagen-tec:hover {
+  transform: translateY(-12px) scale(1.02);
+}
+
+.img-lente-tec {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  /* Sombra suave para separar el lente transparente del fondo pastel */
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.12));
+}
+
+/* Efecto extra de resplandor para el lente digital HD */
+.img-glow {
+  filter: drop-shadow(0 15px 30px rgba(0, 212, 255, 0.25)) drop-shadow(0 0 15px rgba(255, 0, 238, 0.15));
+}
+
+/* (Opcional si cambiaste la clase en el HTML) Ajuste al nuevo texto */
+.footer-tecnologia p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.15rem;
+  color: #334155; 
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+.footer-tecnologia strong {
+  color: #0284c7; /* Azul encendido para resaltar la tecnología */
+  font-weight: 700;
+}
+
+.bg-sec4 {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  /* Ligera animación de escala para dar sensación inmersiva */
+  animation: respiracionFondo 15s infinite alternate ease-in-out;
+}
+
+@keyframes respiracionFondo {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.05); }
+}
+
+.contenido-tecnologia {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Sin fondo oscuro, totalmente transparente para lucir el color */
+  background: transparent;
+}
+
+/* Grid de los Lentes */
+.comparativa-lentes-grid {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: flex-end; /* Alineamos por la base para compensar la altura del logo */
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.columna-tec {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 450px;
+}
+
+.titulo-tec {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.15rem;
+  color: #64748b; /* Gris azulado sofisticado */
+  letter-spacing: 2px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  text-align: center;
+  height: 40px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.logo-hd-sec4 {
+  height: 40px;
+  object-fit: contain;
+  margin-bottom: 30px;
+  /* Oscurecemos el logo para que contraste perfecto sobre el fondo claro */
+  filter: brightness(0) invert(0.18) drop-shadow(0 2px 5px rgba(0,0,0,0.05));
+}
+
+/* Placeholders Premium Transparentes */
+.lente-placeholder-tec {
+  width: 100%;
+  height: 280px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; /* Forma ligeramente ovalada simulando un lente */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  /* Efecto Glassmorphism Claro */
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.lente-placeholder-tec:hover {
+  transform: translateY(-10px);
+}
+
+.lente-placeholder-tec i {
+  font-size: 3.5rem;
+}
+
+.lente-placeholder-tec span {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+/* Estilo Individual: Tradicional */
+.tradicional-tec {
+  border: 1px solid rgba(100, 116, 139, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  color: #94a3b8; /* Tono apagado */
+}
+
+/* Estilo Individual: Digital HD */
+.digital-tec {
+  border: 1px solid rgba(0, 212, 255, 0.6);
+  box-shadow: 0 15px 40px rgba(0, 212, 255, 0.15), inset 0 0 20px rgba(255, 0, 238, 0.1);
+  color: #0284c7; /* Azul encendido y moderno */
+}
+
+.brillo-digital {
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+  opacity: 0.6;
+}
+
+/* Texto Descriptivo Inferior */
+.footer-tecnologia {
+  text-align: center;
+  max-width: 850px;
+  padding: 0 20px;
+}
+
+.footer-tecnologia p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.15rem;
+  color: #334155; /* Texto oscuro para legibilidad total */
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+.footer-tecnologia strong {
+  color: #0f172a; /* Énfasis casi negro */
+  font-weight: 700;
+}
+
+/* RESPONSIVO */
+@media (max-width: 900px) {
+  .comparativa-lentes-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+  }
+  .lente-placeholder-tec {
+    height: 220px;
+  }
+  .footer-tecnologia p {
+    font-size: 1rem;
+  }
+}
+
+/* =========================================
+   SECCIÓN 5: PERCEPCIÓN CROMÁTICA (EFECTO LENTE)
+   ========================================= */
+.sec-colores {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 0 5%;
+}
+
+/* --- CAPA 1: FONDO BLUR --- */
+.bg-blur-container {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 1;
+}
+
+.bg-blur {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Desenfocamos agresivamente y quitamos un poco de color para que el lente resalte */
+  filter: blur(15px) grayscale(30%);
+  transform: scale(1.05); /* Evita bordes blancos por el blur */
+}
+
+.overlay-colores {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  /* Oscurecemos el lado izquierdo para leer el texto, el derecho queda más claro */
+  background: linear-gradient(90deg, rgba(5, 10, 15, 0.9) 0%, rgba(5, 10, 15, 0.6) 40%, rgba(5, 10, 15, 0.1) 100%);
+}
+
+/* --- CAPA 2: EL EFECTO LENTE NÍTIDO --- */
+.lente-focus-container {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 2;
+  /* RECORTAMOS ESTA CAPA EN FORMA DE ÓVALO */
+  /* Centro X: 65%, Centro Y: 50% | Radio X: 28vw, Radio Y: 35vh */
+  clip-path: ellipse(28vw 35vh at 65% 50%);
+}
+
+.bg-nitido {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Le damos más contraste y saturación a la rana para que se vea increíble */
+  filter: contrast(1.1) saturate(1.3); 
+}
+
+/* El aro del lente calculado para coincidir EXACTAMENTE con el clip-path */
+.borde-lente {
+  position: absolute;
+  z-index: 3;
+  pointer-events: none; /* Para que no interfiera con el mouse */
+  
+  /* Cálculos matemáticos para encajar con el ellipse() de arriba */
+  top: calc(50% - 35vh);
+  left: calc(65% - 28vw);
+  width: 56vw;
+  height: 70vh;
+  
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 
+    0 0 40px rgba(0, 212, 255, 0.4), /* Resplandor cyan externo */
+    inset 0 0 30px rgba(255, 0, 238, 0.3); /* Resplandor magenta interno */
+}
+
+.destello-lente {
+  position: absolute;
+  top: 10%;
+  right: 15%;
+  width: 40px;
+  height: 40px;
+  background: white;
+  border-radius: 50%;
+  filter: blur(8px);
+  box-shadow: 0 0 30px 10px rgba(255, 255, 255, 0.8);
+}
+
+/* --- CAPA 3: TEXTOS Y CONTENIDO --- */
+.contenido-colores {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 500px;
+  /* Totalmente sin contenedor de fondo, flota sobre el degradado oscuro */
+}
+
+.badge-premium {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(0, 212, 255, 0.15);
+  border: 1px solid rgba(0, 212, 255, 0.4);
+  padding: 8px 15px;
+  border-radius: 30px;
+  margin-bottom: 25px;
+}
+
+.badge-premium i, .badge-premium span {
+  color: #00d4ff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+}
+
+.texto-colores h2 {
+  font-family: 'Baby Monsta', sans-serif;
+  font-weight: 400;
+  font-size: 2.8rem;
+  color: #ffffff;
+  line-height: 1.1;
+  letter-spacing: 1px;
+  margin: 0 0 20px 0;
+}
+
+.texto-colores h2 strong {
+  background: linear-gradient(90deg, #ff00ee, #ff5e00); /* Tonos cálidos que combinan con la rana */
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.linea-neon-izq {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #ff00ee, #ff5e00);
+  border-radius: 2px;
+  margin-bottom: 25px;
+  box-shadow: 0 0 15px rgba(255, 0, 238, 0.5);
+}
+
+.texto-colores p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  color: #cbd5e1;
+  line-height: 1.7;
+  font-weight: 300;
+  margin-bottom: 25px;
+}
+
+.lista-beneficios {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lista-beneficios li {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: #ffffff;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lista-beneficios i {
+  color: #00d4ff;
+  font-size: 1.2rem;
+}
+
+/* --- LOGO FLOTANTE --- */
+.logo-flotante-der {
+  position: absolute;
+  bottom: 50px;
+  right: 460px;
+  z-index: 5;
+}
+
+.logo-flotante-der img {
+  width: 180px;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.8));
+}
+
+/* --- ANIMACIÓN ENTRADA --- */
+
+
+/* --- RESPONSIVO --- */
+@media (max-width: 900px) {
+  .sec-colores {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 100px;
+  }
+  .overlay-colores {
+    background: linear-gradient(180deg, rgba(5, 10, 15, 0.9) 0%, rgba(5, 10, 15, 0.8) 50%, rgba(5, 10, 15, 0.3) 100%);
+  }
+  .lente-focus-container {
+    clip-path: ellipse(40vw 25vh at 50% 75%);
+  }
+  .borde-lente {
+    top: calc(75% - 25vh);
+    left: calc(50% - 40vw);
+    width: 80vw;
+    height: 50vh;
+  }
+  .texto-colores h2 { font-size: 2.8rem; }
+  .logo-flotante-der {
+    bottom: 20px;
+    right: 20px;
+  }
+  .logo-flotante-der img { width: 120px; }
+}
+
+
+/* =========================================
+   SECCIÓN 6: GRABADO DE AUTENTICIDAD
+   ========================================= */
+.sec-grabado {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; 
+  overflow: hidden;
+  /* REDUCIMOS EL PADDING: de 8% a 3% para pegarlo casi al límite derecho */
+  padding: 0 3%; 
+  background-color: #0a0f19; 
+}
+
+.bg-grabado-container {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 1;
+}
+
+.bg-grabado {
+  width: 100%;
+  height: 100%;
+  /* LA CLAVE: 'contain' fuerza a la imagen a mostrarse completa sin hacer zoom ni recortarse */
+  object-fit: contain;
+  /* Pegamos la imagen a la izquierda para que el rostro y la burbuja encajen perfecto */
+  object-position: left center;
+}
+
+@keyframes zoomLento {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.03); } 
+}
+
+.overlay-grabado {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  /* DEGRADADO AJUSTADO: La oscuridad empieza recién en el 50% de la pantalla para no tapar a la modelo */
+  background: linear-gradient(90deg, rgba(10, 15, 25, 0) 0%, rgba(10, 15, 25, 0) 50%, rgba(10, 15, 25, 0.8) 75%, rgba(10, 15, 25, 0.98) 100%);
+}
+
+/* Contenedor del texto alineado a la derecha */
+.contenido-grabado {
+  position: relative;
+  z-index: 5;
+  padding-right: 20px;
+  width: 100%;
+  /* TEXTO MÁS COMPACTO: Bajamos a 420px para que no invada la imagen hacia la izquierda */
+  max-width: 420px; 
+}
+.etiqueta-diamante {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 25px;
+  backdrop-filter: blur(5px);
+}
+
+.etiqueta-diamante i, .etiqueta-diamante span {
+  color: #e2e8f0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+.etiqueta-diamante i {
+  color: #00d4ff; /* Toque de color en el diamante */
+}
+
+.texto-grabado h2 {
+  font-family: 'Baby Monsta', sans-serif;
+  font-weight: 400;
+  font-size: 2.8rem;
+  color: #ffffff;
+  line-height: 1.1;
+  letter-spacing: 1px;
+  margin: 0 0 15px 0;
+}
+
+.texto-grabado h2 strong {
+  background: linear-gradient(90deg, #00d4ff, #ff00ee);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.texto-grabado p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+  font-weight: 300;
+  margin-bottom: 35px;
+}
+
+/* Lista de detalles tecnológicos (El toque original y premium) */
+.lista-detalles-tech {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.detalle-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 15px;
+  border-radius: 12px;
+  border-left: 3px solid #ff00ee; /* Línea de acento */
+  transition: all 0.3s ease;
+}
+
+.detalle-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateX(5px);
+}
+
+.icono-detalle {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 212, 255, 0.1);
+  border-radius: 50%;
+  color: #00d4ff;
+  font-size: 1.1rem;
+}
+
+.texto-detalle h4 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: #ffffff;
+  margin: 0 0 5px 0;
+  font-weight: 600;
+}
+
+.texto-detalle span {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+/* --- ANIMACIÓN ENTRADA DESDE LA DERECHA --- */
+
+
+/* --- RESPONSIVO --- */
+@media (max-width: 900px) {
+  .sec-grabado {
+    justify-content: center;
+    align-items: flex-end; /* En móviles bajamos el texto */
+    padding: 0 5% 50px;
+  }
+  .overlay-grabado {
+    /* El gradiente sube desde abajo para que se lea en el celular */
+    background: linear-gradient(0deg, rgba(10, 15, 25, 0.95) 0%, rgba(10, 15, 25, 0.7) 40%, rgba(10, 15, 25, 0) 100%);
+  }
+  .bg-grabado {
+    object-position: 70% center; /* Ajustamos para que la burbuja no se corte en móvil */
+  }
+  .texto-grabado h2 {
+    font-size: 2.8rem;
+  }
+  .detalle-item {
+    padding: 10px;
+  }
+}
+
+
+/* =========================================
+   SECCIÓN 7: EXCLUSIVIDAD Y BENEFICIOS
+   ========================================= */
+.sec-beneficios {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0 5%;
+}
+
+.bg-sec7-container {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 0;
+}
+
+.bg-sec7 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: paneoFondo 25s infinite alternate ease-in-out;
+}
+
+.overlay-sec7 {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  /* Degradado circular sutil para que el texto resalte pero el fondo no se oscurezca de más */
+  background: radial-gradient(circle at center, rgba(255,255,255,0) 30%, rgba(10, 15, 25, 0.3) 100%);
+}
+
+.contenido-sec7 {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  max-width: 1300px;
+}
+
+/* --- CABECERA DERECHA ("TAN ÚNICO") --- */
+.header-unico {
+  position: absolute;
+  top: 80px;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.iconos-grabado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  /* Colores grises azulados elegantes */
+  color: #dddede;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.iconos-grabado i {
+  font-size: 1.2rem;
+  color: #00d4ff;
+}
+
+.mini-logo {
+  height: 15px;
+  /* Volvemos oscuro el logo blanco para que contraste en fondo claro */
+  filter: brightness(10) invert(0.3); 
+}
+
+.linea-vertical-unica {
+  width: 3px;
+  height: 70px;
+  background: linear-gradient(to bottom, #00d4ff, #ff00ee);
+  border-radius: 2px;
+}
+
+.texto-unico {
+  display: flex;
+  flex-direction: column;
+}
+
+.texto-unico h2 {
+  font-family: 'Baby Monsta', sans-serif;
+  font-weight: 400;
+  font-size: 2.4rem;
+  color: #f0f1f3; /* Gris muy oscuro, casi negro */
+  margin: 0;
+  line-height: 1;
+  letter-spacing: 1px;
+}
+
+.texto-unico p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.15rem;
+  color: #d9dbdd;
+  margin: 5px 0 0 0;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* --- IMAGEN CENTRAL LENTES 3D --- */
+.centro-lentes-3d {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 65%;
+  max-width: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-lentes-3d {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 40px 50px rgba(0, 0, 0, 0.25));
+  /* Utilizamos la animación que ya tienes creada (flotarLente) */
+  animation: flotarLente 6s ease-in-out infinite; 
+}
+
+/* --- LISTA BENEFICIOS (INFERIOR IZQUIERDA) --- */
+.lista-beneficios-premium {
+  position: absolute;
+  bottom: 80px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.beneficio-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  /* Fondo Glassmorphism que se adapta sin importar si el fondo es claro u oscuro */
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(12px);
+  padding: 10px 30px 10px 10px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.beneficio-item:hover {
+  transform: translateX(15px);
+  background: rgba(255, 255, 255, 0.8);
+  border-color: #00d4ff;
+  box-shadow: 0 10px 30px rgba(0, 212, 255, 0.15);
+}
+
+.icono-circular {
+  width: 50px;
+  height: 50px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+  color: #00d4ff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.texto-icono {
+  font-family: 'Antonio', sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+}
+
+/* Creamos el arcoíris del icono de colores */
+.icono-circular.arcoiris {
+  background: conic-gradient(from 0deg, #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000);
+  position: relative;
+}
+
+.icono-circular.arcoiris i {
+  position: relative;
+  z-index: 2;
+  color: #1e293b;
+}
+
+.icono-circular.arcoiris::after {
+  content: '';
+  position: absolute;
+  top: 4px; left: 4px; right: 4px; bottom: 4px;
+  background: white;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.beneficio-item span {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1e293b;
+  letter-spacing: 1px;
+}
+
+/* =========================================================================
+   TODO ENCAJA EN UNA PANTALLA
+   Las siete secciones son pantallas de una presentacion (las flechas del
+   pager saltan de una a otra) y las siete declaraban `height: 100vh` +
+   `overflow: hidden` sin ninguna holgura vertical: cualquier contenido que
+   no cabia exactamente en una pantalla quedaba recortado y el texto se
+   volvia invisible.
+
+   Aqui `min-height` mantiene la pantalla completa cuando el contenido es
+   corto y deja que la seccion crezca cuando no lo es. El ritmo vertical
+   (padding, huecos, cuerpos y las cuatro cajas de altura fija) se mide con
+   la altura disponible. Ninguna recorta.
+
+   Los elementos decorativos que ya vivian en `vh` (`.borde-lente`,
+   `.centro-lentes-3d`, `.lista-beneficios-premium`) se dejan como estan:
+   ya escalan con la pantalla. Las animaciones --flotarLente, los brillos y
+   los hovers-- no se tocan.
+   ========================================================================= */
+
+.hero-hd,
+.sec-comparativa,
+.sec-lentes,
+.sec-tecnologia,
+.sec-colores,
+.sec-grabado,
+.sec-beneficios {
+  height: auto;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding-top: clamp(40px, 5vh, 72px);
+  /* La franja extra del final es donde aterriza el pager fixed, no el
+     ultimo renglon de texto. */
+  padding-bottom: clamp(72px, 10vh, 132px);
+}
+
+.hero-hd,
+.sec-comparativa,
+.sec-lentes,
+.sec-tecnologia,
+.sec-colores,
+.sec-beneficios {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.sec-grabado {
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
+/* --- Las cuatro cajas de altura fija: el motivo real del recorte --- */
+.placeholder-lente {
+  height: clamp(210px, 30vh, 350px);
+}
+
+.caja-lente {
+  height: clamp(160px, 22vh, 250px);
+}
+
+.lente-foto-container {
+  height: clamp(190px, 26vh, 280px);
+}
+
+.lente-placeholder-tec {
+  height: clamp(190px, 26vh, 280px);
+}
+
+/* --- Ritmo de las cajas de contenido --- */
+.tarjeta-glass {
+  padding: clamp(26px, 4.4vh, 50px);
+}
+
+.tarjeta-glass h2 {
+  font-size: clamp(1.7rem, 3.6vh, 2.2rem);
+}
+
+.tarjeta-comparativa {
+  padding: clamp(32px, 6vh, 60px) clamp(26px, 4.4vh, 50px);
+}
+
+.header-comparativa h2 {
+  font-size: clamp(1.8rem, 4vh, 2.4rem);
+}
+
+.grid-lentes {
+  gap: clamp(18px, 3vh, 30px);
+}
+
+.contenido-tecnologia {
+  gap: clamp(24px, 4vh, 40px);
+}
+
+.comparativa-lentes-grid {
+  gap: clamp(24px, 4vh, 40px);
+}
+
+.texto-colores h2 {
+  font-size: clamp(1.9rem, 4.2vh, 2.8rem);
+}
+
+.texto-grabado h2 {
+  font-size: clamp(1.9rem, 4.2vh, 2.8rem);
+}
+
+.texto-unico h2 {
+  font-size: clamp(1.7rem, 3.8vh, 2.4rem);
+}
+
+.lista-detalles-tech {
+  gap: clamp(12px, 2vh, 20px);
+}
+
+.detalle-item {
+  padding: clamp(10px, 1.7vh, 15px);
+  gap: clamp(10px, 1.7vh, 15px);
+}
+
+.beneficio-item {
+  padding: clamp(8px, 1.4vh, 10px) clamp(22px, 3.4vh, 30px) clamp(8px, 1.4vh, 10px) clamp(8px, 1.4vh, 10px);
+}
+
+/* =========================================================================
+   3. COMPARATIVA DE LENTES: EL PIE DE LA TARJETA NO SE SALE
+   La tarjeta suma 60 de padding, el titular, la retícula de dos lentes y el
+   parrafo de cierre. Con los valores fijos, ese ultimo renglon caia fuera
+   de la pantalla. Aqui cada piece entra en un clamp con la altura
+   disponible.
+   ========================================================================= */
+.header-comparativa {
+  margin-bottom: clamp(22px, 4vh, 50px);
+}
+
+.header-comparativa h2 {
+  font-size: clamp(1.7rem, 3.6vh, 2.4rem);
+  margin-bottom: clamp(8px, 1.4vh, 15px);
+}
+
+.columna-lente h3 {
+  font-size: clamp(0.95rem, 1.7vh, 1.1rem);
+  margin-bottom: clamp(12px, 2.2vh, 25px);
+  /* La caja de 45px existia para igualar la columna de la marca (que si
+     tiene logo) con la del titular. Con alturas fluidas las dos columnas
+     se alinean solas. */
+  height: auto;
+  min-height: clamp(28px, 4vh, 45px);
+}
+
+.logo-hd-sec3 {
+  height: clamp(30px, 4.4vh, 45px);
+  margin-bottom: clamp(12px, 2.2vh, 25px);
+}
+
+.grid-lentes {
+  gap: clamp(16px, 2.4vw, 30px);
+  margin-bottom: clamp(20px, 3.4vh, 40px);
+}
+
+.separador-vs {
+  padding-top: clamp(24px, 4vh, 50px);
+  gap: clamp(8px, 1.4vh, 15px);
+}
+
+.linea-v {
+  height: clamp(30px, 6vh, 60px);
+}
+
+.footer-comparativa p {
+  font-size: clamp(0.92rem, 1.7vh, 1.1rem);
+  line-height: 1.55;
+}
+
+/* =========================================================================
+   4. ARQUITECTURA DIGITAL: DOS LENTES Y SU CIERRE
+   Aqui los lentes miden 480px de ancho con la altura libre de la imagen, y
+   los margenes fijos (30 + 60) sumaban mas que el espacio disponible. El
+   ancho del lente tambien se acota: es lo que impide que la seccion crezca
+   sin control en pantallas anchas.
+   ========================================================================= */
+.comparativa-lentes-grid {
+  gap: clamp(20px, 3vw, 40px);
+  margin-bottom: clamp(24px, 4vh, 60px);
+}
+
+.columna-tec {
+  max-width: clamp(240px, 34vw, 450px);
+}
+
+.titulo-tec {
+  font-size: clamp(0.95rem, 1.7vh, 1.15rem);
+  margin-bottom: clamp(12px, 2.2vh, 30px);
+  height: auto;
+  min-height: clamp(28px, 4vh, 40px);
+}
+
+.logo-hd-sec4 {
+  height: clamp(28px, 4.4vh, 40px);
+  margin-bottom: clamp(12px, 2.2vh, 30px);
+}
+
+.contenedor-imagen-tec {
+  max-width: clamp(240px, 34vw, 480px);
+}
+
+.footer-tecnologia p {
+  font-size: clamp(0.92rem, 1.7vh, 1.15rem);
+  line-height: 1.6;
+}
+
+/* =========================================================================
+   5. PERCEPCION CROMATICA: EL TEXTO Y EL LENTE DEJAN DE PISARSE
+   El efecto de lente es un ovalo de 56vw x 70vh con centro en el 65% del
+   ancho: su borde izquierdo cae en el 37% de la pantalla. La columna de
+   texto, en cambio, llegaba hasta 500px sin mirar ese limite, asi que en
+   cualquier portatil el parrafo se escribia encima de la foto.
+
+   Aqui las dos medidas se atan del mismo sistema: el ovalo se encoge y se
+   acerca al borde derecho, y la columna de texto se limita al hueco que
+   queda a su izquierda. El aro (.borde-lente) tiene que seguir al recorte
+   capa a capa, asi que sus formulas se actualizan con los mismos numeros.
+   ========================================================================= */
+.contenido-colores {
+  max-width: min(500px, 34vw);
+}
+
+.texto-colores h2 {
+  font-size: clamp(1.6rem, 3.6vw, 2.8rem);
+  margin-bottom: clamp(12px, 2vh, 20px);
+}
+
+.texto-colores p {
+  font-size: clamp(0.92rem, 1.7vh, 1.1rem);
+  line-height: 1.6;
+  margin-bottom: clamp(14px, 2.4vh, 25px);
+}
+
+.badge-premium {
+  margin-bottom: clamp(12px, 2.4vh, 25px);
+}
+
+.lente-focus-container {
+  clip-path: ellipse(24vw 32vh at 70% 50%);
+}
+
+.borde-lente {
+  top: calc(50% - 32vh);
+  left: calc(70% - 24vw);
+  width: 48vw;
+  height: 64vh;
+}
+
+/* El logo suelto vivia anclado a la derecha, en medio de la foto. Pasa a
+   ser la firma de la columna de texto: mismo sitio en cualquier pantalla
+   y sin pisar el lente. */
+.logo-flotante-der {
+  position: static;
+  margin-top: clamp(18px, 3.4vh, 32px);
+}
+
+.logo-flotante-der img {
+  width: clamp(120px, 14vw, 180px);
+}
+
+/* =========================================================================
+   6. GRABADO DE AUTENTICIDAD: LAS DOS FICHAS ENTRAN
+   El panel de la derecha es una columna de texto con dos fichas al pie; con
+   el padding y los gaps fijos, la segunda ficha se salia por abajo.
+   ========================================================================= */
+.contenido-grabado {
+  gap: clamp(10px, 1.6vh, 20px);
+}
+
+.etiqueta-diamante {
+  margin-bottom: clamp(6px, 1.2vh, 12px);
+  padding: clamp(4px, 0.8vh, 6px) clamp(11px, 1.4vw, 16px);
+}
+
+.texto-grabado h2 {
+  margin-bottom: clamp(10px, 1.8vh, 18px);
+}
+
+.texto-grabado p {
+  font-size: clamp(0.88rem, 1.6vh, 1.05rem);
+  line-height: 1.55;
+  margin-bottom: clamp(12px, 2.2vh, 20px);
+}
+
+.texto-detalle h4 {
+  font-size: clamp(0.9rem, 1.8vh, 1.05rem);
+}
+
+.texto-detalle span {
+  font-size: clamp(0.76rem, 1.4vh, 0.88rem);
+  line-height: 1.4;
+}
+
+.icono-detalle {
+  width: clamp(36px, 5vh, 46px);
+  height: clamp(36px, 5vh, 46px);
+  min-width: clamp(36px, 5vh, 46px);
+}
+
+/* =========================================================================
+   7. BENEFICIOS: LAS LISTAS FLOTANTES SE QUEDAN DENTRO
+   Aqui el bloque superior (cabecera + lista) y el inferior (beneficios)
+   estan anclados con `top` en pixeles fijos sobre una seccion de altura
+   variable: al crecer la seccion, la lista de arriba se salia del marco y
+   la de abajo se comia el pager. Se anclan a la propia caja con
+   posicion relativa y se les da aire con clamp.
+   ========================================================================= */
+.contenido-sec7 {
+  /* Los dos bloques de esta seccion (cabecera y lista) estan anclados con
+     `top` y `bottom`. Su contenedor no tiene altura propia --todos sus
+     hijos son absolutos--, asi que se colapsa a cero y los dos se apilan
+     sobre el centro de la pantalla, con la lista saliendose por arriba.
+
+     El contenedor no lleva `position` ni `transform` a proposito: cualquier
+     `position: relative` --y tambien cualquier `transform`, incluso
+     translateY(0)-- lo convierte en bloque contenedor de sus hijos
+     absolutos. Por eso la animacion de entrada se traslado a los dos
+     bloques y el contenedor se queda neutro: el punto de anclaje sube a la
+     seccion, que si tiene altura, y la cabecera queda arriba mientras la
+     lista queda abajo en cualquier tamano de pantalla. */
+  position: static;
+  height: auto;
+}
+
+.header-unico,
+.lista-beneficios-premium {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s cubic-bezier(0.25, 0.8, 0.25, 1),
+    transform 1s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+section.activa .header-unico,
+section.activa .lista-beneficios-premium {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s;
+}
+
+/* Cascada: la cabecera entra primero y la lista detras. */
+section.activa .lista-beneficios-premium {
+  transition-delay: 0.35s;
+}
+
+.header-unico {
+  top: clamp(44px, 9vh, 80px);
+  /* Al pasar el punto de anclaje a la seccion, `right: 0` mide desde el
+     borde exterior. Se devuelve el 5% de aire lateral que ya tiene la
+     seccion para que la cabecera no se pegue al borde de la pantalla. */
+  right: 5%;
+}
+
+.lista-beneficios-premium {
+  bottom: clamp(56px, 10vh, 88px);
+  left: 5%;
+}
+
+.header-unico {
+  gap: clamp(8px, 1.4vh, 20px);
+  margin-bottom: clamp(12px, 2.4vh, 24px);
+}
+
+.texto-unico p {
+  font-size: clamp(0.9rem, 1.6vh, 1.15rem);
+  line-height: 1.55;
+}
+
+.lista-beneficios-premium {
+  gap: clamp(10px, 1.7vh, 20px);
+  margin-bottom: clamp(14px, 2.6vh, 26px);
+}
+
+.linea-vertical-unica {
+  height: clamp(44px, 8vh, 70px);
+}
+
+.beneficio-item span {
+  font-size: clamp(0.85rem, 1.6vh, 0.95rem);
+}
+
+/* Este bloque va despues de los media queries de cada seccion, asi que
+   devuelve el aire de movil que those ya tenian (100px arriba para la
+   barra de navegacion) y conserva la franja del pager al final. */
+@media (max-width: 900px) {
+  .hero-hd,
+  .sec-comparativa,
+  .sec-lentes,
+  .sec-tecnologia,
+  .sec-colores,
+  .sec-grabado,
+  .sec-beneficios {
+    padding-top: 100px;
+    padding-bottom: 96px;
+  }
+
+  .sec-grabado {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
+
+
+/* --- RESPONSIVO --- */
+@media (max-width: 900px) {
+  .header-unico {
+    top: 40px;
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    justify-content: center;
+  }
+  /* El estado activo pone `transform: translateY(0)`, que en movil se
+     comeria el centrado horizontal. Aqui se devuelve. */
+  section.activa .header-unico {
+    transform: translateX(-50%);
+  }
+  .texto-unico h2 { font-size: 2.4rem; }
+  .texto-unico p { font-size: 0.9rem; }
+  
+  .centro-lentes-3d {
+    width: 90%;
+    top: 45%;
+  }
+  
+  .lista-beneficios-premium {
+    bottom: 40px;
+    left: 5%;
+    width: 90%;
+    gap: 15px;
+  }
+  .beneficio-item {
+    padding: 8px 20px 8px 8px;
+  }
+  .beneficio-item span { font-size: 0.8rem; }
+  .icono-circular { width: 45px; height: 45px; font-size: 1.1rem; }
+}
+
+
+
+/* =========================================
+   ANIMACIONES DE ENTRADA (DINÁMICAS)
+   ========================================= */
+
+/* 1. Estado inicial: Ocultos y desplazados */
+.animar-subir {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 1s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.animar-izq {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: all 1s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.animar-der {
+  opacity: 0;
+  transform: translateX(60px);
+  transition: all 1s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* 2. Estado activo: Se revelan SOLO cuando la sección tiene la clase .activa */
+section.activa .animar-subir,
+section.activa .animar-izq,
+section.activa .animar-der {
+  opacity: 1;
+  transform: translate(0, 0);
+  transition-delay: 0.2s; /* Pequeño retraso para dar tiempo a que el scroll termine */
+}
+
+/* Si tienes una sección con dos elementos animados (como la 2), podemos darle un poco más de retraso al segundo para que entren en cascada */
+section.activa .contenedor-lente.animar-der {
+  transition-delay: 0.4s;
+}

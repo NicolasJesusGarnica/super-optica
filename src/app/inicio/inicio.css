@@ -1,0 +1,267 @@
+:host {
+  display: block;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.navbar {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1000; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 60px; 
+  /* Cambio de Rojo a Amarillo corporativo de Super Óptica */
+  background-color: #ffffff; 
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);  
+  transform: translateY(-100%);
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.navbar::after {
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  background: transparent;
+}
+
+.navbar:hover {
+  transform: translateY(0);
+}
+
+.logo-container img {
+  height: 35px; /* Aumenta este valor si lo quieres aún más grande (ej: 70px) */
+  cursor: pointer;
+  filter: none; /* Esto quita la sombra / drop-shadow por completo */
+  transition: transform 0.3s ease;
+}
+
+.nav-links {
+  display: flex;
+  gap: 35px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links a {
+  /* Color azul oscuro corporativo para contrastar sobre el fondo amarillo */
+  color: #05051B;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif; 
+  font-size: 1.1rem; 
+  font-weight: 700; 
+  letter-spacing: 1px;
+  transition: 0.3s;
+  padding: 5px 12px;
+  border-radius: 4px;
+}
+
+.nav-links a:hover {
+  color: #090A22;
+  background-color: #FFCC00; 
+}
+
+
+
+.nav-links {
+  display: flex;
+  gap: 35px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links a {
+  color: #090A22;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif; 
+  font-size: 1.1rem; 
+  font-weight: 600; 
+  letter-spacing: 1px;
+  transition: 0.3s;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+/* =========================================
+   HERO SECTION
+   ========================================= */
+.hero-section {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;    
+}
+
+.hero-contenido {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px;
+  text-align: center;
+  /* Quitamos el margen negativo (-100px) que lo subía demasiado */
+  margin-top: 0; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 7, 0.25); 
+  z-index: 2;
+}
+
+.hero-section {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  /* Espacio superior para que nunca choque si el navbar baja */
+  padding-top: 60px; 
+  box-sizing: border-box;
+}
+
+.logo-principal {
+  width: 100%;
+  /* Reducimos el ancho máximo para equilibrar el alto */
+  max-width: 320px; 
+  height: auto;
+  /* Reducimos el margen inferior excesivo */
+  margin-bottom: 40px; 
+  
+  /* AQUÍ ESTÁ EL CAMBIO: Resplandor blanco difuminado */
+  filter: drop-shadow(0 10px 25px rgba(255, 255, 255, 0.6));
+  
+  animation: aparecerLogo 1.5s ease-out forwards;
+}
+
+@keyframes aparecerLogo {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.logos-tecnologias a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 130px; 
+  height: 130px; 
+}
+
+/* =========================================
+   FILA DE LOGOS DE TECNOLOGÍAS
+   ========================================= */
+.logos-tecnologias {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px; /* Un poco más de separación entre ellos */
+  flex-wrap: wrap; 
+  opacity: 0; 
+  animation: subirLogos 1s ease-out 0.8s forwards; 
+}
+
+@keyframes subirLogos {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Agrandé un poco los logos de abajo para que se vean mejor (de 38px a 45px) */
+.logos-tecnologias a img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  opacity: 0.7; 
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.8));
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.logos-tecnologias a:hover img {
+  opacity: 1; 
+  transform: translateY(-8px) scale(1.1); 
+  filter: drop-shadow(0 10px 18px rgba(255, 198, 0, 0.45)); /* Resplandor amarillo corporativo */
+}
+
+.logos-tecnologias a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px; /* Todos tendrán el mismo ancho disponible */
+  height: 150px; /* Todos tendrán el mismo alto disponible */
+}
+
+/* =========================================
+   DISEÑO RESPONSIVO: HERO SECTION
+   ========================================= */
+@media (max-width: 900px) {
+  .hero-contenido {
+    margin-top: -40px; /* Reducimos el margen negativo para que el logo no se corte arriba */
+    padding: 0 15px;
+  }
+
+  .logo-principal {
+    max-width: 280px; /* El logo de Optinova se achica para móviles */
+    margin-bottom: 50px; /* Menos espacio muerto antes de la fila de tecnologías */
+  }
+
+  .logos-tecnologias {
+    gap: 20px; /* Acercamos los logos para que quepan mejor en la pantalla */
+  }
+
+  .logos-tecnologias a {
+    width: 90px;  /* Reducimos la zona táctil y el tamaño de las tecnologías */
+    height: 90px;
+  }
+  
+  /* En pantallas táctiles, la animación al pasar el dedo debe ser más sutil */
+  .logos-tecnologias a:hover img {
+    transform: translateY(-5px) scale(1.05); 
+  }
+}
+
+/* Ajuste extra para celulares muy pequeños */
+@media (max-width: 480px) {
+  .logo-principal {
+    max-width: 240px;
+  }
+  
+  .logos-tecnologias {
+    gap: 15px;
+  }
+  
+  .logos-tecnologias a {
+    width: 75px;
+    height: 75px;
+  }
+}

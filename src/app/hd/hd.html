@@ -1,0 +1,365 @@
+<nav class="navbar">
+  <div class="logo-container">
+    <a routerLink="/">
+      <!-- Logo blanco para el navbar con fondo amarillo/oscuro -->
+      <img src="/assets/SUPERLOGO.png" alt="Super Óptica">
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li><a routerLink="/materiales">LENTES Y MONTURAS</a></li>
+    <li><a routerLink="/">INICIO</a></li>
+  </ul>
+</nav>
+
+
+<section class="hero-hd" id="sec-1" [class.activa]="seccionActual === 0">
+  <div class="bg-hd-container">
+    <img src="/assets/colors.jpg" alt="Fondo HD Neon" class="bg-hd-img">
+  </div>
+  
+  <div class="overlay-hd"></div>
+
+  <div class="contenido-hd animar-subir">
+    <img src="/assets/HD.png" alt="Evolutions HD" class="logo-hd">
+    
+    <div class="texto-hd">
+      <div class="linea-neon"></div>
+      <h1>PRECISIÓN DIGITAL <strong>ABSOLUTA</strong></h1>
+      <p>Experimenta el mundo con una nitidez sin precedentes. Lentes tallados digitalmente para una visión más clara, vibrante y en alta definición.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================
+     SECCIÓN 2: COMPARATIVA HD
+     ========================================= -->
+<section class="sec-comparativa" id="sec-2" [class.activa]="seccionActual === 1">
+  <!-- Fondo de colores pastel -->
+  <img src="/assets/colors-1.jpg" alt="Fondo Colores HD" class="bg-sec2">
+
+  <div class="contenedor-dos-columnas">
+    
+    <!-- COLUMNA IZQUIERDA: Tarjeta Glassmorphism -->
+    <div class="tarjeta-glass animar-izq">
+      <img src="/assets/HD.png" alt="Evolutions HD" class="logo-hd-sec2">
+      <div class="linea-neon-corta"></div>
+
+      <!-- Iconos de evolución visual -->
+      <div class="evolucion-visual">
+        <div class="icono-box">
+          <i class="fa-solid fa-tv"></i>
+          <span>Visión Estándar</span>
+        </div>
+        <div class="icono-flecha">
+          <i class="fa-solid fa-angles-right"></i>
+        </div>
+        <div class="icono-box activo">
+          <i class="fa-solid fa-display"></i>
+          <span>Alta Definición</span>
+        </div>
+      </div>
+
+      <h2>VISIÓN EN <br><span class="texto-gradiente">ALTA DEFINICIÓN</span></h2>
+      <p class="subtitulo-hd">Un antes y un después en tu forma de ver el mundo.</p>
+      <p class="desc-hd">La tecnología de tallado personalizado adapta cada punto del lente a tu prescripción exacta, eliminando distorsiones periféricas y revelando contrastes absolutos.</p>
+    </div>
+
+    <!-- COLUMNA DERECHA: Placeholder para el lente -->
+  <div class="contenedor-lente animar-der">
+      <img src="/assets/lente-1.png" alt="Lente Alta Definición" class="imagen-lente-sec2">
+    </div>
+
+  </div>
+</section>
+
+<!-- =========================================
+     SECCIÓN 3: COMPARATIVA LENTES
+     ========================================= -->
+<section class="sec-lentes" id="sec-3" [class.activa]="seccionActual === 2">
+  <!-- Fondo claro -->
+  <img src="/assets/colors-2.jpg" alt="Fondo Celeste" class="bg-sec3">
+
+  <!-- Tarjeta central premium -->
+  <div class="tarjeta-comparativa animar-subir">
+    
+    <div class="header-comparativa">
+      <h2>VISIÓN MÁS NÍTIDA Y <strong>PRECISA</strong></h2>
+      <div class="linea-neon-centro"></div>
+    </div>
+
+    <div class="grid-lentes">
+      
+      <!-- Columna Lente Tradicional -->
+      <div class="columna-lente tradicional">
+        <h3>LENTE TRADICIONAL</h3>
+        <!-- Lente con imagen opaca -->
+        <div class="lente-foto-container lente-opaco">
+          <img src="/assets/colors-6.jpg" alt="Visión Tradicional Opaca">
+          <div class="borde-cristal"></div>
+        </div>
+      </div>
+
+      <!-- Separador Central -->
+      <div class="separador-vs">
+        <div class="linea-v"></div>
+        <span>VS</span>
+        <div class="linea-v"></div>
+      </div>
+
+      <!-- Columna Lente HD -->
+      <div class="columna-lente hd-premium">
+        <img src="/assets/HD.png" alt="Evolutions HD" class="logo-hd-sec3">
+        <!-- Lente con imagen HD Nítida -->
+        <div class="lente-foto-container lente-nitido">
+          <img src="/assets/colors-6.jpg" alt="Visión HD Perfecta">
+          <div class="borde-cristal borde-glow"></div>
+          <!-- Brillo en la esquina del lente -->
+          <div class="destello-lente-sec3"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Texto descriptivo inferior -->
+    <div class="footer-comparativa">
+      <p>Un lente tradicional solo enfoca la parte central, dejando los costados casi borrosos. Sin embargo, el lente <strong>Evolutions HD</strong> con tecnología digital enfoca toda la superficie, brindándote claridad absoluta mires a donde mires.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- =========================================
+     SECCIÓN 4: TECNOLOGÍA DIGITAL
+     ========================================= -->
+<!-- =========================================
+     SECCIÓN 4: ARQUITECTURA DIGITAL
+     ========================================= -->
+<section class="sec-tecnologia" id="sec-4" [class.activa]="seccionActual === 3">
+  <!-- Fondo pastel -->
+  <img src="/assets/colors-3.jpg" alt="Fondo Tecnología HD" class="bg-sec4">
+
+  <div class="contenido-tecnologia animar-subir">
+    
+    <div class="comparativa-lentes-grid">
+      
+      <!-- Columna: Lente Tradicional -->
+      <div class="columna-tec">
+        <h3 class="titulo-tec">TALLADO CONVENCIONAL</h3>
+        <div class="contenedor-imagen-tec">
+          <img src="/assets/lente-3.png" alt="Malla Tradicional" class="img-lente-tec">
+        </div>
+      </div>
+
+      <!-- Columna: Lente HD -->
+      <div class="columna-tec">
+        <img src="/assets/HD.png" alt="Evolutions HD" class="logo-hd-sec4">
+        <div class="contenedor-imagen-tec">
+          <img src="/assets/lente-2.png" alt="Mapeo Digital HD" class="img-lente-tec img-glow">
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Nuevo Texto Premium -->
+    <div class="footer-tecnologia">
+      <p>Mientras el tallado convencional restringe tu claridad al centro del cristal, nuestra <strong>arquitectura digital procesa miles de puntos de enfoque exactos</strong> sobre toda la superficie. Experimenta una visión panorámica impecable y totalmente libre de distorsiones laterales, mires a donde mires.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- =========================================
+     SECCIÓN 5: PERCEPCIÓN CROMÁTICA (EFECTO LENTE)
+     ========================================= -->
+<section class="sec-colores" id="sec-5" [class.activa]="seccionActual === 4">
+  
+  <!-- Capa 1: Fondo general (Desenfocado y ligeramente oscuro) -->
+  <div class="bg-blur-container">
+    <img src="/assets/colors-4.jpg" alt="Fondo Rana Blur" class="bg-blur">
+    <div class="overlay-colores"></div>
+  </div>
+
+  <!-- Capa 2: El "Lente" (Imagen nítida recortada + Borde brillante) -->
+  <div class="lente-focus-container">
+    <img src="/assets/colors-4.jpg" alt="Fondo Rana Nítido" class="bg-nitido">
+  </div>
+  <div class="borde-lente">
+    <!-- Brillo extra en la esquina del lente -->
+    <div class="destello-lente"></div>
+  </div>
+
+  <!-- Capa 3: Contenido original sin fondo oscuro -->
+  <div class="contenido-colores animar-izq">
+    <div class="texto-colores">
+      <div class="badge-premium">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        <span>HIPERREALISMO VISUAL</span>
+      </div>
+      
+      <h2>ESPECTRO CROMÁTICO <br><strong>PERFECTO</strong></h2>
+      <div class="linea-neon-izq"></div>
+      
+      <p>Revela la verdadera intensidad del mundo. Nuestros lentes eliminan opacidades, filtrando la luz para entregarte colores vivos, contrastes profundos y una saturación inigualable en cada vistazo.</p>
+      
+      <ul class="lista-beneficios">
+        <li><i class="fa-solid fa-check"></i> 100% Claridad Periférica</li>
+        <li><i class="fa-solid fa-check"></i> Realce de Tonos Naturales</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Logo Premium flotando a la derecha -->
+  <div class="logo-flotante-der">
+  </div>
+
+</section>
+
+
+<!-- =========================================
+     SECCIÓN 6: GRABADO DE AUTENTICIDAD
+     ========================================= -->
+<section class="sec-grabado" id="sec-6" [class.activa]="seccionActual === 5">
+  
+  <div class="bg-grabado-container">
+    <img src="/assets/colors-5.jpg" alt="Grabado Punta de Diamante" class="bg-grabado">
+    <!-- El overlay oscurece suavemente el lado derecho para que el texto resalte -->
+    <div class="overlay-grabado"></div>
+  </div>
+
+  <!-- Contenido flotando a la derecha -->
+  <div class="contenido-grabado animar-der">
+    <div class="texto-grabado">
+      
+      <div class="etiqueta-diamante">
+        <i class="fa-regular fa-gem"></i>
+        <span>SELLO DE AUTENTICIDAD</span>
+      </div>
+
+      <h2>IDENTIDAD <br><strong>INCONFUNDIBLE</strong></h2>
+      <div class="linea-neon-corta"></div>
+      
+      <p>Tu visión es única, y tus lentes también. Sellamos cada pieza con micro-tecnología de alta precisión, creando una firma discreta que garantiza la exclusividad total de tu lente Evolutions HD.</p>
+
+      <!-- Detalles extra para darle el toque premium y menos simple -->
+      <div class="lista-detalles-tech">
+        <div class="detalle-item">
+          <div class="icono-detalle"><i class="fa-solid fa-microscope"></i></div>
+          <div class="texto-detalle">
+            <h4>Precisión Micrométrica</h4>
+            <span>Grabado imperceptible a simple vista</span>
+          </div>
+        </div>
+        
+        <div class="detalle-item">
+          <div class="icono-detalle"><i class="fa-solid fa-fingerprint"></i></div>
+          <div class="texto-detalle">
+            <h4>100% Personalizado</h4>
+            <span>Tus iniciales, tu marca personal</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<!-- =========================================
+     SECCIÓN 7: EXCLUSIVIDAD Y BENEFICIOS
+     ========================================= -->
+<section class="sec-beneficios" id="sec-7" [class.activa]="seccionActual === 6">
+  
+  <div class="bg-sec7-container">
+    <!-- Fondo que me pediste -->
+    <img src="/assets/colors-7.jpg" alt="Fondo Beneficios" class="bg-sec7">
+    <div class="overlay-sec7"></div>
+  </div>
+
+  <!-- Sin `animar-subir`: un transform en este contenedor lo convierte en
+       bloque contenedor de los dos hijos absolutos (cabecera y lista), que
+       no tienen altura propia. La animacion de entrada se aplica ahora a
+       cada bloque, en hd.css. -->
+  <div class="contenido-sec7">
+    
+    <!-- Cabecera Superior Derecha ("TAN ÚNICO") -->
+    <div class="header-unico">
+      <div class="iconos-grabado">
+        <span>CML</span>
+        <i class="fa-regular fa-gem"></i>
+        <img src="/assets/HD.png" alt="HD" class="mini-logo">
+      </div>
+      <div class="linea-vertical-unica"></div>
+      <div class="texto-unico">
+        <h2>TAN ÚNICO</h2>
+        <p>QUE VIENE CON TUS INICIALES</p>
+      </div>
+    </div>
+
+
+    <!-- Lista de Beneficios Inferior Izquierda -->
+    <div class="lista-beneficios-premium">
+      
+      <div class="beneficio-item">
+        <div class="icono-circular"><i class="fa-solid fa-crosshairs"></i></div>
+        <span>VISIÓN PRECISA EN CUALQUIER ÁNGULO</span>
+      </div>
+      
+      <div class="beneficio-item">
+        <div class="icono-circular texto-icono"><strong>HD</strong></div>
+        <span>CLARIDAD SUPERIOR EN TODOS LOS AMBIENTES</span>
+      </div>
+      
+      <div class="beneficio-item">
+        <div class="icono-circular arcoiris"><i class="fa-solid fa-palette"></i></div>
+        <span>COLORES NÍTIDOS Y VIBRANTES</span>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- CONTROLES DE PRESENTACIÓN -->
+<div class="controles-presentacion">
+  <button (click)="navegar('arriba')" class="btn-flecha" [class.oculto]="seccionActual === 0">
+    <i class="fa-solid fa-chevron-left"></i>
+  </button>
+  <button (click)="navegar('abajo')" class="btn-flecha" [class.oculto]="seccionActual === secciones.length - 1">
+    <i class="fa-solid fa-chevron-right"></i>
+  </button>
+</div>

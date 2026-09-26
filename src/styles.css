@@ -1,0 +1,58 @@
+
+@font-face {
+  font-family: 'Antonio';
+  src: url('/fonts/Antonio-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Antonio';
+  src: url('/fonts/Antonio-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* Titulares display: la versión "entera" de Baby Monsta (Regular) */
+@font-face {
+  font-family: 'Baby Monsta';
+  src: url('/fonts/BABY%20MONSTA.OTF') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+:root {
+  --rojo-optinova: #e3000f; 
+  --azul-oscuro: #0a1128;
+  --texto-claro: #ffffff;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/assets/fonts/Poppins-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/assets/fonts/Poppins-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--azul-oscuro);
+  color: var(--texto-claro);
+  font-family: 'Poppins', sans-serif; 
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--azul-oscuro);
+  color: var(--texto-claro);
+  font-family: 'Antonio', sans-serif;
+}

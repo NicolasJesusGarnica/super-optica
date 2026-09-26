@@ -1,0 +1,776 @@
+:host {
+  display: block;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.navbar {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1000; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 60px; 
+  /* Cambio de Rojo a Amarillo corporativo de Super Óptica */
+  background-color: #ffffff; 
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);  
+  transform: translateY(-100%);
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.navbar::after {
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  background: transparent;
+}
+
+.navbar:hover {
+  transform: translateY(0);
+}
+
+.logo-container img {
+  height: 35px; /* Aumenta este valor si lo quieres aún más grande (ej: 70px) */
+  cursor: pointer;
+  filter: none; /* Esto quita la sombra / drop-shadow por completo */
+  transition: transform 0.3s ease;
+}
+
+.nav-links {
+  display: flex;
+  gap: 35px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links a {
+  /* Color azul oscuro corporativo para contrastar sobre el fondo amarillo */
+  color: #05051B;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif; 
+  font-size: 1.1rem; 
+  font-weight: 700; 
+  letter-spacing: 1px;
+  transition: 0.3s;
+  padding: 5px 12px;
+  border-radius: 4px;
+}
+
+.nav-links a:hover {
+  color: #090A22;
+  background-color: #FFCC00; 
+}
+
+
+
+.nav-links {
+  display: flex;
+  gap: 35px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links a {
+  color: #090A22;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif; 
+  font-size: 1.1rem; 
+  font-weight: 600; 
+  letter-spacing: 1px;
+  transition: 0.3s;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+/* =========================================
+   SECCIÓN 13: MATERIALES Y ESPESORES
+   ========================================= */
+.seccion-materiales {
+  position: relative;
+  background-color: #040b14;
+  padding: 15px 5% 90px;
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.fondo-mat-img {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover;
+  filter: blur(0px) brightness(0.99);
+  transform: scale(1.05);
+  z-index: 1;
+}
+
+.overlay-mat {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: radial-gradient(circle at top, rgba(138, 180, 248, 0.08) 0%, rgba(4, 11, 20, 0.95) 70%);
+  z-index: 2;
+}
+
+.contenedor-mat {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.header-mat {
+  text-align: center;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.titulo-mat {
+  font-family: 'Baby Monsta', sans-serif;
+  font-weight: 400;
+  font-size: 2.6rem;
+  color: #ffffff;
+  margin: 0 0 10px 0;
+  letter-spacing: 1px;
+}
+.titulo-mat strong { color: #FFCC00; }
+
+.desc-general-mat {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.05rem;
+  color: #cccccc;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* --- Grid de 5 Tarjetas Horizontales --- */
+.grid-materiales {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  align-items: stretch;
+}
+
+.tarjeta-mat {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 25px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.tarjeta-mat:hover {
+  transform: translateY(-10px);
+  background: rgba(138, 180, 248, 0.08);
+  border-color: rgba(138, 180, 248, 0.4);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.indice-num {
+  font-family: 'Baby Monsta', sans-serif;
+  font-weight: 400;
+  font-size: 2.6rem;
+  color: #ffffff;
+  line-height: 1;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.indice-nombre {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #FFCC00;
+  margin: 5px 0 20px 0;
+}
+
+/* --- Simulador Dual de Espesor (Miopía vs Hipermetropía) --- */
+.comparativa-espesor {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 10px 5px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.col-espesor {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.espesor-label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.7rem;
+  color: #cccccc;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.espesor-visual {
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+/* LENTE MIOPÍA (Bordes gruesos, centro delgado) 
+   Truco: Usamos bordes laterales gruesos con border-radius para crear la curva cóncava */
+.lente-miopia {
+  height: 55px; 
+  border-top: 1px solid rgba(138, 180, 248, 0.3);
+  border-bottom: 1px solid rgba(138, 180, 248, 0.3);
+  border-radius: 20px / 30px; 
+  background: transparent;
+  transition: all 0.4s ease;
+}
+
+.m-150 { border-left: 14px solid #8ab4f8; border-right: 14px solid #1976d2; width: 6px; }
+.m-159 { border-left: 11px solid #8ab4f8; border-right: 11px solid #1976d2; width: 6px; }
+.m-161 { border-left: 8px solid #8ab4f8; border-right: 8px solid #1976d2; width: 6px; }
+.m-167 { border-left: 5px solid #8ab4f8; border-right: 5px solid #1976d2; width: 6px; }
+.m-174 { border-left: 3px solid #8ab4f8; border-right: 3px solid #1976d2; width: 6px; }
+
+/* LENTE HIPERMETROPÍA (Centro grueso, bordes delgados) 
+   Truco: Usamos un óvalo clásico y le reducimos el ancho (width) */
+.lente-hiper {
+  height: 55px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #8ab4f8 0%, #1976d2 100%);
+  box-shadow: 0 4px 10px rgba(138, 180, 248, 0.2);
+  transition: all 0.4s ease;
+}
+
+.h-150 { width: 28px; }
+.h-159 { width: 22px; }
+.h-161 { width: 17px; }
+.h-167 { width: 12px; }
+.h-174 { width: 8px; }
+
+/* Efecto al pasar el mouse por la tarjeta entera */
+.tarjeta-mat:hover .lente-miopia {
+  border-left-color: #ffffff;
+  border-right-color: #8ab4f8;
+  box-shadow: inset 0 0 10px rgba(138, 180, 248, 0.5);
+}
+
+.tarjeta-mat:hover .lente-hiper {
+  background: linear-gradient(90deg, #ffffff 0%, #8ab4f8 100%);
+  box-shadow: 0 0 15px rgba(138, 180, 248, 0.6);
+}
+
+/* Ajustes a los textos para que encajen perfectos abajo */
+.desc-mat {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  color: #aaaaaa;
+  line-height: 1.5;
+  margin: 0 0 20px 0;
+  flex-grow: 1; /* Empuja el tag hacia abajo */
+}
+
+.tag-mat {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75rem;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  justify-content: center;
+}
+.tag-mat i { color: #FFCC00; }
+
+
+
+/* =========================================
+   SECCIÓN 14: MATERIALES DE MONTURAS (FULL SCREEN)
+   ========================================= */
+.seccion-monturas {
+  position: relative;
+  background-color: #040b14;
+  /* Eliminamos el padding para que el acordeón toque los bordes superior e inferior */
+  padding: 0; 
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* El fondo global ya no es tan necesario porque el acordeón tapará todo, pero lo mantenemos oscuro */
+.bg-monturas-global {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: #040b14;
+  z-index: 1;
+}
+
+.contenedor-monturas {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  height: 100%; /* Obligamos a que ocupe el 100% de la pantalla */
+  max-width: 100%; /* Eliminamos el límite de 1300px */
+  display: flex;
+  flex-direction: column;
+  gap: 0; /* Sin separación */
+}
+
+/* --- HEADER FLOTANTE TIPO "HUD" --- */
+.header-monturas {
+  position: absolute;
+  top: 13%; 
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 90%;
+  max-width: 720px; /* Bloque centrado con medida legible en vez de 900px */
+  z-index: 10;
+  pointer-events: none; 
+  text-shadow: 0 4px 15px rgba(0,0,0,0.9); 
+  /* NUEVO: Le damos una transición suave para cuando desaparezca */
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Velo suave para separar el texto del busiesto de las fotos */
+.header-monturas::before {
+  content: '';
+  position: absolute;
+  inset: -18% -10%;
+  background: radial-gradient(ellipse at center, rgba(2, 6, 14, 0.75) 0%, rgba(2, 6, 14, 0.45) 46%, transparent 74%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.contenedor-monturas:has(.acc-item:hover) .header-monturas {
+  opacity: 0; /* Se hace invisible */
+  transform: translate(-50%, -20px); /* Da un pequeño saltito hacia arriba mientras desaparece */
+}
+
+.titulo-monturas {
+  font-family: 'Baby Monsta', sans-serif;
+  font-weight: 400;
+  font-size: 3rem; /* Hacemos el título más imponente */
+  color: #ffffff;
+  margin: 0 0 10px 0;
+  letter-spacing: 2px;
+}
+.titulo-monturas strong { color: #FFCC00; }
+
+.desc-general-monturas {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.15rem;
+  color: #f0f0f0;
+  line-height: 1.6;
+  margin: 0 auto;
+  max-width: 62ch; /* Medida de lectura cómoda, no una línea de 900px */
+}
+
+/* --- Acordeón Horizontal Pantalla Completa --- */
+.accordion-monturas {
+  display: flex;
+  width: 100%;
+  height: 100%; /* Ocupa todo el alto (100vh) */
+  gap: 0; /* Quitamos la separación para que las fotos se toquen entre sí */
+}
+
+.acc-item {
+  position: relative;
+  flex: 1; /* Inician midiendo exactamente lo mismo */
+  height: 100%;
+  border-radius: 0; /* Eliminamos los bordes redondeados */
+  border: none;
+  border-right: 1px solid rgba(255, 255, 255, 0.15); /* Una línea divisoria sutil */
+  overflow: hidden;
+  cursor: pointer;
+  transition: flex 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.6s ease;
+  background-color: #0d1624;
+}
+
+.acc-item:last-child {
+  border-right: none;
+}
+
+/* Al pasar el mouse, el panel se expande dramáticamente */
+.acc-item:hover {
+  flex: 2.5; /* Crece ocupando casi la mitad de la pantalla */
+  z-index: 5;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.9); /* Sombra pesada para dar profundidad */
+}
+
+.acc-bg {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease, filter 0.6s ease;
+  filter: grayscale(42%) brightness(0.46); /* Apagadas pero todavía legibles como foto */
+}
+
+.acc-item:hover .acc-bg {
+  transform: scale(1.05); /* Sutil zoom in */
+  filter: grayscale(0%) brightness(0.85); /* Recuperan color y luz al expandirse */
+}
+
+/* Degradado oscuro en la base para que los textos blancos sean legibles */
+.acc-overlay {
+  position: absolute;
+  bottom: 0; left: 0; width: 100%; height: 62%;
+  background: linear-gradient(0deg, rgba(4, 11, 20, 0.96) 0%, rgba(4, 11, 20, 0.55) 45%, transparent 100%);
+  z-index: 2;
+}
+
+/* Título Vertical (Visible cuando la columna está comprimida) */
+.acc-title-vertical {
+  position: absolute;
+  bottom: 112px; /* Base común para las 4 etiquetas y libre de las flechas */
+  left: 50%;
+  transform: translateX(-50%) rotate(180deg); /* Lo centramos y giramos */
+  font-family: 'Antonio', sans-serif;
+  font-size: 2.1rem;
+  color: #ffffff;
+  letter-spacing: 2px;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  z-index: 3;
+  transition: opacity 0.3s ease;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.95);
+}
+
+.acc-item:hover .acc-title-vertical {
+  opacity: 0; /* Desaparece rápidamente al expandirse */
+}
+
+/* Contenido Detallado (Visible al expandir) */
+.acc-content {
+  position: absolute;
+  bottom: 80px; /* A salvo de las flechas de navegación */
+  left: 50px; /* Márgenes laterales cómodos */
+  right: 50px;
+  z-index: 4;
+  opacity: 0;
+  transform: translateY(20px); /* Entra flotando desde abajo */
+  transition: all 0.5s ease 0.1s; /* Retraso sutil para que termine de abrirse antes de mostrar el texto */
+  pointer-events: none;
+}
+
+.acc-item:hover .acc-content {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.acc-icon i {
+  font-size: 2.8rem;
+  color: #FFCC00;
+  margin-bottom: 15px;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+}
+
+.acc-content h3 {
+  font-family: 'Baby Monsta', sans-serif;
+  font-weight: 400;
+  font-size: 2.2rem;
+  color: #FFCC00;
+  margin: 0 0 10px 0;
+  letter-spacing: 1px;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+}
+
+.acc-content p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  color: #e0e0e0;
+  line-height: 1.6;
+  margin: 0;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.9);
+}
+
+/* =========================================
+   DISEÑO RESPONSIVO MÓVIL
+   ========================================= */
+@media (max-width: 900px) {
+  .accordion-monturas {
+    flex-direction: column; /* En celulares se apila verticalmente */
+  }
+  .acc-item {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+  .acc-title-vertical {
+    writing-mode: horizontal-tb;
+    transform: none;
+    left: 30px;
+    bottom: 20px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.controles-presentacion {
+  position: fixed;
+  bottom: 40px;
+  right: 50px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  z-index: 9999;
+}
+
+.btn-flecha {
+  background: rgba(52, 139, 152, 0.1); /* Teal con transparencia */
+  border: 1px solid rgba(52, 139, 152, 0.4);
+  color: #348b98; /* Teal sólido para el ícono */
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.btn-flecha:hover {
+  background: rgba(52, 139, 152, 0.4);
+  color: #ffffff;
+  transform: scale(1.15);
+  box-shadow: 0 0 20px rgba(52, 139, 152, 0.6);
+}
+
+.btn-flecha.oculto {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.5);
+}
+
+
+
+/* =========================================
+   ANIMACIONES DE ENTRADA CINEMÁTICAS
+   ========================================= */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideDownNav {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Entrada del Header */
+.header-mat {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Animación y Delays para las 5 tarjetas de materiales */
+.tarjeta-mat {
+  opacity: 0; /* Oculto antes de animar */
+  animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.tarjeta-mat:nth-child(1) { animation-delay: 0.15s; }
+.tarjeta-mat:nth-child(2) { animation-delay: 0.25s; }
+.tarjeta-mat:nth-child(3) { animation-delay: 0.35s; }
+.tarjeta-mat:nth-child(4) { animation-delay: 0.45s; }
+.tarjeta-mat:nth-child(5) { animation-delay: 0.55s; }
+
+
+
+/* Entrada del Header HUD */
+
+/* Entrada escalonada de las columnas del acordeón */
+.acc-item {
+  opacity: 0;
+  animation: fadeInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.acc-item:nth-child(1) { animation-delay: 0.1s; }
+.acc-item:nth-child(2) { animation-delay: 0.2s; }
+.acc-item:nth-child(3) { animation-delay: 0.3s; }
+.acc-item:nth-child(4) { animation-delay: 0.4s; }
+
+
+
+.controles-presentacion {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+}
+
+/* =========================================================================
+   TODO ENCAJA EN UNA PANTALLA
+   La seccion 1 declaraba `height: 100vh` + `overflow: hidden` con 15px de
+   aire arriba y 90 abajo: en una ventana baja, la ultima fila de las cinco
+   tarjetas y su etiqueta se cortaban. `min-height` mantiene la pantalla
+   completa cuando el contenido es corto y deja crecer la seccion cuando no
+   lo es. El ritmo (padding, huecos, cuerpos) se mide con la altura
+   disponible.
+
+   La seccion 2 (el acordeon) se deja a proposito en 100vh: es una pieza
+   full-bleed pensada para tocar los bordes superior e inferior, y su
+   accordion tiene `height: 100%`. Lo que si se aprieta es el texto que
+   aparece al abrir cada panel, que es lo unico que podia salirse.
+   ========================================================================= */
+
+.seccion-materiales {
+  height: auto;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding-top: clamp(36px, 5vh, 64px);
+  padding-bottom: clamp(72px, 10vh, 120px);
+}
+
+.contenedor-mat {
+  gap: clamp(18px, 3vh, 30px);
+}
+
+.titulo-mat {
+  font-size: clamp(1.8rem, 3.8vh, 2.6rem);
+}
+
+.desc-general-mat {
+  font-size: clamp(0.92rem, 1.6vh, 1.05rem);
+  line-height: 1.55;
+}
+
+.grid-materiales {
+  gap: clamp(12px, 1.8vw, 20px);
+}
+
+.tarjeta-mat {
+  padding: clamp(16px, 2.6vh, 25px) clamp(14px, 1.6vw, 20px);
+}
+
+.indice-num {
+  font-size: clamp(1.6rem, 3vh, 2rem);
+}
+
+.comparativa-espesor {
+  margin-bottom: clamp(12px, 1.8vh, 20px);
+  padding: clamp(7px, 1.1vh, 10px) 5px;
+}
+
+.espesor-visual,
+.lente-miopia,
+.lente-hiper {
+  height: clamp(38px, 6.2vh, 55px);
+}
+
+.desc-mat {
+  font-size: clamp(0.74rem, 1.3vh, 0.8rem);
+  margin-bottom: clamp(12px, 1.8vh, 20px);
+}
+
+.tag-mat {
+  padding: clamp(4px, 0.8vh, 6px) clamp(9px, 1.2vw, 12px);
+}
+
+/* El texto del acordeon vive al pie de cada panel, con 80px de separacion
+   para no caer bajo las flechas. En una ventana baja el bloque se comia la
+   foto: se le da un tope. */
+.acc-content {
+  bottom: clamp(56px, 9vh, 80px);
+  left: clamp(24px, 4vw, 50px);
+  right: clamp(24px, 4vw, 50px);
+}
+
+.acc-content h3 {
+  font-size: clamp(1.5rem, 3.4vh, 2.2rem);
+  margin-bottom: clamp(6px, 1.2vh, 10px);
+}
+
+.acc-content p {
+  font-size: clamp(0.85rem, 1.7vh, 1.1rem);
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .seccion-materiales {
+    padding-top: 100px;
+    padding-bottom: 96px;
+  }
+}

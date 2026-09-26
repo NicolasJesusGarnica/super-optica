@@ -1,0 +1,3224 @@
+:host {
+  display: block;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.navbar {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1000; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 60px; 
+  /* Cambio de Rojo a Amarillo corporativo de Super Óptica */
+  background-color: #ffffff; 
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);  
+  transform: translateY(-100%);
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.navbar::after {
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  background: transparent;
+}
+
+.navbar:hover {
+  transform: translateY(0);
+}
+
+.logo-container img {
+  height: 35px; /* Aumenta este valor si lo quieres aún más grande (ej: 70px) */
+  cursor: pointer;
+  filter: none; /* Esto quita la sombra / drop-shadow por completo */
+  transition: transform 0.3s ease;
+}
+
+.nav-links {
+  display: flex;
+  gap: 35px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links a {
+  /* Color azul oscuro corporativo para contrastar sobre el fondo amarillo */
+  color: #020226;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif; 
+  font-size: 1.1rem; 
+  font-weight: 700; 
+  letter-spacing: 1px;
+  transition: 0.3s;
+  padding: 5px 12px;
+  border-radius: 4px;
+}
+
+.nav-links a:hover {
+  color: #020226;
+  background-color: #FFCE00; 
+}
+
+
+
+.nav-links {
+  display: flex;
+  gap: 35px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links a {
+  color: #020226;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif; 
+  font-size: 1.1rem; 
+  font-weight: 600; 
+  letter-spacing: 1px;
+  transition: 0.3s;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+
+
+.hero-solar-safe {
+  position: relative;
+  width: 100%;
+  height: 100vh; 
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.seccion-estadisticas {
+  position: relative;
+  padding: 0 10%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  min-height: 100vh;
+}
+
+.seccion-impacto {
+  background-color: #020226;
+  padding: 0 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  min-height: 100vh;
+}
+
+.seccion-funcionamiento {
+  background: linear-gradient(135deg, #0a0b3d 0%, #020226 100%);
+  padding: 0 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 100vh;
+  min-height: 100vh;
+}
+
+.seccion-propiedades {
+  position: relative;
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center; /* Cambiado a center para que quede perfecto en 100vh */
+  padding: 0 10%;
+  overflow: hidden;
+}
+
+.seccion-ideales {
+  position: relative;
+  padding: 0 10%;
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.img-fondo-banner {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%; 
+}
+
+.logo-overlay {
+  position: absolute;
+  top: 40px;
+  left: 60px; 
+  width: 200px;
+}
+
+.logo-overlay img {
+  width: 100%;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4)); 
+}
+
+.seccion-info {
+  display: flex;
+  align-items: center;
+  padding: 80px 10%;
+  gap: 60px;
+  background-color: #f9f9fb;
+}
+
+.seccion-info.reversa {
+  flex-direction: row-reverse;
+  background-color: #ffffff; 
+}
+
+
+.info-texto {
+  flex: 1;
+}
+
+.info-texto h2 {
+  font-family: 'Baby Monsta', sans-serif;
+  font-size: 3rem;
+  color: #121212;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.info-texto p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.info-imagen {
+  flex: 1;
+}
+
+.info-imagen img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  object-fit: cover;
+}
+
+
+.cuadricula-imagenes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.cuadricula-imagenes img:first-child {
+  grid-column: 1 / -1; 
+  height: 250px;
+}
+
+.cuadricula-imagenes img:not(:first-child) {
+  height: 200px; 
+}
+
+
+
+.animar-izquierda {
+  opacity: 0;
+  transform: translateX(-100px); 
+  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.animar-izquierda.visible {
+  opacity: 1;
+  transform: translateX(0); 
+}
+
+
+.seccion-colores {
+  padding: 80px 10%;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.cabecera-colores {
+  max-width: 800px;
+  margin: 0 auto 50px auto;
+}
+
+.cabecera-colores .subtitulo-verde {
+  font-family: 'Poppins', sans-serif;
+  color: #FFCE00; 
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.cabecera-colores h2 {
+  font-family: 'Baby Monsta', sans-serif;
+  font-size: 2.8rem;
+  color: #121212;
+  line-height: 1.2;
+}
+
+.grid-colores {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.card-color {
+  background-color: #f9f9fb;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-color:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.card-color .img-container {
+  height: 250px;
+  overflow: hidden;
+  background-color: #ffffff; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-color .img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card-color:hover .img-container img {
+  transform: scale(1.08); 
+}
+
+.card-color .info-color {
+  padding: 25px 20px;
+  background-color: #0a0b3d; 
+  color: #ffffff;
+  flex-grow: 1;
+  text-align: left;
+}
+
+.info-color h3 {
+  font-family: 'Baby Monsta', sans-serif;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+  color: #FFCE00; 
+}
+
+.info-color p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: #cccccc;
+  line-height: 1.5;
+  margin: 0;
+}
+
+
+.seccion-estadisticas {
+  position: relative;
+  padding: 100px 10%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  min-height: 60vh;
+}
+
+.fondo-stats {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+
+.overlay-estadisticas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(2, 2, 38,0.95) 0%, rgba(2, 2, 38,0.7) 50%, rgba(2, 2, 38,0.1) 100%);
+  z-index: 2;
+}
+
+.contenido-estadisticas {
+  position: relative;
+  z-index: 3;
+  max-width: 650px;
+}
+
+.texto-principal-stats p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  color: #e0e0e0;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.texto-principal-stats strong {
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.texto-principal-stats h2 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 4.5rem;
+  color: #ffffff;
+  margin-bottom: 40px;
+  margin-top: 0;
+}
+
+
+.cajas-stats {
+  display: flex;
+  gap: 25px;
+}
+
+.caja-porcentaje {
+  background-color: #FFCE00;
+  border-radius: 12px;
+  padding: 30px;
+  flex: 1;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+  transition: transform 0.4s ease;
+}
+
+.caja-porcentaje:hover {
+  transform: translateY(-8px);
+}
+
+.caja-porcentaje h3 {
+  font-family: 'Baby Monsta', sans-serif;
+  font-size: 4.5rem;
+  color: #ffffff;
+  margin: 0 0 10px 0;
+  line-height: 1;
+  letter-spacing: 2px;
+}
+
+.caja-porcentaje p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.4;
+  opacity: 0.95;
+}
+
+
+.seccion-impacto {
+  background-color: #020226;
+  padding: 80px 10%;
+  display: flex;
+  justify-content: center;
+}
+
+.contenedor-impacto {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 50px;
+  max-width: 1000px;
+  width: 100%;
+}
+
+.item-impacto {
+  flex: 1;
+  min-width: 280px;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+
+.imagen-circular {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+ 
+  border: 4px solid #FFCE00; 
+  margin-bottom: 25px;
+  box-shadow: 0 10px 25px rgba(255, 206, 0, 0.2);
+  transition: transform 0.4s ease;
+}
+
+.item-impacto:hover .imagen-circular {
+  transform: scale(1.05);
+}
+
+
+.numero-impacto {
+  font-family: 'Baby Monsta', sans-serif;
+  font-size: 6rem;
+  color: #ffffff;
+  line-height: 1;
+  margin: 0;
+  letter-spacing: 2px;
+}
+
+.subtitulo-impacto {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #FFCE00;
+  margin: 5px 0 15px 0;
+  letter-spacing: 3px;
+}
+
+.texto-impacto {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: #bbbbbb;
+  line-height: 1.6;
+  margin-top: 15px;
+  max-width: 320px;
+}
+
+
+.seccion-funcionamiento {
+ 
+  background: linear-gradient(135deg, #0a0b3d 0%, #020226 100%);
+  padding: 100px 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.contenedor-funcionamiento {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+
+.funcionamiento-texto {
+  flex: 1;
+  max-width: 600px;
+}
+
+.funcionamiento-texto h2 {
+  font-family: 'Baby Monsta', sans-serif;
+  font-size: 3.5rem;
+  color: #ffffff;
+  line-height: 1.1;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+}
+
+.funcionamiento-texto p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  color: #cccccc;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+
+.funcionamiento-imagen {
+  flex: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.logo-funcionamiento {
+  position: absolute;
+  top: -40px;
+  right: 0;  
+  width: 180px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+  z-index: 2;
+}
+
+
+.img-gafas-funcionamiento {
+  width: 100%;
+  max-width: 550px;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  object-fit: cover;
+  position: relative;
+  z-index: 1;
+}
+
+
+.seccion-propiedades {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 80px 10%;
+  overflow: hidden;
+}
+
+.fondo-propiedades {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+
+.overlay-propiedades {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(2, 2, 38,0.7) 0%, rgba(2, 2, 38,0.2) 50%, rgba(2, 2, 38,0) 100%);
+  z-index: 2;
+}
+
+
+.logo-propiedades {
+  position: absolute;
+  top: 50px;
+  left: 10%;
+  z-index: 3;
+  width: 180px;
+}
+
+.logo-propiedades img {
+  width: 100%;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5));
+}
+
+
+.caja-propiedades {
+  position: relative;
+  z-index: 3;
+ 
+  background-color: rgba(18, 22, 31, 0.85);
+  backdrop-filter: blur(10px);
+ 
+  border-left: 6px solid #FFCE00;
+  padding: 40px;
+  max-width: 550px;
+  border-radius: 0 12px 12px 0;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+.caja-propiedades h2 {
+  font-family: 'Baby Monsta', sans-serif;
+  font-size: 2.5rem;
+  color: #ffffff;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+}
+
+.caja-propiedades p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.05rem;
+  color: #cccccc;
+  line-height: 1.6;
+  margin: 0;
+}
+
+
+
+
+.seccion-ideales {
+  position: relative;
+  padding: 100px 10%;
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.fondo-ideales {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+
+.overlay-ideales {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(2, 2, 38,0.95) 0%, rgba(2, 2, 38,0.7) 50%, rgba(2, 2, 38,0) 100%);
+  z-index: 2;
+}
+
+.contenido-ideales {
+  position: relative;
+  z-index: 3;
+  max-width: 650px;
+}
+
+.logo-ideales {
+  width: 160px;
+  margin-bottom: 20px;
+}
+
+.logo-ideales img {
+  width: 100%;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+.contenido-ideales h2 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 3.5rem;
+  color: #ffffff;
+  margin-bottom: 40px;
+  margin-top: 0;
+}
+
+
+.lista-ideales {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lista-ideales li {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  color: #cccccc;
+  padding: 25px 0;
+ 
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  position: relative;
+  padding-left: 25px;
+  transition: color 0.3s;
+}
+
+
+.lista-ideales li:last-child {
+  border-bottom: none;
+}
+
+
+.lista-ideales li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background-color: #FFCE00;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(255, 206, 0, 0.5);
+  transition: transform 0.3s;
+}
+
+
+.lista-ideales li:hover {
+  color: #ffffff;
+}
+
+.lista-ideales li:hover::before {
+  transform: translateY(-50%) scale(1.5);
+}
+
+.controles-presentacion {
+  position: fixed;
+  bottom: 40px;
+  right: 50px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  z-index: 9999;
+}
+
+.btn-flecha {
+  background: rgba(255, 206, 0, 0.1); /* Rojo con transparencia */
+  border: 1px solid rgba(255, 206, 0, 0.4);
+  color: #FFCE00; /* Rojo sólido */
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.btn-flecha:hover {
+  background: rgba(255, 206, 0, 0.4);
+  color: #ffffff;
+  transform: scale(1.15);
+  box-shadow: 0 0 20px rgba(255, 206, 0, 0.6);
+}
+
+.btn-flecha.oculto {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.5);
+}
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================
+   SECCIÓN 7: LENTES INTELIGENTES ADAPTATIVOS
+   ========================================= */
+.seccion-adaptativa {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  background-color: #020226;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+/* =========================================
+   NUEVOS ESTILOS DE FONDO - SEC 1
+   ========================================= */
+.img-fondo-adaptativa {
+  position: absolute;
+  top: 0; left: 0; 
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.overlay-adaptativa {
+  position: absolute;
+  top: 0; left: 0; 
+  width: 100%; height: 100%;
+  /* Degradado que oscurece el lado del texto y deja ver la imagen a la derecha */
+  background: linear-gradient(90deg, rgba(2, 2, 38,0.95) 0%, rgba(2, 2, 38,0.85) 45%, rgba(2, 2, 38,0.2) 100%);
+  z-index: 2;
+}
+
+/* Ajuste de Z-index para las capas originales */
+.fondo-ambiente-dinamico {
+  z-index: 3;
+}
+
+.contenedor-adaptativo {
+  z-index: 5; /* Asegura que el contenido quede por encima de la imagen y el overlay */
+}
+
+.fondo-ambiente-dinamico {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: radial-gradient(circle at 75% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 60%);
+  animation: pulsoFondo 8s infinite alternate ease-in-out;
+}
+
+@keyframes pulsoFondo {
+  0% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+.contenedor-adaptativo {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 1300px;
+  padding: 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+/* --- Lado Izquierdo: Textos --- */
+.info-adaptativa {
+  flex: 1.2;
+  max-width: 550px;
+}
+
+.logo-adaptativo {
+  height: 80px;
+  margin-bottom: 25px;
+  filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5));
+}
+
+.badge-solar {
+  display: inline-block;
+  background: rgba(255, 206, 0, 0.15);
+  color: #FFCE00;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 5px 15px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 206, 0, 0.4);
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+}
+
+.info-adaptativa h2 {
+  font-family: 'Baby Monsta', sans-serif;
+  font-size: 3.8rem;
+  color: #ffffff;
+  line-height: 1.05;
+  margin: 0 0 20px 0;
+  letter-spacing: 1px;
+}
+
+.info-adaptativa h2 strong {
+  color: #FFCE00; /* Rojo Solar Safe */
+}
+
+.linea-roja-corta {
+  width: 60px;
+  height: 4px;
+  background-color: #FFCE00;
+  border-radius: 2px;
+  margin-bottom: 20px;
+}
+
+.texto-comercial {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  color: #cccccc;
+  line-height: 1.6;
+  margin-bottom: 35px;
+}
+
+.texto-comercial strong {
+  color: #ffffff;
+}
+
+/* Lista de Propiedades */
+.lista-propiedades-adaptativas {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.lista-propiedades-adaptativas li {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.icono-prop {
+  width: 45px;
+  height: 45px;
+  min-width: 45px;
+  background: linear-gradient(135deg, #FFCE00 0%, #B8860A 100%);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-size: 1.2rem;
+  box-shadow: 0 5px 15px rgba(255, 206, 0, 0.4);
+}
+
+.texto-prop h4 {
+  font-family: 'Baby Monsta', sans-serif;
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin: 0 0 5px 0;
+  letter-spacing: 1px;
+}
+
+.texto-prop p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: #aaaaaa;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* --- Lado Derecho: Simulador (CSS PURO) --- */
+.simulador-reactivo {
+  flex: 1;
+  position: relative;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* El Sol que brilla detrás */
+.sol-virtual {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 50px #ffffff, 0 0 100px #ffeeaa;
+  animation: cicloSolar 8s infinite alternate ease-in-out;
+  z-index: 1;
+}
+
+.destello-cegador {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px; height: 3px;
+  background: rgba(255, 255, 255, 0.8);
+  filter: blur(2px);
+  animation: rotarDestello 10s infinite linear;
+}
+
+@keyframes rotarDestello { 100% { transform: translate(-50%, -50%) rotate(360deg); } }
+
+/* El Lente Inteligente */
+.lente-inteligente {
+  position: relative;
+  width: 200px;
+  height: 280px;
+  border-radius: 40% 60% 50% 50% / 50% 50% 60% 40%;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-left: 4px solid rgba(255,255,255,0.7);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+  z-index: 10;
+  overflow: hidden;
+  /* Sincronizamos esta animación con el sol */
+  animation: reaccionLente 8s infinite alternate ease-in-out;
+}
+
+.reflejo-curvo {
+  position: absolute;
+  top: -10%; left: 10%;
+  width: 40px; height: 120%;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+  transform: rotate(15deg);
+}
+
+.malla-polarizada {
+  position: absolute; top:0; left:0; width:100%; height:100%;
+  background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.1) 2px, rgba(0,0,0,0.1) 4px);
+  opacity: 0.5;
+}
+
+/* LA MAGIA DE LA SINCRONIZACIÓN */
+/* 0% = Interior (Sol apagado, lente claro). 100% = Exterior (Sol cegador, lente oscuro) */
+@keyframes cicloSolar {
+  0%, 20% { transform: translate(-50%, -50%) scale(0.5); opacity: 0.1; filter: brightness(0.5); }
+  80%, 100% { transform: translate(-50%, -50%) scale(1.5); opacity: 1; filter: brightness(1.5); }
+}
+
+@keyframes reaccionLente {
+  0%, 20% { 
+    background: rgba(200, 220, 255, 0.15); /* Claro */
+    backdrop-filter: blur(2px);
+  }
+  80%, 100% { 
+    background: rgba(10, 15, 20, 0.95); /* Negro/Oscuro Polarizado */
+    backdrop-filter: blur(10px);
+  }
+}
+
+/* Indicador de texto dinámico */
+.indicador-estado {
+  position: absolute;
+  bottom: 0;
+  background: rgba(0,0,0,0.6);
+  padding: 8px 20px;
+  border-radius: 20px;
+  border: 1px solid #333;
+  z-index: 15;
+}
+
+.indicador-estado span {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.estado-claro { color: #88ccff; animation: mostrarClaro 8s infinite alternate ease-in-out; }
+.estado-oscuro { position: absolute; left: 20px; color: #ffaa00; animation: mostrarOscuro 8s infinite alternate ease-in-out; }
+
+@keyframes mostrarClaro {
+  0%, 40% { opacity: 1; }
+  60%, 100% { opacity: 0; }
+}
+@keyframes mostrarOscuro {
+  0%, 40% { opacity: 0; }
+  60%, 100% { opacity: 1; }
+}
+
+
+
+
+
+
+
+
+/* =========================================
+   SECCIÓN 8: GALERÍA DE ESPEJADOS PREMIUM
+   ========================================= */
+.seccion-espejados {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5%;
+  overflow: hidden;
+  background-color: #010114;
+}
+
+.img-fondo-espejados {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover;
+  filter: blur(15px) brightness(0.4); /* Borroso y oscuro */
+  transform: scale(1.05); /* Evita bordes blancos del blur */
+  z-index: 1;
+}
+
+.overlay-espejados {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(to bottom, rgba(2, 2, 38,0.9) 0%, rgba(2, 2, 38,0.4) 100%);
+  z-index: 2;
+}
+
+.cabecera-espejados {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.cabecera-espejados h2 {
+  font-family: 'Baby Monsta', sans-serif;
+  font-size: 3.5rem;
+  color: #ffffff;
+  margin: 10px 0;
+  letter-spacing: 2px;
+}
+
+.cabecera-espejados h2 strong {
+  color: #FFCE00; /* Rojo Solar Safe */
+}
+
+.cabecera-espejados p {
+  font-family: 'Poppins', sans-serif;
+  color: #cccccc;
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* --- GALERÍA EXPANSIVA (Acordeón) --- */
+.contenedor-galeria-colores {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  width: 100%;
+  max-width: 1300px;
+  height: 450px;
+  gap: 15px;
+}
+
+.panel-color {
+  position: relative;
+  flex: 1;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* Transición súper suave */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 30px 20px;
+}
+
+/* Al pasar el ratón, la columna elegida se expande */
+.panel-color:hover {
+  flex: 3;
+}
+
+/* Título cuando está cerrado (Vertical) */
+.titulo-cerrado {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  font-family: 'Baby Monsta', sans-serif;
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 5px;
+  transition: opacity 0.4s ease;
+  white-space: nowrap;
+}
+
+.panel-color:hover .titulo-cerrado {
+  opacity: 0; /* Desaparece al expandirse */
+}
+
+/* Contenido interno (Lente y Textos) */
+.contenido-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.5s ease 0.1s; /* Aparece con ligero retraso */
+  pointer-events: none;
+  width: 100%;
+}
+
+.panel-color:hover .contenido-panel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.contenido-panel h3 {
+  font-family: 'Baby Monsta', sans-serif;
+  font-size: 2.2rem;
+  color: #ffffff;
+  margin: 20px 0 10px 0;
+  letter-spacing: 1px;
+}
+
+.contenido-panel p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: #eeeeee;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* --- LENTES 3D ESPEJADOS --- */
+.lente-espejado-3d {
+  position: relative;
+  width: 140px;
+  height: 200px;
+  border-radius: 40% 60% 50% 50% / 50% 50% 60% 40%;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-left: 5px solid rgba(255, 255, 255, 0.9);
+  overflow: hidden;
+  transform: perspective(800px) rotateY(-20deg);
+  transition: transform 0.4s ease;
+}
+
+.panel-color:hover .lente-espejado-3d {
+  transform: perspective(800px) rotateY(0deg) scale(1.1); /* Se endereza y hace zoom */
+}
+
+/* El destello cruzado del espejo */
+.brillo-diag {
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.8) 50%, transparent 60%);
+  transform: translateY(-100%);
+}
+
+.panel-color:hover .brillo-diag {
+  animation: destelloEspejo 1.5s ease forwards 0.3s;
+}
+
+@keyframes destelloEspejo {
+  100% { transform: translateY(100%); }
+}
+
+/* --- COLORES PERSONALIZADOS POR PANEL --- */
+
+/* 1. Plata */
+.panel-plata:hover { background: rgba(200, 200, 200, 0.2); box-shadow: 0 0 40px rgba(200, 200, 200, 0.3); border-color: #cccccc; }
+.lente-plata { background: linear-gradient(135deg, #ffffff 0%, #888888 100%); box-shadow: inset -10px 0 20px rgba(0,0,0,0.5); }
+
+/* 2. Dorado */
+.panel-dorado:hover { background: rgba(255, 215, 0, 0.2); box-shadow: 0 0 40px rgba(255, 215, 0, 0.3); border-color: #ffd700; }
+.lente-oro { background: linear-gradient(135deg, #ffea8c 0%, #cc8800 100%); box-shadow: inset -10px 0 20px rgba(100,50,0,0.6); }
+
+/* 3. Verde */
+.panel-verde:hover { background: rgba(0, 255, 136, 0.15); box-shadow: 0 0 40px rgba(0, 255, 136, 0.2); border-color: #00ff88; }
+.lente-verde { background: linear-gradient(135deg, #55ffaa 0%, #006633 100%); box-shadow: inset -10px 0 20px rgba(0,50,20,0.6); }
+
+/* 4. Azul */
+.panel-azul:hover { background: rgba(0, 212, 255, 0.2); box-shadow: 0 0 40px rgba(0, 212, 255, 0.3); border-color: #00d4ff; }
+.lente-azul { background: linear-gradient(135deg, #66eeff 0%, #0044aa 100%); box-shadow: inset -10px 0 20px rgba(0,20,50,0.6); }
+
+/* 5. Violeta */
+.panel-violeta:hover { background: rgba(176, 38, 255, 0.2); box-shadow: 0 0 40px rgba(176, 38, 255, 0.3); border-color: #b026ff; }
+.lente-violeta { background: linear-gradient(135deg, #d488ff 0%, #440088 100%); box-shadow: inset -10px 0 20px rgba(20,0,40,0.6); }
+
+/* 6. Rojo */
+.panel-rojo:hover { background: rgba(255, 51, 51, 0.2); box-shadow: 0 0 40px rgba(255, 51, 51, 0.3); border-color: #ff3333; }
+.lente-rojo { background: linear-gradient(135deg, #ff8888 0%, #880000 100%); box-shadow: inset -10px 0 20px rgba(50,0,0,0.6); }
+
+
+
+
+/* =========================================
+   SECCIÓN 9: BENEFICIOS Y GRID MULTIENTORNO
+   ========================================= */
+.seccion-beneficios-grid {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background-color: #020226;
+  overflow: hidden;
+}
+
+.fondo-beneficios-img {
+  position: absolute;
+  top: 0; left: 0; 
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  z-index: 1;
+}
+
+/* El degradado va de negro opaco a la izquierda a transparente a la derecha */
+.overlay-beneficios {
+  position: absolute;
+  top: 0; left: 0; 
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, rgba(2, 2, 38,0.95) 0%, rgba(2, 2, 38,0.8) 40%, rgba(2, 2, 38,0.1) 100%);
+  z-index: 2;
+}
+
+.contenedor-beneficios {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 1300px;
+  padding: 0 5%;
+  margin: 0 auto;
+}
+
+/* --- Panel de Cristal Principal --- */
+.panel-cristal-beneficios {
+  max-width: 700px; /* Controla el ancho del panel para no tapar la foto */
+  background: rgba(15, 20, 30, 0.4);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 4px solid #FFCE00; /* Detalle rojo Solar Safe */
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+.logo-panel-beneficios {
+  height: 45px;
+  margin-bottom: 25px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+.cabecera-cristal h2 {
+  font-family: 'Baby Monsta', sans-serif;
+  font-size: 3.2rem;
+  color: #ffffff;
+  line-height: 1.1;
+  margin: 0 0 15px 0;
+  letter-spacing: 1px;
+}
+
+.cabecera-cristal h2 strong {
+  color: #FFCE00;
+}
+
+.linea-roja-neon {
+  width: 50px;
+  height: 3px;
+  background: #FFCE00;
+  box-shadow: 0 0 10px #FFCE00;
+  border-radius: 2px;
+  margin-bottom: 20px;
+}
+
+.cabecera-cristal p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.05rem;
+  color: #cccccc;
+  line-height: 1.6;
+  margin: 0 0 35px 0;
+}
+
+.cabecera-cristal p strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* --- Cuadrícula de 6 Ítems --- */
+.grid-seis-beneficios {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+.item-beneficio-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.item-beneficio-card:hover {
+  background: rgba(255, 206, 0, 0.05);
+  border: 1px solid rgba(255, 206, 0, 0.3);
+  transform: translateX(5px);
+}
+
+.icono-beneficio {
+  width: 45px;
+  height: 45px;
+  min-width: 45px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  color: #FFCE00;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.item-beneficio-card:hover .icono-beneficio {
+  background: #FFCE00;
+  color: #ffffff;
+  border-color: #FFCE00;
+  box-shadow: 0 0 15px rgba(255, 206, 0, 0.5);
+}
+
+.texto-beneficio-card h4 {
+  font-family: 'Baby Monsta', sans-serif;
+  font-size: 1.3rem;
+  color: #ffffff;
+  margin: 0 0 5px 0;
+  letter-spacing: 1px;
+}
+
+.texto-beneficio-card p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  color: #aaaaaa;
+  margin: 0;
+  line-height: 1.4;
+}
+
+
+
+
+
+
+/* =========================================
+   SECCIÓN 6: PERFILES IDEALES (PREMIUM)
+   ========================================= */
+.seccion-ideales-premium {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-color: #020226;
+}
+
+/* La nueva imagen de fondo */
+.fondo-ideales-img {
+  position: absolute;
+  top: 0; left: 0; 
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 1;
+}
+
+/* Degradado oscuro a la izquierda, transparente a la derecha */
+.overlay-ideales-oscuro {
+  position: absolute;
+  top: 0; left: 0; 
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, rgba(2, 2, 38,0.95) 0%, rgba(2, 2, 38,0.8) 40%, rgba(2, 2, 38,0.1) 100%);
+  z-index: 2;
+}
+
+.contenedor-ideales-premium {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 1300px;
+  padding: 0 5%;
+  margin: 0 auto;
+}
+
+/* Panel de Cristal Izquierdo */
+.panel-ideales-izq {
+  max-width: 580px;
+  background: rgba(20, 25, 35, 0.45);
+  backdrop-filter: blur(15px); /* Efecto cristal premium */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 5px solid #FFCE00; /* Borde rojo Solar Safe */
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+.logo-ideales-nuevo {
+  height: 40px;
+  margin-bottom: 25px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+.panel-ideales-izq h2 {
+  font-family: 'Baby Monsta', sans-serif;
+  font-size: 3.2rem;
+  color: #ffffff;
+  line-height: 1.1;
+  margin: 0 0 15px 0;
+  letter-spacing: 1px;
+}
+
+.panel-ideales-izq h2 strong {
+  color: #FFCE00;
+}
+
+.intro-ideales {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.05rem;
+  color: #cccccc;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.intro-ideales strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* --- Lista Interactiva --- */
+.lista-interactiva-ideales {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.item-ideal {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 15px 20px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  border: 1px solid transparent;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efecto Hover Premium */
+.item-ideal:hover {
+  background: rgba(255, 206, 0, 0.08);
+  border: 1px solid rgba(255, 206, 0, 0.3);
+  transform: translateX(15px); /* Se mueve hacia la derecha */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Destello sutil al fondo del ítem en hover */
+.item-ideal::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%; width: 50%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+  transition: left 0.6s ease;
+}
+
+.item-ideal:hover::before {
+  left: 150%;
+}
+
+.icono-ideal {
+  width: 45px;
+  height: 45px;
+  min-width: 45px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  color: #ffffff;
+  transition: all 0.4s ease;
+}
+
+.item-ideal:hover .icono-ideal {
+  background: #FFCE00;
+  box-shadow: 0 0 15px rgba(255, 206, 0, 0.6);
+  transform: scale(1.1);
+}
+
+.texto-ideal h4 {
+  font-family: 'Baby Monsta', sans-serif;
+  font-size: 1.3rem;
+  color: #ffffff;
+  margin: 0 0 4px 0;
+  letter-spacing: 1px;
+}
+
+.texto-ideal p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  color: #aaaaaa;
+  margin: 0;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+
+.item-ideal:hover .texto-ideal p {
+  color: #eeeeee;
+}
+
+
+
+
+
+
+
+/* =========================================
+   NUEVA SECCIÓN: ESPEJADOS PREMIUM (REDISEÑO)
+   ========================================= */
+
+.premium-espejados {
+  position: relative;
+  /* Mantenemos un color base por si la imagen tarda en cargar */
+  background-color: #010114; 
+  color: #ffffff;
+  padding: 100px 5%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.fondo-img-espejados {
+  position: absolute;
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.premium-espejados-overlay {
+  position: absolute;
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%;
+  /* Un degradado elegante que oscurece los bordes y deja un poco más clara la parte central donde van las tarjetas */
+  background: radial-gradient(circle at 50% 50%, rgba(5, 5, 8, 0.75) 0%, rgba(5, 5, 8, 0.95) 100%);
+  z-index: 1;
+}
+
+/* Brillo ambiental de fondo */
+.premium-espejados-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at 50% 30%, rgba(30, 35, 45, 0.6) 0%, #010114 70%);
+  z-index: 0;
+}
+
+.premium-container {
+  position: relative;
+  z-index: 5; /* Asegura que todo el contenido esté por encima del overlay */
+  width: 100%;
+  max-width: 1400px;
+}
+
+/* Cabecera Premium */
+.premium-header {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.premium-badge {
+  display: inline-block;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 4px;
+  color: #FFCE00;
+  background: rgba(255, 206, 0, 0.1);
+  border: 1px solid rgba(255, 206, 0, 0.3);
+  padding: 8px 20px;
+  border-radius: 30px;
+  margin-bottom: 25px;
+}
+
+.premium-header h2 {
+  font-family: 'Baby Monsta', sans-serif;
+  font-size: 3.5rem;
+  margin: 0 0 15px;
+  letter-spacing: 1px;
+}
+
+.text-highlight {
+  color: #FFCE00;
+}
+
+.premium-header p {
+  font-family: 'Poppins', sans-serif;
+  color: #a0a0a0;
+  max-width: 650px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Contenedor de Tarjetas */
+.premium-cards-wrapper {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 25px;
+}
+
+/* Tarjetas Estilo Glassmorphism */
+.premium-card {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 40px 20px 30px;
+  text-align: center;
+  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.premium-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 3px;
+  background: transparent;
+  transition: background 0.5s ease;
+}
+
+/* Efectos de Hover sobre la tarjeta entera */
+.premium-card:hover {
+  transform: translateY(-15px);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* =========================================
+   CORRECCIÓN APLICADA: ORBES DE COLOR 
+   ========================================= */
+
+/* Orbe Abstracto (El Lente) */
+/* =========================================
+   CORRECCIÓN: FORMA DE LENTE DE SOL REAL
+   ========================================= */
+
+/* =========================================
+   NUEVO CONTENEDOR DE IMAGEN DEL LENTE
+   ========================================= */
+.lens-image-container {
+  width: 160px; /* Ajusta según el tamaño de tus imágenes */
+  height: auto;
+  margin: 0 auto 25px;
+  position: relative;
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 10;
+}
+
+.lens-image-container img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  /* Sombra para darle ese toque 3D flotante */
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.6));
+}
+
+/* Animación al pasar el mouse (el lente flota y crece un poco) */
+.premium-card:hover .lens-image-container {
+  transform: scale(1.15) translateY(-8px);
+}
+
+
+/* El destello de luz sobre el cristal superior */
+
+
+/* Textos de la tarjeta */
+.card-content h3 {
+  font-family: 'Baby Monsta', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  margin: 0 0 15px 0;
+  color: #ffffff;
+  transition: color 0.4s ease;
+}
+
+.card-content p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  color: #888888;
+  line-height: 1.6;
+  margin: 0;
+  transition: color 0.4s ease;
+}
+
+.premium-card:hover .card-content p {
+  color: #cccccc;
+}
+
+/* Colorear el título en Hover dependiendo del lente */
+.color-red:hover .card-content h3 { color: #ff4dc4; }
+.color-blue:hover .card-content h3 { color: #4dd2ff; }
+.color-green:hover .card-content h3 { color: #db4dff; }
+.color-gold:hover .card-content h3 { color: #7b6304; }
+.color-silver:hover .card-content h3 { color: #ffffffa4; }
+
+.premium-card {
+  height: auto !important; /* Elimina cualquier altura fija que la esté limitando */
+  min-height: 380px; /* Mantiene un tamaño base uniforme */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 30px 20px 40px !important; /* El '40px' al final le da más aire y margen abajo */
+}
+
+/* 2. Reducimos un poquito la imagen y su margen para darle más espacio al texto */
+.lens-image-container {
+  width: 130px; /* Ligeramente más pequeño para no robar tanto espacio vertical */
+  margin: 0 auto 15px !important; /* Reduce la separación entre el lente y el título */
+}
+
+/* 3. Aseguramos que el contenedor del texto ocupe el espacio restante correctamente */
+.card-content {
+  flex-grow: 1; /* Permite que el texto se estire de forma natural */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; 
+}
+
+/* 4. Ajustamos el interlineado del párrafo para que se vea más limpio y compacto */
+.card-content p {
+  font-size: 0.85rem;
+  line-height: 1.4; /* Interlineado ligeramente más compacto */
+  margin-bottom: 0;
+}
+
+
+/* =========================================
+   NUEVA SECCIÓN: SÓLIDOS PREMIUM
+   ========================================= */
+.premium-solidos {
+  position: relative;
+  /* Un fondo muy oscuro con un toque azul medianoche para contrastar con los espejados */
+  background-color: #010114; 
+  color: #ffffff;
+  padding: 100px 5%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Un destello sutil rojo desde arriba para iluminar la sección */
+.premium-solidos-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(255, 206, 0, 0.05) 0%, transparent 60%);
+  z-index: 0;
+}
+
+/* Grid específico para 3 elementos (más ancho y espacioso) */
+.solidos-cards-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px; 
+  max-width: 1100px; /* Centrado perfecto para 3 tarjetas */
+  margin: 0 auto;
+}
+
+/* Colores de Hover específicos para los Sólidos */
+.solido-cafe:hover .card-content h3 { color: #d4a373; }
+.solido-gris:hover .card-content h3 { color: #cfcfcf; }
+.solido-verde:hover .card-content h3 { color: #66cc66; }
+
+/* En la sección de sólidos, como hay más espacio, hacemos el contenedor de imagen un poco más grande */
+.premium-solidos .lens-image-container {
+  width: 160px;
+  margin-bottom: 20px !important;
+}
+
+
+
+/* =========================================
+   NUEVA SECCIÓN: DEGRADADOS PREMIUM
+   ========================================= */
+.premium-degradados {
+  position: relative;
+  background-color: #020226; /* Fondo base */
+  color: #ffffff;
+  padding: 100px 5%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* El fondo simula el efecto "Degradado" de los lentes (Oscuro arriba, desvanecido abajo) */
+.premium-degradados-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(180deg, rgba(20, 25, 35, 0.8) 0%, rgba(2, 2, 38, 0) 100%);
+  z-index: 0;
+}
+
+/* Grid específico para 2 elementos (Centrado y elegante) */
+.degradados-cards-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px; 
+  max-width: 900px; /* Más angosto para que las 2 tarjetas no se estiren feo */
+  margin: 0 auto;
+}
+
+/* Reutilizamos y ajustamos la imagen del lente para los degradados */
+.premium-degradados .lens-image-container {
+  width: 170px; /* Un pelín más grande para destacar el efecto degradado */
+  margin-bottom: 25px !important;
+  position: relative;
+}
+
+/* Efectos visuales de color en hover */
+.degradado-cafe:hover .card-content h3 { color: #d4a373; }
+.degradado-gris:hover .card-content h3 { color: #cfcfcf; }
+
+
+
+
+/* =========================================
+   DISEÑO RESPONSIVO (Tablets y Celulares)
+   ========================================= */
+@media (max-width: 900px) {
+  
+  /* --- NAVBAR --- */
+  .navbar {
+    padding: 15px 20px;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .nav-links {
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-links a {
+    font-size: 0.95rem;
+  }
+
+  /* --- SEC 1: LENTES INTELIGENTES ADAPTATIVOS --- */
+  .seccion-adaptativa {
+    height: auto;
+    min-height: 100vh;
+    padding: 120px 0 50px;
+  }
+  .contenedor-adaptativo {
+    flex-direction: column;
+    text-align: center;
+    gap: 50px;
+  }
+  .info-adaptativa {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+  .info-adaptativa h2 {
+    font-size: 2.2rem;
+  }
+  .linea-roja-corta {
+    margin: 0 auto 25px;
+  }
+  .lista-propiedades-adaptativas li {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+  }
+  .simulador-reactivo {
+    width: 100%;
+    transform: scale(0.85); /* Achicamos un poco el simulador para que entre bien */
+    margin-top: -20px;
+  }
+
+  /* --- SEC 2: BENEFICIOS Y GRID MULTIENTORNO --- */
+  .seccion-beneficios-grid {
+    height: auto;
+    min-height: 100vh;
+    padding: 100px 0 50px;
+  }
+  /* Cambiamos el degradado a vertical para que oscurezca el fondo detrás del texto apilado */
+  .overlay-beneficios {
+    background: linear-gradient(180deg, rgba(2, 2, 38,0.95) 0%, rgba(2, 2, 38,0.8) 50%, rgba(2, 2, 38,0.2) 100%);
+  }
+  .panel-cristal-beneficios {
+    margin: 0 5%;
+    padding: 30px 20px;
+    text-align: center;
+    border-left: none;
+    border-top: 4px solid #FFCE00;
+  }
+  .cabecera-cristal h2 {
+    font-size: 2.2rem;
+  }
+  .linea-roja-neon {
+    margin: 0 auto 20px;
+  }
+  .grid-seis-beneficios {
+    grid-template-columns: 1fr; /* 1 sola columna en celular */
+    gap: 15px;
+  }
+  .item-beneficio-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .item-beneficio-card:hover {
+    transform: translateY(-5px); /* Movimiento vertical en lugar de horizontal para celular */
+  }
+
+  /* --- SEC 3: PERFILES IDEALES (PREMIUM) --- */
+  .seccion-ideales-premium {
+    height: auto;
+    min-height: 100vh;
+    padding: 100px 0 50px;
+  }
+  .overlay-ideales-oscuro {
+    background: linear-gradient(180deg, rgba(2, 2, 38,0.95) 0%, rgba(2, 2, 38,0.8) 50%, rgba(2, 2, 38,0.2) 100%);
+  }
+  .panel-ideales-izq {
+    margin: 0 5%;
+    padding: 30px 20px;
+    text-align: center;
+    border-left: none;
+    border-top: 5px solid #FFCE00;
+  }
+  .panel-ideales-izq h2 {
+    font-size: 2.2rem;
+  }
+  .item-ideal {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+  .item-ideal:hover {
+    transform: translateY(-5px);
+  }
+
+  /* --- SEC 4: COLECCIÓN ESPEJADA --- */
+  .premium-espejados {
+    height: auto;
+    padding: 120px 5% 50px;
+  }
+  .premium-header h2 {
+    font-size: 2.2rem;
+  }
+  .premium-cards-wrapper {
+    grid-template-columns: 1fr; /* Las 5 tarjetas se apilan una debajo de otra */
+    gap: 30px;
+  }
+  .premium-card {
+    min-height: auto;
+  }
+
+  /* --- CONTROLES DE PRESENTACIÓN --- */
+  .controles-presentacion {
+    bottom: 20px;
+    right: 20px;
+    gap: 10px;
+  }
+  .btn-flecha {
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+  }
+  /* Dentro de tu @media (max-width: 900px) existente */
+  .overlay-adaptativa {
+    background: linear-gradient(180deg, rgba(2, 2, 38,0.95) 0%, rgba(2, 2, 38,0.8) 50%, rgba(2, 2, 38,0.2) 100%);
+  }
+}
+
+
+/* =========================================================================
+   =========================================================================
+   REDISENO DE DISTRIBUCION  ·  SOLAR SAFE
+   =========================================================================
+   Todo lo de arriba se conserva. Este bloque solo reorganiza COMO se
+   distribuyen los bloques, porque hasta ahora las tres secciones de texto
+   repetian la misma composicion: panel de cristal anclado a la izquierda
+   con la foto sangrando por la derecha. Dos secciones seguidas con la misma
+   geometria se leen como la misma pantalla.
+
+   Reglas de este bloque:
+   · No se toca NINGUNA regla de tipografia (font-family / font-size /
+     font-weight / letter-spacing / line-height). El texto se ve igual de
+     grande, de la misma fuente y con el mismo peso que antes.
+   · No se toca el HTML. No se borra ningun elemento, ninguna imagen y
+     ningun texto. Solo cambia la geometria.
+   · La animacion de la seccion 1 (pulsoFondo, cicloSolar, reaccionLente,
+     mostrarClaro, mostrarOscuro) no se toca: ni sus keyframes, ni sus
+     duraciones, ni su sincronia de 8s. Solo se agranda el escenario donde
+     ocurre, que es lo que hace que se lea mas grande.
+   · Los hovers van detras de (hover: hover) para que en tablet no se
+     queden pegados al tocar.
+   ========================================================================= */
+
+:host {
+  /* Solo para los elementos nuevos de aqui. No redefine nada existente. */
+  --regla: rgb(255 255 255 / 0.14);
+  --regla-alta: rgb(255 255 255 / 0.28);
+  --dorado: #FFCE00;
+
+  /* Curvas propias. Las de CSS por defecto se sienten flojas. */
+  --salida: cubic-bezier(0.23, 1, 0.32, 1);
+  --entrada: cubic-bezier(0.77, 0, 0.175, 1);
+  --dato: 140ms;
+  --ui: 220ms;
+}
+
+
+/* =========================================================================
+   SECCION 1 — LENTES INTELIGENTES ADAPTATIVOS
+   Antes: dos columnas iguales, texto izquierda / simulador derecha, con las
+   3 propiedades apiladas verticalmente (3 filas de icono + parrafo).
+   Ahora: rejilla de 2 columnas desiguales. El simulador crece y se acerca
+   al borde derecho (pasa a ser el protagonista, que es lo que la seccion
+   esta contando), y las 3 propiedades pasan a una banda horizontal de 3
+   columnas divididas por filetes. La banda se queda en ~150px en vez de
+   ~360px: ese aire es lo que hace que la animacion respire.
+   ========================================================================= */
+
+/* =========================================================================
+   NADA SE CORTA
+   Las tres secciones de arriba declaran `height: 100vh` + `overflow: hidden`.
+   Con eso, cualquier contenido que no quepa exactamente en una pantalla
+   queda recortado y el texto se vuelve invisible. Se cambia a
+   `min-height`: la seccion sigue ocupando una pantalla completa cuando el
+   contenido es corto, y crece cuando no lo es. Nunca recorta.
+   ========================================================================= */
+
+.seccion-adaptativa,
+.seccion-beneficios-grid,
+.seccion-ideales-premium {
+  height: auto;
+  min-height: 100vh;
+  padding-top: clamp(40px, 6vh, 80px);
+  padding-bottom: clamp(40px, 6vh, 80px);
+}
+
+.seccion-adaptativa {
+  /* La seccion 1 mantiene su escenario a 100vh: la animacion esta calibrada
+     para llenar la pantalla, asi que aqui solo se le da aire vertical. */
+  padding-top: clamp(30px, 4vh, 60px);
+  padding-bottom: clamp(30px, 4vh, 60px);
+}
+
+/* El velo de fondo tiene que seguir cubriendo aunque la seccion crezca. */
+.img-fondo-adaptativa,
+.overlay-adaptativa,
+.fondo-ambiente-dinamico,
+.fondo-beneficios-img,
+.overlay-beneficios,
+.fondo-ideales-img,
+.overlay-ideales-oscuro {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.seccion-adaptativa,
+.seccion-beneficios-grid,
+.seccion-ideales-premium {
+  box-sizing: border-box;
+}
+
+.contenedor-adaptativo {
+  /* Contenedor mas ancho y reparto 1.3 / 0.7. El objetivo es que
+     "SIN IMPORTAR EL CLIMA" quepa en UNA linea: a 3 lineas el titular
+     empujaba la banda de propiedades fuera de la pantalla y el texto de las
+     tres propiedades quedaba cortado. Se arregla dando ancho al titular,
+     no encogiendo la letra. */
+  max-width: 1560px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+  grid-template-areas:
+    'logo    simulador'
+    'titulo  simulador'
+    'regla   simulador'
+    'parrafo simulador'
+    'props   props';
+  align-content: center;
+  align-items: start;
+  column-gap: clamp(24px, 3vw, 48px);
+  row-gap: 0;
+  padding: 0 3%;
+}
+
+/* display: contents convierte los hijos de .info-adaptativa en celdas
+   directas de la rejilla. Es lo que permite que la banda de propiedades
+   ocupe TODO el ancho (3 columnas cómodas) sin sacar nada del HTML, y que
+   el simulador se quede a la derecha occupying media pantalla. */
+.info-adaptativa {
+  display: contents;
+}
+
+.logo-adaptativo {
+  grid-area: logo;
+  margin-bottom: 22px;
+}
+
+.info-adaptativa h2 {
+  grid-area: titulo;
+  margin-bottom: 20px;
+}
+
+.info-adaptativa .linea-roja-corta {
+  grid-area: regla;
+}
+
+.texto-comercial {
+  grid-area: parrafo;
+  margin-bottom: 0;
+}
+
+/* Las 3 propiedades: de columna a banda horizontal a ancho completo. */
+.lista-propiedades-adaptativas {
+  grid-area: props;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  margin-top: 28px;
+  border-top: 1px solid var(--regla);
+}
+
+.lista-propiedades-adaptativas li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 22px 24px 0 0;
+  transition: transform var(--ui) var(--salida);
+}
+
+/* Filete vertical entre columnas: separa sin encerrar en una caja. */
+.lista-propiedades-adaptativas li + li {
+  padding-left: 24px;
+  border-left: 1px solid var(--regla);
+}
+
+/* El escenario del simulador: mas alto y pegado al borde derecho. */
+.simulador-reactivo {
+  grid-area: simulador;
+  align-self: center;
+  height: 520px;
+  width: 100%;
+  max-width: 460px;
+}
+
+/* El sol y el destello crecen con el escenario. */
+.sol-virtual {
+  width: 118px;
+  height: 118px;
+}
+
+.destello-cegador {
+  width: 350px;
+}
+
+/* El lente crece con su contenedor. Los keyframes animan transform /
+   background / backdrop-filter, ninguno de estos, asi que la animacion
+   sigue siendo exactamente la misma. */
+.lente-inteligente {
+  width: 236px;
+  height: 330px;
+}
+
+.indicador-estado {
+  bottom: 6px;
+  padding: 9px 22px;
+  background: rgb(2 2 38 / 0.72);
+  border-color: rgb(255 255 255 / 0.18);
+  backdrop-filter: blur(10px);
+}
+
+/* Elemento nuevo: medidor de luz en el borde izquierdo. Son filetes; los
+   del centro en dorado. Es la misma escala que usa el carril de
+   presentacion, asi que la pagina se explica sola. */
+.seccion-adaptativa::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: clamp(10px, 2vw, 26px);
+  transform: translateY(-50%);
+  width: 2px;
+  height: 220px;
+  z-index: 4;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    180deg,
+    var(--regla-alta) 0 14px,
+    transparent 14px 30px
+  );
+  background-size: 2px 220px;
+  background-repeat: no-repeat;
+  mask-image: linear-gradient(180deg, transparent, #000 22%, #000 78%, transparent);
+}
+
+
+/* =========================================================================
+   SECCION 2 — BENEFICIOS Y GRID MULTIENTORNO
+   Antes: un panel de cristal angosto (700px) pegado a la izquierda, con
+   cabecera arriba y las 6 prestaciones en 2x3 dentro. La foto se perdia
+   detras de mas de la mitad del ancho.
+   Ahora: el panel ocupa todo el ancho. La cabecera pasa a ser una banda
+   horizontal (logo a la izquierda, titular y parrafo a la derecha, con
+   filete abajo) y las 6 prestaciones pasan a un mosaico 3x2 de baldosas
+   verticales. Se gana la foto y se gana aire.
+   ========================================================================= */
+
+.contenedor-beneficios {
+  max-width: 1400px;
+  padding: 0 5.5%;
+}
+
+.panel-cristal-beneficios {
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(30px, 4vh, 46px);
+  padding: clamp(30px, 4vh, 46px) 0 0;
+  background: none;
+  backdrop-filter: none;
+  border: 0;
+  border-top: 1px solid var(--regla);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* Cabecera: de columna a banda horizontal.
+   IMPORTANTE: la cabecera tiene CUATRO hijos (logo, h2, la rayita dorada
+   .linea-roja-neon y el parrafo). Si no se colocan a mano, la rayita se
+   apodera de una columna, el h2 se descuadra y el parrafo salta de fila.
+   Por eso los cuatro tienen grid-column / grid-row explicitos. */
+.cabecera-cristal {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1.15fr) minmax(0, 0.85fr);
+  grid-template-rows: auto auto;
+  align-items: center;
+  gap: 0 clamp(20px, 3vw, 44px);
+  padding-bottom: clamp(20px, 2.6vh, 30px);
+  border-bottom: 1px solid var(--regla);
+}
+
+.logo-panel-beneficios {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: start;
+  height: 45px;
+  margin: 0;
+}
+
+.cabecera-cristal h2 {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: end;
+  margin: 0;
+}
+
+/* La rayita dorada se queda donde estaba: bajo el titular. No se elimina,
+   solo se coloca. */
+.cabecera-cristal .linea-roja-neon {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: start;
+  margin: 12px 0 0;
+}
+
+.cabecera-cristal p {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+  align-self: center;
+  margin: 0;
+}
+
+/* 6 prestaciones: 3 columnas x 2 filas, sin caja propia. */
+.grid-seis-beneficios {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(22px, 2.6vw, 38px);
+}
+
+.item-beneficio-card {
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 13px;
+  padding: 20px 0 0;
+  background: none;
+  border: 0;
+  border-top: 1px solid var(--regla);
+  border-radius: 0;
+  transition:
+    transform var(--ui) var(--salida),
+    border-color var(--ui) var(--salida);
+}
+
+/* Filete dorado que barre de izquierda a derecha al pasar el mouse. Es un
+   transform, no un width: no dispara layout. */
+.item-beneficio-card::after {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: var(--dorado);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 420ms var(--salida);
+}
+
+.icono-beneficio {
+  width: 45px;
+  height: 45px;
+  min-width: 45px;
+  transition:
+    background-color var(--ui) var(--salida),
+    color var(--ui) var(--salida),
+    border-color var(--ui) var(--salida),
+    transform var(--ui) var(--salida);
+}
+
+/* Escalonado vertical: dos filas desfasadas dan ritmo sin romper la
+   lectura de izquierda a derecha. */
+.grid-seis-beneficios > :nth-child(2),
+.grid-seis-beneficios > :nth-child(5) {
+  transform: translateY(-14px);
+}
+
+.grid-seis-beneficios > :nth-child(2)::after,
+.grid-seis-beneficios > :nth-child(5)::after {
+  transform: scaleX(0);
+}
+
+
+/* =========================================================================
+   SECCION 3 — PERFILES IDEALES
+   Antes: exactamente la misma composicion que la seccion 2 — panel de
+   cristal pegado a la izquierda, foto a la derecha, overlay degradado de
+   izquierda a derecha. Dos secciones seguidas con la misma geometria.
+   Ahora: se refleja. El overlay oscurece por la derecha, el panel se ancla
+   a la derecha y la foto respira por la izquierda. Los 4 perfiles pasan de
+   4 filas apiladas a una retícula 2x2 de baldosas.
+   El texto sigue alineado a la izquierda dentro del panel: moverlo de lado
+   no mejora la lectura de un parrafo.
+   ========================================================================= */
+
+.overlay-ideales-oscuro {
+  background: linear-gradient(270deg, rgba(2, 2, 38, 0.95) 0%, rgba(2, 2, 38, 0.8) 40%, rgba(2, 2, 38, 0.1) 100%);
+}
+
+.contenedor-ideales-premium {
+  max-width: 1400px;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 5.5%;
+}
+
+.panel-ideales-izq {
+  max-width: 660px;
+  width: 100%;
+  padding: clamp(30px, 4vh, 44px) clamp(26px, 3vw, 40px);
+  border-left: 0;
+  /* El acento va arriba, no en un lado: un filete de color en el canto de
+     una caja es el tictac más reconocible de una UI generada. */
+  border-top: 2px solid var(--dorado);
+  border-radius: 0;
+}
+
+.logo-ideales-nuevo {
+  height: 38px;
+  margin-bottom: 20px;
+}
+
+
+
+/* Los 4 perfiles: de 4 filas a 2x2. */
+.lista-interactiva-ideales {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 clamp(20px, 2.4vw, 34px);
+}
+
+.item-ideal {
+  position: relative;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px 0;
+  background: none;
+  border: 0;
+  border-top: 1px solid var(--regla);
+  border-radius: 0;
+  overflow: visible;
+  transition:
+    transform var(--ui) var(--salida),
+    border-color var(--ui) var(--salida);
+}
+
+/* El destello original barria de izquierda a derecha; al reflejar la
+   seccion tiene que barrer en el otro sentido. */
+.item-ideal::before {
+  top: 0;
+  left: auto;
+  right: -100%;
+  width: 50%;
+  height: 100%;
+  transition: right 600ms var(--salida);
+}
+
+.item-ideal:hover::before {
+  left: auto;
+  right: 150%;
+}
+
+.icono-ideal {
+  width: 45px;
+  height: 45px;
+  min-width: 45px;
+  transition:
+    background-color var(--ui) var(--salida),
+    color var(--ui) var(--salida),
+    transform var(--ui) var(--salida),
+    box-shadow var(--ui) var(--salida);
+}
+
+/* Elemento nuevo: rail de ticks a la derecha, con paso distinto al de la
+   seccion 1 para que no se lean el mismo elemento copiado. */
+.seccion-ideales-premium::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: clamp(10px, 2vw, 26px);
+  transform: translateY(-50%);
+  width: 2px;
+  height: 180px;
+  z-index: 4;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    180deg,
+    var(--regla-alta) 0 10px,
+    transparent 10px 26px
+  );
+  background-size: 2px 180px;
+  background-repeat: no-repeat;
+  mask-image: linear-gradient(180deg, transparent, #000 26%, #000 74%, transparent);
+}
+
+
+/* =========================================================================
+   SECCION 4 — COLECCION ESPEJADA
+   Antes: 5 tarjetas identicas en repeat(5, 1fr), todas con el mismo alto y
+   la misma alineacion. Es la composicion mas generica que existe: cinco
+   cajas iguales en fila.
+   Ahora: un escenario asimetrico. Las 5 lentes se apoyan sobre un riel
+   dorado comun pero a alturas distintas, y la carta central —GREEN, que es
+   la que la propia copia define como "equilibrio perfecto"— se eleva y
+   escala para actuar de carta principal. La cabecera deja de estar
+   centrada y pasa a ser una banda de dos columnas.
+   ========================================================================= */
+
+.premium-container {
+  max-width: 1400px;
+  padding: 0 5.5%;
+}
+
+.premium-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  align-items: end;
+  gap: clamp(20px, 3vw, 48px);
+  text-align: left;
+  /* Margen suficiente para que la tarjeta central, que sube 58px, no llegue
+     a pisar el parrafo de la cabecera. */
+  margin-bottom: clamp(58px, 8vh, 92px);
+  padding-bottom: clamp(20px, 3vh, 30px);
+  border-bottom: 1px solid var(--regla);
+}
+
+/* Igual que en la seccion 2: los tres hijos se colocan a mano. Si no, el
+   badge y el h2 se reparten filas por flujo automatico y el resultado
+   depende del orden del HTML. */
+.premium-badge {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: end;
+  justify-self: start;
+  margin-bottom: 14px;
+}
+
+.premium-header h2 {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: start;
+  margin: 0;
+}
+
+.premium-header p {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: end;
+  margin: 0;
+  max-width: none;
+}
+
+/* El riel: una linea dorada comun sobre la que se apoyan las 5 lentes. */
+.premium-cards-wrapper {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: clamp(10px, 1.4vw, 20px);
+  padding-bottom: 26px;
+}
+
+.premium-cards-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(255 206 0 / 0.55) 12%,
+    rgb(255 206 0 / 0.55) 88%,
+    transparent
+  );
+}
+
+.premium-card {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 340px;
+  padding: 26px 16px 30px;
+  border-radius: 14px;
+  transition:
+    transform 420ms var(--entrada),
+    background-color 420ms var(--entrada),
+    border-color 420ms var(--entrada),
+    box-shadow 420ms var(--entrada);
+}
+
+/* Escalonado: alturas alternas. translateY en vez de margin negativo para
+   que nada se recorte contra el borde de la seccion. */
+.premium-card:nth-child(1) { transform: translateY(-34px); }
+.premium-card:nth-child(2) { transform: translateY(10px); }
+.premium-card:nth-child(3) { transform: translateY(-58px) scale(1.06); }
+.premium-card:nth-child(4) { transform: translateY(10px); }
+.premium-card:nth-child(5) { transform: translateY(-34px); }
+
+/* La carta central es la protagonista: se separa del resto. */
+.premium-card:nth-child(3) {
+  z-index: 3;
+  background: rgb(255 255 255 / 0.05);
+  border-color: rgb(255 206 0 / 0.35);
+  box-shadow: 0 24px 60px rgb(0 0 0 / 0.55);
+}
+
+.premium-card:nth-child(3) .lens-image-container {
+  width: 158px;
+  margin-bottom: 20px;
+}
+
+/* El hover se apoya en la altura ya escalada, no la pisa. */
+.premium-card:nth-child(1):hover { transform: translateY(-48px); }
+.premium-card:nth-child(2):hover { transform: translateY(-4px); }
+.premium-card:nth-child(3):hover { transform: translateY(-70px) scale(1.09); }
+.premium-card:nth-child(4):hover { transform: translateY(-4px); }
+.premium-card:nth-child(5):hover { transform: translateY(-48px); }
+
+.lens-image-container {
+  transition: transform 520ms var(--entrada);
+}
+
+
+/* =========================================================================
+   TODO ENCAJA EN UNA PANTALLA
+   Las cuatro secciones son pantallas de una presentacion: las flechas del
+   pager saltan de una a otra, asi que el bloque completo de cada una tiene
+   que caber en el alto de la ventana. Con cuerpos, gaps y paddings fijos,
+   en pantallas bajas la ultima fila de cada reticula se salia por abajo:
+   la banda de propiedades en la 1, la segunda fila de la rejilla 3x2 en la
+   2, la ultima ficha de perfiles en la 3 y el texto de las cinco lentes en
+   la 4.
+
+   Aqui el ritmo vertical se mide con la altura disponible en vez de con
+   pixeles fijos. `min-height: 100vh` mantiene la pantalla completa cuando
+   el contenido es corto; cuando es largo, la seccion crece. Ninguna
+   recorta. Las animaciones no se tocan: los keyframes de esta pagina
+   (cicloSolar, mostrarClaro, mostrarOscuro, malla-polarizada, reflejo-curvo)
+   animan opacity, transform, background y backdrop-filter, nada de lo que
+   cambia aqui.
+   ========================================================================= */
+
+/* --- 1. ESCENARIO: EL SIMULADOR DEJA DE ESTIRAR LAS FILAS DE TEXTO ---
+   El simulador (520px) ocupaba las filas 1 a 4 de la rejilla, que juntas
+   miden menos: la diferencia se repartia entre ellas y abria un vacio
+   enorme entre la regla y el parrafo. Ahora el escenario se limita a la
+   altura de las filas de texto y el bloque vuelve a leerse pegado. */
+.simulador-reactivo {
+  height: clamp(200px, 28vh, 380px);
+}
+
+.sol-virtual {
+  width: clamp(74px, 9vh, 118px);
+  height: clamp(74px, 9vh, 118px);
+}
+
+.destello-cegador {
+  width: clamp(220px, 26vw, 350px);
+}
+
+.lente-inteligente {
+  width: clamp(150px, 14vw, 236px);
+  height: clamp(210px, 25vh, 330px);
+}
+
+/* Los dos estados del indicador se cruzaban en el mismo sitio: uno estaba
+   en el flujo y el otro en absoluto. Los dos ocupan ahora la misma celda
+   y se encadenan en el tiempo, que es lo que dicen los dos keyframes. */
+.indicador-estado {
+  display: grid;
+  justify-items: center;
+  bottom: clamp(4px, 1.2vh, 10px);
+  padding: clamp(6px, 1vh, 9px) clamp(14px, 1.6vw, 22px);
+}
+
+.indicador-estado span {
+  grid-area: 1 / 1;
+  text-align: center;
+}
+
+.estado-oscuro {
+  position: static;
+  left: auto;
+}
+
+.logo-adaptativo {
+  height: clamp(48px, 6.4vh, 80px);
+  margin-bottom: clamp(12px, 1.8vh, 22px);
+}
+
+.info-adaptativa h2 {
+  font-size: clamp(2.3rem, 5vh, 3.8rem);
+  margin-bottom: clamp(12px, 1.8vh, 20px);
+}
+
+.linea-roja-corta {
+  margin-bottom: clamp(12px, 1.8vh, 20px);
+}
+
+.texto-comercial {
+  font-size: clamp(0.95rem, 1.6vh, 1.1rem);
+  line-height: 1.5;
+}
+
+.lista-propiedades-adaptativas {
+  margin-top: clamp(16px, 2.4vh, 28px);
+}
+
+.lista-propiedades-adaptativas li {
+  gap: clamp(8px, 1.2vh, 12px);
+  padding: clamp(14px, 2vh, 22px) 24px 0 0;
+}
+
+.icono-prop {
+  width: clamp(36px, 4.6vh, 45px);
+  height: clamp(36px, 4.6vh, 45px);
+  min-width: clamp(36px, 4.6vh, 45px);
+}
+
+.texto-prop h4 {
+  font-size: clamp(1.05rem, 2vh, 1.4rem);
+}
+
+.texto-prop p {
+  font-size: clamp(0.8rem, 1.4vh, 0.9rem);
+  line-height: 1.45;
+}
+
+/* --- 2. REJILLA 3x2: CABECERA EN BANDA + DOS FILAS QUE SI ENTRAN --- */
+.panel-cristal-beneficios {
+  gap: clamp(20px, 3vh, 46px);
+  padding-top: clamp(20px, 3vh, 46px);
+}
+
+.logo-panel-beneficios {
+  height: clamp(30px, 4.2vh, 45px);
+}
+
+.cabecera-cristal h2 {
+  font-size: clamp(1.8rem, 4.2vh, 3.2rem);
+}
+
+.cabecera-cristal .linea-roja-neon {
+  margin-top: clamp(8px, 1.4vh, 12px);
+}
+
+.cabecera-cristal p {
+  font-size: clamp(0.88rem, 1.6vh, 1.05rem);
+  line-height: 1.5;
+}
+
+.cabecera-cristal {
+  padding-bottom: clamp(14px, 2.2vh, 30px);
+}
+
+.grid-seis-beneficios {
+  gap: clamp(14px, 2vh, 38px);
+}
+
+.item-beneficio-card {
+  gap: clamp(8px, 1.2vh, 13px);
+  padding-top: clamp(12px, 1.8vh, 20px);
+}
+
+.icono-beneficio {
+  width: clamp(34px, 4.4vh, 45px);
+  height: clamp(34px, 4.4vh, 45px);
+  min-width: clamp(34px, 4.4vh, 45px);
+}
+
+/* El escalonado alterno tambien se aprieta: a 14px fijos hacia arriba se
+   comia el aire de la fila de arriba. */
+.grid-seis-beneficios > :nth-child(2),
+.grid-seis-beneficios > :nth-child(5) {
+  transform: translateY(clamp(-6px, -1.6vh, -14px));
+}
+
+.texto-beneficio-card h4 {
+  font-size: clamp(0.95rem, 1.9vh, 1.2rem);
+}
+
+.texto-beneficio-card p {
+  font-size: clamp(0.78rem, 1.4vh, 0.9rem);
+  line-height: 1.45;
+}
+
+/* --- 3. PERFILES IDEALES: EL PANEL ENTRA Y DEJA AIRE AL PAGER ---
+   El pager es fixed abajo a la derecha y se montaba sobre el texto de la
+   ultima ficha. Con aire abajo, la seccion lo recibe en una franja vacia
+   en vez de encima del contenido. */
+.seccion-ideales-premium {
+  padding-bottom: clamp(64px, 9vh, 120px);
+}
+
+.panel-ideales-izq {
+  padding: clamp(20px, 3.2vh, 44px) clamp(22px, 3vw, 40px);
+}
+
+.logo-ideales-nuevo {
+  height: clamp(26px, 3.6vh, 38px);
+  margin-bottom: clamp(10px, 1.6vh, 20px);
+}
+
+.badge-solar {
+  margin-bottom: clamp(8px, 1.2vh, 15px);
+}
+
+.panel-ideales-izq h2 {
+  font-size: clamp(1.7rem, 3.8vh, 3.2rem);
+}
+
+.intro-ideales {
+  font-size: clamp(0.88rem, 1.6vh, 1.05rem);
+  line-height: 1.5;
+}
+
+.lista-interactiva-ideales {
+  gap: 0 clamp(16px, 2vw, 34px);
+}
+
+.item-ideal {
+  gap: clamp(8px, 1.2vh, 14px);
+  padding: clamp(10px, 1.6vh, 18px) 0;
+}
+
+.icono-ideal {
+  width: clamp(34px, 4.4vh, 45px);
+  height: clamp(34px, 4.4vh, 45px);
+  min-width: clamp(34px, 4.4vh, 45px);
+}
+
+.texto-ideal h4 {
+  font-size: clamp(0.95rem, 1.9vh, 1.2rem);
+}
+
+.texto-ideal p {
+  font-size: clamp(0.78rem, 1.4vh, 0.9rem);
+  line-height: 1.45;
+}
+
+/* --- 4. COLECCION ESPEJADA: CINCO LENTES, TEXTO ENTERO ---
+   Las cinco tarjetas tienen un escalonado de -58px que puede comer el
+   borde superior de la seccion si el resto ya llena la pantalla; se acota
+   con la altura disponible. El padding lleva !important porque la regla
+   vieja de la tarjeta lo declaraba asi. */
+.premium-espejados {
+  padding: clamp(40px, 5.5vh, 72px) 5% clamp(64px, 9vh, 120px);
+}
+
+.premium-header {
+  margin-bottom: clamp(34px, 5vh, 92px);
+  padding-bottom: clamp(14px, 2.2vh, 30px);
+}
+
+.premium-badge {
+  margin-bottom: clamp(8px, 1.4vh, 14px);
+  padding: clamp(5px, 0.9vh, 8px) clamp(14px, 1.6vw, 20px);
+}
+
+.premium-header h2 {
+  font-size: clamp(1.8rem, 4.4vh, 3.5rem);
+  margin-bottom: clamp(8px, 1.4vh, 15px);
+}
+
+.premium-header p {
+  font-size: clamp(0.9rem, 1.6vh, 1.1rem);
+  line-height: 1.5;
+}
+
+.premium-card {
+  min-height: clamp(220px, 33vh, 380px);
+  padding: clamp(14px, 2.4vh, 30px) clamp(12px, 1.4vw, 20px) clamp(18px, 2.8vh, 40px) !important;
+}
+
+.lens-image-container {
+  width: clamp(78px, 10.5vh, 130px) !important;
+  margin-bottom: clamp(8px, 1.4vh, 15px) !important;
+}
+
+.premium-card:nth-child(3) .lens-image-container {
+  width: clamp(94px, 12.5vh, 158px) !important;
+}
+
+.card-content h3 {
+  font-size: clamp(1.1rem, 2.2vh, 1.5rem);
+  margin-bottom: clamp(6px, 1vh, 15px);
+}
+
+.card-content p {
+  font-size: clamp(0.74rem, 1.3vh, 0.85rem);
+  line-height: 1.4;
+}
+
+.premium-card:nth-child(1) { transform: translateY(clamp(-12px, -3.8vh, -34px)); }
+.premium-card:nth-child(2) { transform: translateY(clamp(4px, 1.1vh, 10px)); }
+.premium-card:nth-child(3) { transform: translateY(clamp(-20px, -6.5vh, -58px)) scale(1.06); }
+.premium-card:nth-child(4) { transform: translateY(clamp(4px, 1.1vh, 10px)); }
+.premium-card:nth-child(5) { transform: translateY(clamp(-12px, -3.8vh, -34px)); }
+
+.premium-card:nth-child(1):hover { transform: translateY(clamp(-18px, -5.4vh, -48px)); }
+.premium-card:nth-child(2):hover { transform: translateY(clamp(-2px, -0.4vh, -4px)); }
+.premium-card:nth-child(3):hover { transform: translateY(clamp(-24px, -8vh, -70px)) scale(1.09); }
+.premium-card:nth-child(4):hover { transform: translateY(clamp(-2px, -0.4vh, -4px)); }
+.premium-card:nth-child(5):hover { transform: translateY(clamp(-18px, -5.4vh, -48px)); }
+
+/* En movil el pager tambien se come contenido: la franja vacia pasa a ser
+   parte del hueco que ya deja la barra de navegacion. */
+@media (max-width: 900px) {
+  .seccion-ideales-premium,
+  .premium-espejados {
+    padding-bottom: clamp(84px, 12vh, 140px);
+  }
+}
+
+
+/* =========================================================================
+   RETROALIMENTACION AL TOCAR
+   Un control que no baja cuando lo presionas no se siente controlable.
+   ========================================================================= */
+
+.btn-flecha {
+  transition:
+    background-color var(--ui) var(--salida),
+    color var(--ui) var(--salida),
+    transform var(--dato) var(--salida),
+    box-shadow var(--ui) var(--salida);
+}
+
+.btn-flecha:active:not(.oculto) {
+  transform: scale(0.94);
+}
+
+.nav-links a {
+  transition:
+    background-color var(--ui) var(--salida),
+    color var(--ui) var(--salida),
+    transform var(--dato) var(--salida);
+}
+
+.nav-links a:active {
+  transform: scale(0.96);
+}
+
+
+/* =========================================================================
+   HOVERS CON RATON
+   En tablet el :hover se queda pegado al tocar, asi que va gateado.
+   ========================================================================= */
+
+@media (hover: hover) and (pointer: fine) {
+  .lista-propiedades-adaptativas li:hover {
+    transform: translateY(-6px);
+  }
+
+  .lista-propiedades-adaptativas li:hover .icono-prop {
+    transform: scale(1.08);
+    box-shadow: 0 8px 20px rgb(255 206 0 / 0.45);
+  }
+
+  .item-beneficio-card:hover {
+    background: none;
+    border-color: var(--dorado);
+    transform: translateY(-6px);
+  }
+
+  .item-beneficio-card:nth-child(2):hover,
+  .item-beneficio-card:nth-child(5):hover {
+    transform: translateY(-20px);
+  }
+
+  .item-beneficio-card:hover::after {
+    transform: scaleX(1);
+  }
+
+  .item-beneficio-card:hover .icono-beneficio {
+    background: var(--dorado);
+    color: #020226;
+    border-color: var(--dorado);
+    box-shadow: 0 6px 18px rgb(255 206 0 / 0.4);
+    transform: translateY(-2px);
+  }
+
+  .item-ideal:hover {
+    background: none;
+    border-color: var(--dorado);
+    transform: translateY(-5px);
+    box-shadow: none;
+  }
+}
+
+/* El contenido se revela tambien al enfocar con teclado: si no, esa
+   informacion solo existe para quien tiene raton. */
+.item-ideal:focus-visible,
+.item-beneficio-card:focus-visible,
+.premium-card:focus-visible {
+  outline: 2px solid var(--dorado);
+  outline-offset: 4px;
+}
+
+
+/* =========================================================================
+   RESPONSIVE DE ESTE BLOQUE
+   ========================================================================= */
+
+@media (max-width: 1180px) {
+  .cabecera-cristal {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .premium-header {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .premium-header p {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .premium-card:nth-child(n) {
+    transform: none;
+    min-height: clamp(210px, 32vh, 300px);
+  }
+
+  .premium-card:nth-child(n):hover {
+    transform: translateY(-10px);
+  }
+}
+
+@media (max-width: 900px) {
+  /* El padding vertical lo fijan las reglas de arriba; en movil se deja
+     margen para la barra de navegacion. */
+  .seccion-adaptativa,
+  .seccion-beneficios-grid,
+  .seccion-ideales-premium {
+    padding-top: 110px;
+    padding-bottom: 60px;
+  }
+
+  .contenedor-adaptativo {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .lista-propiedades-adaptativas {
+    grid-template-columns: 1fr;
+  }
+
+  .lista-propiedades-adaptativas li {
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 16px 0 0;
+  }
+
+  .lista-propiedades-adaptativas li + li {
+    padding-left: 0;
+    border-left: 0;
+    border-top: 1px solid var(--regla);
+  }
+
+  .simulador-reactivo {
+    transform: scale(0.85);
+    margin-top: -20px;
+  }
+
+  .panel-cristal-beneficios {
+    border-left: 0;
+    border-top: 2px solid var(--dorado);
+    padding-top: 30px;
+  }
+
+  .logo-panel-beneficios {
+    margin: 0 auto;
+  }
+
+  .grid-seis-beneficios {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-seis-beneficios > :nth-child(n) {
+    transform: none;
+  }
+
+  .contenedor-ideales-premium {
+    justify-content: center;
+  }
+
+  .panel-ideales-izq {
+    border-left: 0;
+    border-top: 2px solid var(--dorado);
+  }
+
+  .lista-interactiva-ideales {
+    grid-template-columns: 1fr;
+  }
+
+  .premium-header h2,
+  .premium-header p {
+    text-align: center;
+  }
+
+  .premium-badge {
+    justify-self: center;
+  }
+
+  .premium-cards-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .premium-card:nth-child(n) {
+    min-height: auto;
+  }
+
+  .seccion-adaptativa::before,
+  .seccion-ideales-premium::before {
+    display: none;
+  }
+}

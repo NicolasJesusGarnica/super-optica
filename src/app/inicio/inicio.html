@@ -1,0 +1,51 @@
+<nav class="navbar">
+  <div class="logo-container">
+    <a routerLink="/">
+      <!-- Logo blanco para el navbar con fondo amarillo/oscuro -->
+      <img src="/assets/SUPERLOGO.png" alt="Super Óptica">
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li><a routerLink="/materiales">LENTES Y MONTURAS</a></li>
+  </ul>
+</nav>
+
+<header class="hero-section">
+  
+  <!-- VIDEO DE FONDO -->
+  <video autoplay loop [muted]="true" playsinline class="hero-video">
+    <source src="/assets/Video-Fondo-Inicio.mp4" type="video/mp4">
+  </video>
+
+  <!-- ¡ESTE ES EL FILTRO OSCURO QUE FALTABA! -->
+  <div class="hero-overlay"></div>
+
+  <!-- CONTENIDO CENTRAL -->
+  <div class="hero-contenido">
+    
+    <!-- Logo de Optinova Gigante y más arriba (Zona Roja) -->
+    <img src="/assets/SUPEROPTICA.png" alt="Super Óptica" class="logo-principal">
+
+    <!-- Fila de Tecnologías más abajo (Zona Azul) -->
+    <div class="logos-tecnologias">
+      <a routerLink="/blue-stop">
+        <img src="/assets/BLUEWHITE@4x.png" alt="Blue Stop">
+      </a>
+      <a routerLink="/age-protection">
+        <img src="/assets/AGEWHITE.png" alt="Age Protection">
+      </a>
+            <a routerLink="/descubre">
+        <img src="/assets/SOLARWHITE.png" alt="Solar Safe">
+      </a>
+            <a routerLink="/transitions">
+        <img src="/assets/Transitions-GEN-S-Logo-White.png" alt="Transitions">
+      </a>
+      <a routerLink="/hd">
+        <img src="/assets/HD.png" alt="HD">
+      </a>
+      <a routerLink="/evolutions">
+        <img src="/assets/lentes-progresivos.png" alt="Evolution">
+      </a>
+    </div>
+  </div>
+</header>

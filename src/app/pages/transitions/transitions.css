@@ -221,7 +221,7 @@
 .overlay-hero-gradient {
   position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
-  background: radial-gradient(ellipse at center, rgba(2,2,38,0.55) 0%, rgba(2,2,38,0.88) 60%, rgba(2,2,38,0.97) 100%);
+  background: radial-gradient(ellipse at center, rgba(2,2,38,0.55) 0%, rgba(2,2,38,0.88) 80%, rgba(2,2,38,0.97) 80%);
 }
 
 .marca-agua-iso.iso-hero {
@@ -383,12 +383,7 @@
   overflow: hidden;
 }
 
-.overlay-simulador {
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: linear-gradient(to left, rgba(2,2,38,0.95) 0%, rgba(2,2,38,0.85) 45%, rgba(2,2,38,0.25) 100%);
-  z-index: 2;
-}
+
 
 .contenedor-simulador {
   position: relative;
@@ -408,7 +403,7 @@
 }
 
 .logo-simulador {
-  height: 26px;
+  height: 66px;
   margin-bottom: 20px;
 }
 
@@ -776,12 +771,7 @@
   z-index: 1;
 }
 
-.overlay-rendimiento {
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: linear-gradient(180deg, rgba(2,2,38,0.92) 0%, rgba(2,2,38,0.78) 50%, rgba(2,2,38,0.96) 100%);
-  z-index: 2;
-}
+
 
 .contenedor-rendimiento {
   position: relative;
@@ -1092,10 +1082,13 @@
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 25px 40px rgba(0, 0, 0, 0.35));
-  animation: flotarLente 5s ease-in-out infinite;
   z-index: 1;
 }
 
+/* La flotacion se queda sin uso: la cabeza ya no cabe por debajo de la
+   paleta --se solapa con ella-- y un desplazamiento de 12px hacia arriba
+   hacia que el pelo se saliera de la seccion otra vez. Sin animacion, la
+   cabeza se queda quieta y el solape es estable. */
 @keyframes flotarLente {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-12px); }
@@ -1155,7 +1148,106 @@
   filter: drop-shadow(0 10px 20px rgba(255, 206, 0, 0.3));
 }
 
-.swatch-color:hover span { color: var(--so-gold); }
+/* =========================================================================
+   SECCION 5 — LA PALETA: LA CABEZA Y LOS TONOS
+   Dos cosas se estaban peleando con el lienzo:
+
+   · La cabeza "volaba". `mujer2.webp` es un retrato cuadrado sobre fondo
+     blanco y se estaba maquetando por ancho (max-width 480px), con lo que la
+     imagen crecia hacia arriba y se salia de la seccion: de ahi el pelo
+     cortado en recto y la sensacion de que la cabeza flotaba. Ahora la
+     imagen se limita por ALTO --con `object-fit: contain` para que se vea
+     entera--, no flota, y la paleta se le monta encima: el solapa convierte
+     las dos piezas en un solo campo claro en vez de dos bloques pegados.
+   · Los nombres de los tonos no se leian. Cada archivo de muestra trae su
+     nombre impreso en negro sobre su propio fondo blanco, y a 70px de ancho
+     ese texto quedaba en 5px. Encima se habia puesto una etiqueta blanca
+     debajo, que duplicaba el nombre y se comia la atencion. Aqui las
+     muestras van a 3 columnas y 2 filas, que es lo que hace falta para que
+     el nombre impreso se lea de verdad, y la etiqueta duplicada desaparece.
+   ========================================================================= */
+
+.visual-style {
+  /* El solape con la paleta lo hace un margen negativo, asi que el `gap` se
+     pone a cero para que no pelee con el. */
+  gap: 0;
+  justify-content: center;
+}
+
+.modelo-derecha {
+  /* Se acota el alto, no el ancho: es un retrato cuadrado y hay que
+     garantizar que la cabeza entra completa. Ahora es ademas la pieza
+     grande del lado izquierdo: es el rostro el que vende los lentes. */
+  width: auto;
+  max-width: 100%;
+  height: clamp(260px, 46vh, 520px);
+  max-height: 52vh;
+  object-fit: contain;
+  position: relative;
+  top: 10px;
+  margin-top: 80px;
+  /* El retrato deja de flotar: quieto, y la paleta se le monta encima. */
+  animation: none;
+}
+
+
+.panel-paleta-colores {
+  /* Contacto literal: el borde inferior del retrato cae justo en el borde
+     superior de la tarjeta, sin hueco y sin solape. Es la linea de la
+     referencia --el momento exacto en que la imagen empieza a tocar la caja
+     clara-- y se consigue con margen cero, no con negativos: un margen
+     negativo hacia que la tarjeta se montara por encima y se comiera el
+     cuello. */
+  margin-top: -100px;
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 680px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 1.6vw, 20px);
+  
+}
+
+/* =========================================================================
+   LA PALETA SOBRE TARJETA CLARA
+   Los seis archivos de muestra traen su nombre impreso en negro sobre su
+   propio fondo blanco. Sobre el navy de la seccion ese negro no se veia:
+   la muestra es informacion, no decoracion, asi que el campo tiene que
+   ser suyo. La tarjeta pasa a un gris claro con un pelo dorado --el mismo
+   dorado del titulo y de la rayita-- y asi el nombre se lee solo, sin tocar
+   ni la tipografia ni los acentos de la seccion.
+   La muestra, blanca sobre tarjeta clara, se recorta por su propia sombra.
+   ========================================================================= */
+
+.panel-paleta-colores {
+  background: linear-gradient(180deg,
+    rgba(250, 251, 253, 0.96) 0%,
+    rgba(234, 238, 246, 0.96) 100%);
+  /* Sobre una tarjeta opaca el desenfoque de fondo no hace nada: se quita. */
+  backdrop-filter: none;
+  border: 1px solid rgba(255, 206, 0, 0.55);
+  box-shadow: 0 24px 60px rgba(2, 6, 23, 0.45);
+}
+
+.img-swatch {
+  max-width: 100%;
+  height: auto;
+  filter: drop-shadow(0 6px 12px rgba(2, 6, 23, 0.26));
+}
+
+.swatch-color:hover .img-swatch {
+  filter: drop-shadow(0 12px 22px rgba(2, 6, 23, 0.34))
+          drop-shadow(0 0 14px rgba(255, 206, 0, 0.5));
+}
+
+/* La etiqueta duplicada ya no existe en el HTML. */
+.swatch-color span {
+  display: none;
+}
+
+.swatch-color:hover span {
+  display: none;
+}
 
 @media (max-width: 900px) {
   .bg-gradiente-claro-oscuro {
@@ -1196,7 +1288,7 @@
 .overlay-exclusivas {
   position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
-  background: linear-gradient(90deg, rgba(2,2,38,0.97) 0%, rgba(2,2,38,0.75) 32%, rgba(2,2,38,0.55) 100%);
+  background: linear-gradient(90deg, rgba(2,2,38,0.97) 0%, rgba(2,2,38,0.75) 32%, rgba(2,2,38,0.55) 5%);
   z-index: 2;
 }
 
@@ -1426,7 +1518,7 @@
 }
 
 .logo-dw {
-  height: 30px;
+  height: 80px;
   margin-bottom: 16px;
   filter: brightness(0) invert(1);
 }
@@ -1637,12 +1729,174 @@
     linear-gradient(to top, rgba(2, 2, 38, 0.7) 0%, rgba(2, 2, 38, 0) 42%);
 }
 
-/* El panel es la ficha de cristal de la foto: algo mas opaco para que los
-   controles y el lente se lean por encima del rostro. */
+/* =========================================================================
+   SIN CAJA, SIN AZUL: QUE SE VEAN EL FOTOGRAMA Y EL CRISTAL
+   La foto de escenario es el contenido de esta seccion --el fotograma que
+   el fotocromico esta "--, y las dos capas que la tapaban competian con
+   ella:
+   · el recuadro del simulador (borde, relleno, blur y sombra) dejaba el
+     fotograma dentro de una urna gris. Se elimina: la agrupacion la
+     sostienen el titulo, los tres botones y la forma de la gafa, que es lo
+     unico que hace falta para jerarquizar sin encerrar.
+   · el velo era navy saturado (2, 2, 38) al 0.86-0.95 sobre el lado del
+     texto y 0.40 en el del lente, con lo que la escena salia azulada. Ahora
+     es un grafito casi neutro (6, 7, 14) y sigue siendo fuerte detras del
+     texto --que lo necesita-- y casi limpio en el tercio del cristal.
+   Los botones y la etiqueta si conservan su propio fondo: al quitar la caja
+   se quedan sin apoyo sobre una foto luminosa, asi que se llevan un velo
+   propio para seguir leyendose. Es la misma regla de la pagina: primero la
+   foto, encima solo el texto que tiene que leerse.
+   ========================================================================= */
+
 .panel-interactivo {
-  background: rgba(2, 2, 38, 0.42);
-  border-color: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+  background: transparent;
+  backdrop-filter: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: clamp(18px, 3vh, 32px) 0;
+}
+
+.titulo-panel {
+  color: var(--so-white);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+}
+
+.trigger-luz {
+  background: rgba(4, 5, 12, 0.62);
+  backdrop-filter: blur(8px);
+  border-color: rgba(255, 255, 255, 0.16);
+  color: var(--so-white);
+}
+
+/* =========================================================================
+   LA COLUMNA DE TEXTO, EN TARJETA
+   Al quitar el velo azul para que se vieran el fotograma y el cristal, la
+   mitad derecha se quedo sin suelo: el titular, la entradilla y las tres
+   ventajas caian sobre un campo a pleno sol y no se leian. Un velo de
+   seccion ya no es la solucion --tapaba la foto--; la solucion es que el
+   propio bloque de texto lleve su tarjeta. Asi la foto se ve alrededor, el
+   lente se ve, y el texto tiene contraste propio sea cual sea el escenario.
+   ========================================================================= */
+
+.info-dinamica {
+  padding: clamp(18px, 2.4vw, 32px);
+  background: rgba(4, 5, 12, 0.66);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+
+/* El texto mas tenue de la columna daba un 4.3:1 sobre la tarjeta, justo en
+   el limite. Con la tarjeta ya hace el contraste, el gris puede subir un
+   punto y leerse sin esfuerzo. */
+.lista-beneficios-dinamicos p {
+  color: var(--so-text-muted);
+}
+
+/* El velo de seccion se aligera: ahora el contraste lo lleva la tarjeta, y
+   la foto tiene que respirar alrededor. */
+.overlay-simulador {
+  background: linear-gradient(to left,
+    rgba(6, 7, 14, 0.5) 0%,
+    rgba(6, 7, 14, 0.34) 46%,
+    rgba(6, 7, 14, 0.2) 72%,
+    rgba(6, 7, 14, 0.12) 100%);
+}
+
+/* Las fotos ya traen su luz; se apagan lo justo para que el texto de la
+   derecha no compita con ellas. */
+.fondo-escenario {
+  filter: brightness(0.78) contrast(1.04) saturate(1.02);
+}
+
+/* El cristal necesita su propia sombra para recortarse sobre un fotograma
+   claro: sin ella, un lente casi negro sobre un campo al sol pierde el
+   borde. */
+.marco-gafa {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(0, 0, 0, 0.35);
+}
+
+/* =========================================================================
+   EL FONDO SIGUE AL ESCENARIO PULSADO
+   El simulador tiene tres entornos --INTERIORES, NUBLADO y SOLEADO-- y hasta
+   ahora solo cambiaba el cristal, con `:hover` sobre los botones: una prueba
+   que se perdia en cuanto salia el raton y que no movia el fondo.
+
+   Ahora los tres escenarios son el estado de la seccion (`data-escenario` en
+   la etiqueta, alimentado por el componente) y las tres fotos se apilan con
+   una transicion de opacidad: la del escenario activo es la unica opaca, y
+   al pulsar un boton la nueva se funde sobre la anterior. Al ser un estado y
+   no un hover, la imagen se queda mientras el usuario siga mirando el panel.
+
+   Las fotos vienen con su propia luz (un campo a pleno sol, una ciudad bajo
+   el nubes, una sala encendida al atardecer), asi que se apagan un poco para
+   que el texto de la derecha no compita con ellas.
+   ========================================================================= */
+
+.fondo-escenario {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.62) contrast(1.05) saturate(0.88);
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 900ms cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.seccion-simulador-dinamico[data-escenario='interiores'] .fondo-escenario-interiores,
+.seccion-simulador-dinamico[data-escenario='nublado'] .fondo-escenario-nublado,
+.seccion-simulador-dinamico[data-escenario='soleado'] .fondo-escenario-soleado {
+  opacity: 1;
+}
+
+/* El boton pulsado: no solo cambia de color, tambien se marca con un filete
+   interior, para que el estado se lea sin depender del matiz. */
+.trigger-luz {
+  appearance: none;
+  -webkit-appearance: none;
+  font-family: inherit;
+  line-height: 1.25;
+}
+
+.trigger-luz.activa {
+  background: rgba(255, 206, 0, 0.16);
+  border-color: var(--so-gold);
+  color: var(--so-white);
+  box-shadow: inset 0 0 0 1px rgba(255, 206, 0, 0.55);
+}
+
+.trigger-luz.activa i {
+  color: var(--so-gold);
+  transform: scale(1.12);
+}
+
+.trigger-luz:focus-visible {
+  outline: 2px solid var(--so-gold);
+  outline-offset: 3px;
+}
+
+/* El cristal sigue al escenario elegido y ya no depende del raton: es el
+   estado del panel, no una prueba. Se mantiene el `transition` largo que
+   tenia, que es lo que da la sensacion de transicion fotocromica. */
+.seccion-simulador-dinamico[data-escenario='interiores'] .cristal-inteligente {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(2px);
+}
+
+.seccion-simulador-dinamico[data-escenario='nublado'] .cristal-inteligente {
+  background: rgba(120, 96, 20, 0.45);
+  backdrop-filter: blur(5px);
+}
+
+.seccion-simulador-dinamico[data-escenario='soleado'] .cristal-inteligente {
+  background: rgba(20, 15, 2, 0.95);
+  backdrop-filter: blur(8px);
 }
 
 /* --- SECCION 4: LA FOTO DE LABORATORIO SE SACA DEL AZUL ---
@@ -1783,17 +2037,54 @@
   gap: clamp(12px, 2vw, 24px);
 }
 
+/* =========================================================================
+   3. RESPALDO CIENTIFICO: TIPOGRAFIA
+   Aqui hay tres roles y los tres estaban por debajo de donde deberian:
+   · La entradilla es la voz de primer nivel del lado izquierdo y estaba en
+     14px. Sube a 1.1rem como minimo.
+   · Las cinco descripciones ("Anos de experiencia fotocromatica") son el
+     texto que explica cada cifra, no un pie de foto: estaban en 12px, por
+     debajo del suelo de lectura de 16px, y con tracking de 1px en una
+     superficie oscura donde es justo lo que mas se pierde.
+   · La cifra (30+, 100K, 1.500) es el dato y ya estaba bien de tamano.
+   Texto claro sobre fondo oscuro pide compensacion en los tres ejes: algo
+   mas de interlineado, algo mas de tracking y un peso mas. La medida de la
+   entradilla se queda en 56ch, dentro del rango comodo de 45 a 75.
+   ========================================================================= */
+.cabecera-cientifica p {
+  font-size: clamp(1.1rem, 1.95vh, 1.3rem);
+  line-height: 1.55;
+  letter-spacing: 0.005em;
+  max-width: 56ch;
+}
+
+.destaque-simbiotico {
+  font-size: clamp(1.1rem, 2.1vh, 1.35rem);
+  line-height: 1.3;
+  letter-spacing: 0.04em;
+}
+
 .card-dato {
   padding: clamp(14px, 2.2vh, 24px) clamp(12px, 1.4vw, 20px);
+  gap: clamp(16px, 2vw, 24px);
 }
 
 .numero-dato {
-  font-size: clamp(1.8rem, 4.2vh, 2.6rem);
+  font-size: clamp(2rem, 4.8vh, 2.8rem);
+  min-width: clamp(96px, 9vw, 120px);
 }
 
 .card-dato p {
-  font-size: clamp(0.76rem, 1.4vh, 0.86rem);
+  font-size: clamp(0.95rem, 1.75vh, 1.1rem);
   line-height: 1.45;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--so-white);
+}
+
+.card-dato i {
+  font-size: clamp(1.25rem, 2.2vh, 1.6rem);
+  min-width: clamp(38px, 3.4vw, 48px);
 }
 
 /* --- 4. RENDIMIENTO DUAL: LAS DOS FICHAS Y SU PIE --- */
@@ -1963,7 +2254,7 @@
 }
 
 .logo-dw {
-  height: clamp(26px, 3.8vh, 40px);
+  height: clamp(66px, 3.8vh, 40px);
   margin-bottom: clamp(10px, 1.6vh, 16px);
 }
 

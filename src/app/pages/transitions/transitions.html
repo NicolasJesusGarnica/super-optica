@@ -65,12 +65,19 @@
 
 <!-- SECCIÓN 2: SIMULADOR DINÁMICO TRANSITIONS -->
 <!-- Composición invertida: panel interactivo a la izquierda, texto a la derecha -->
-<section class="seccion-simulador-dinamico" id="sec-2">
+<section class="seccion-simulador-dinamico" id="sec-2" [attr.data-escenario]="escenario">
   <div class="bg-drivewear-gradient"></div>
 
-  <!-- Retrato de la seccion: la foto entra espejada para que el rostro caiga
-       detras del panel de cristal (izquierda) y no detras del texto. -->
+  <!-- Fondo por escenario. Los tres se apilan y solo uno esta opaco: el que
+     corresponde al boton pulsado. El retrato (trans-2.jpg) queda DEBAJO, como
+     base: por un lado evita el flash negro durante el fundido y por otro deja
+     ver la foto de retrato siTodavia no se ha elegido ningun escenario. El
+     orden del DOM es el orden de apilado (sin z-index en cada capa), asi que
+     estas cuatro imagenes tienen que estar en este orden exacto. -->
   <img src="/assets/trans-2.jpg" alt="Retrato con lentes Transitions" class="fondo-simulador-img">
+  <img src="/assets/interiores.jpg" alt="" class="fondo-escenario fondo-escenario-interiores" aria-hidden="true">
+  <img src="/assets/nublado.jpg" alt="" class="fondo-escenario fondo-escenario-nublado" aria-hidden="true">
+  <img src="/assets/soleado.jpg" alt="" class="fondo-escenario fondo-escenario-soleado" aria-hidden="true">
 
   <div class="overlay-simulador"></div>
 
@@ -115,15 +122,27 @@
       <div class="titulo-panel">SIMULADOR DE ENTORNOS</div>
 
       <div class="grid-controles">
-        <div class="trigger-luz interior">
+        <!-- Botones de escenario: son botones de verdad (no divs) para que
+             respondan al teclado y-focus-visible. El estado activo se marca
+             con `aria-pressed` y con la clase `activa`. -->
+        <button type="button" class="trigger-luz interior"
+                [class.activa]="escenario === 'interiores'"
+                [attr.aria-pressed]="escenario === 'interiores'"
+                (click)="setEscenario('interiores')">
           <i class="fa-solid fa-house"></i>INTERIORES
-        </div>
-        <div class="trigger-luz nublado">
+        </button>
+        <button type="button" class="trigger-luz nublado"
+                [class.activa]="escenario === 'nublado'"
+                [attr.aria-pressed]="escenario === 'nublado'"
+                (click)="setEscenario('nublado')">
           <i class="fa-solid fa-cloud"></i>NUBLADO
-        </div>
-        <div class="trigger-luz soleado">
+        </button>
+        <button type="button" class="trigger-luz soleado"
+                [class.activa]="escenario === 'soleado'"
+                [attr.aria-pressed]="escenario === 'soleado'"
+                (click)="setEscenario('soleado')">
           <i class="fa-solid fa-sun"></i>SOLEADO
-        </div>
+        </button>
 
         <div class="visor-lente">
           <div class="marco-gafa">
@@ -302,36 +321,35 @@
 
       <img src="/assets/mujer2.webp" alt="Modelo con lentes Transitions" class="modelo-derecha">
 
+      <!-- Los seis tonos. El nombre va impreso en la propia imagen (en
+           negro, sobre su propio fondo blanco): por eso las muestras van
+           anchas y en dos filas, para que ese nombre se lea. Anadir encima
+           una etiqueta en blanco solo duplicaba el texto y competia con
+           el de la imagen. -->
       <div class="panel-paleta-colores">
 
         <div class="swatch-color swatch-ruby">
           <img src="/assets/ruby.webp" alt="Ruby" class="img-swatch">
-          <span>RUBY</span>
         </div>
 
         <div class="swatch-color swatch-sapphire">
           <img src="/assets/blueSapphire.webp" alt="Blue Sapphire" class="img-swatch">
-          <span>SAPPHIRE</span>
         </div>
 
         <div class="swatch-color swatch-amethyst">
           <img src="/assets/violetAmethyst.webp" alt="Violet Amethyst" class="img-swatch">
-          <span>AMETHYST</span>
         </div>
 
         <div class="swatch-color swatch-graphite">
           <img src="/assets/grapiteGreen.webp" alt="Graphite Green" class="img-swatch">
-          <span>GRAPHITE</span>
         </div>
 
         <div class="swatch-color swatch-brown">
           <img src="/assets/brown.webp" alt="Brown" class="img-swatch">
-          <span>BROWN</span>
         </div>
 
         <div class="swatch-color swatch-gray">
           <img src="/assets/gray.webp" alt="Gray" class="img-swatch">
-          <span>GRAY</span>
         </div>
 
       </div>

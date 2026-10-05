@@ -12,8 +12,15 @@
 </nav>
 <section class="seccion-adaptativa" id="sec-1">
   
-  <!-- NUEVO: Imagen de fondo y capa oscura (Overlay) -->
-  <img src="/assets/solar.jpg" alt="Fondo Solar Safe" class="img-fondo-adaptativa">
+  <!-- El fondo sigue al modo del lente: dos capas, exterior e interior, que
+       se cruzan con la MISMA cadencia de 8s que los dos rotulos del
+       indicador (`mostrarOscuro` / `mostrarClaro`). Al compartir los
+       keyframes, la foto y la etiqueta que la explica nunca pueden quedar
+       descuadradas. La capa de exterior es la base y queda siempre opaca;
+       la de interior es la que aparece encima al entrar en modo
+       INTERIOR / NUBLADO. -->
+  <img src="/assets/exterior.jpg" alt="" class="img-fondo-adaptativa fondo-modo-exterior" aria-hidden="true">
+  <img src="/assets/interior.jpg" alt="" class="img-fondo-adaptativa fondo-modo-interior" aria-hidden="true">
   <div class="overlay-adaptativa"></div>
 
   <!-- Efecto de iluminación original -->
@@ -91,7 +98,6 @@
       
       <!-- Cabecera y Frase Comercial -->
       <div class="cabecera-cristal">
-        <img src="/assets/SOLARWHITE.svg" alt="Solar Safe Logo" class="logo-panel-beneficios">
         <h2>EL MUNDO A TU MEDIDA.<br><strong>PROTECCIÓN SIN LÍMITES.</strong></h2>
         <div class="linea-roja-neon"></div>
         <p>Gafas de alto rendimiento que <strong>muestran tecnología de alto rendimiento en segundos</strong> dependiendo del ambiente. Disfruta de una visión perfecta y sin reflejos, ya sea en interiores oscuros o bajo el sol más extremo.</p>
@@ -167,7 +173,6 @@
   <div class="contenedor-ideales-premium animar-izquierda">
     
     <div class="panel-ideales-izq">
-      <img src="/assets/SOLARWHITE.svg" alt="Solar Safe Logo" class="logo-ideales-nuevo">
       
       <div class="badge-solar">TU ESTILO DE VIDA</div>
       <h2>DISEÑADOS <strong>PARA TI</strong></h2>

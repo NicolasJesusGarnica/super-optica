@@ -317,14 +317,14 @@
   object-position: center 20%;
   z-index: 1;
   /* La volvemos blanco y negro contrastada para que el UI amarillo explote visualmente */
-  filter: grayscale(100%) contrast(1.2); 
+  filter: grayscale(1%) contrast(1.2); 
 }
 
 .overlay-duro {
   position: absolute;
   top: 0; left: 0; 
   width: 100%; height: 100%;
-  background-color: rgba(5, 5, 27, 0.85); /* Azul corporativo con alta opacidad */
+  background-color: rgba(5, 5, 27, 0.50); /* Azul corporativo con alta opacidad */
   z-index: 2;
 }
 
@@ -709,7 +709,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, rgba(5,8,15,0.95) 0%, rgba(10,25,50,0.8) 100%);
+  background: linear-gradient(180deg, rgba(5,8,15,0.95) 0%, rgba(10,25,50,0.8) 1%);
   z-index: 2;
 }
 
@@ -859,7 +859,7 @@
 
 .texto-principal-consecuencias p {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.3rem;
+  font-size: 16px;
   font-weight: 600;
   color: #ffffff;
   line-height: 1.6;
@@ -1934,9 +1934,27 @@
   gap: clamp(20px, 3.4vh, 40px);
 }
 
+/* --- 4. TIPOGRAFIA DE LA SECCION ---
+   Aqui hay dos roles y ninguno estaba a la altura del otro:
+   · La entradilla ("El uso frecuente de pantallas...") es la unica prosa de
+     la seccion y la unica voz de primer nivel: sostiene el bloque sobre una
+     foto a pantalla completa. Estaba en 14px, por debajo del suelo de
+     lectura --16px-- y con un interlineado de 1.55 que la dejaba suelta.
+   · Los cuatro rotulos ("DOLOR DE CABEZA Y MAREOS") son microtitulos en
+     mayusculas, no metatexto: estaban en 12px, smaller que el cuerpo de
+     cualquier pagina, con 1px de tracking, que en mayusculas y sobre fondo
+     oscuro se come los espacios entre letras.
+
+   Texto claro sobre superficie oscura pide compensacion en los tres ejes:
+   algo mas de interlineado, algo mas de tracking y un peso mas. De ahi los
+   tres cambios de cada bloque. La medida se queda en 58ch, dentro del
+   rango comodo de 45 a 75 caracteres, y el alto total sigue entrando en
+   una pantalla. */
 .texto-principal-consecuencias p {
-  font-size: clamp(0.88rem, 1.6vh, 1.05rem);
-  line-height: 1.55;
+  font-size: clamp(1.15rem, 2.2vh, 1.45rem);
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  max-width: 58ch;
   /* El margen de abajo no es decorativo: es el hueco que necesita la
      imagen que sube al pasar el mouse. Antes valia 140px fijos mientras la
      imagen media 320px de alto, asi que se montaba encima del parrafo. El
@@ -1953,22 +1971,26 @@
 }
 
 .item-consecuencia p {
-  font-size: clamp(0.78rem, 1.4vh, 0.88rem);
-  line-height: 1.45;
+  font-size: clamp(0.95rem, 1.75vh, 1.15rem);
+  line-height: 1.35;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  color: #ffffff;
 }
 
 /* Los cuatro iconos de consecuencias son, igual que los de la seccion 3,
    glifos sueltos: 3.5rem de tipografia sin caja. Se les da el mismo
    sistema circular del resto de la pagina para que las dos secciones se
-   lean como una sola. */
+   lean como una sola. La caja crece con el texto: si no, el rotulo pesa mas
+   que su icono. */
 .item-consecuencia i {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: clamp(46px, 6.6vh, 60px);
-  height: clamp(46px, 6.6vh, 60px);
-  min-width: clamp(46px, 6.6vh, 60px);
-  font-size: clamp(1.2rem, 2.3vh, 1.55rem);
+  width: clamp(50px, 7vh, 64px);
+  height: clamp(50px, 7vh, 64px);
+  min-width: clamp(50px, 7vh, 64px);
+  font-size: clamp(1.3rem, 2.5vh, 1.7rem);
   color: #FFCC00;
   border-radius: 50%;
   background: rgba(255, 204, 0, 0.1);
@@ -2015,10 +2037,33 @@
 }
 
 .lista-bloqueo li i {
-  width: clamp(30px, 4.2vh, 42px);
-  height: clamp(30px, 4.2vh, 42px);
-  min-width: clamp(30px, 4.2vh, 42px);
-  font-size: clamp(0.85rem, 1.5vh, 1.05rem);
+  /* Aqui el icono es un `<i>` de Font Awesome en linea. Con `width` y
+     `text-align` no hacia nada --a un elemento en linea no se le aplica el
+     ancho--, asi que se leia como una viñeta: un glifo suelto pegado a la
+     izquierda con un hueco de 15px antes del texto. Ahora el `<i>` es la
+     caja (display:flex la convierte en bloque) y el glifo se mide y se
+     centra dentro de ella. Es el mismo sistema circular que usan
+     `.icono-fuente-caja` y `.icono-beneficio-lista` en el resto de la
+     pagina. */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(34px, 4.8vh, 44px);
+  height: clamp(34px, 4.8vh, 44px);
+  min-width: clamp(34px, 4.8vh, 44px);
+  font-size: clamp(0.9rem, 1.7vh, 1.1rem);
+  color: #FFCC00;
+  border-radius: 50%;
+  background: rgba(255, 204, 0, 0.1);
+  border: 1px solid rgba(255, 204, 0, 0.32);
+  filter: drop-shadow(0 4px 10px rgba(255, 204, 0, 0.22));
+  transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.lista-bloqueo li:hover i {
+  background: rgba(255, 204, 0, 0.22);
+  border-color: rgba(255, 204, 0, 0.6);
+  transform: translateY(-2px);
 }
 
 .simulador-gigante {
@@ -2039,9 +2084,16 @@
   font-size: clamp(1.7rem, 3.8vh, 2.6rem);
 }
 
+/* La entradilla es la unica prosa de la seccion y la voz de primer nivel
+   del bloque: estaba en 14px, por debajo del suelo de lectura. Sube a 1.05rem
+   como minimo, con la medida acotada a 56ch (dentro del rango comodo de 45 a
+   75) y el cuerpo un punto mas claro parasepararse del fondo fotografico. */
 .info-capas-izq p {
-  font-size: clamp(0.85rem, 1.6vh, 1rem);
+  font-size: clamp(1.05rem, 1.95vh, 1.3rem);
   line-height: 1.55;
+  letter-spacing: 0.005em;
+  max-width: 56ch;
+  color: #d9dbe6;
 }
 
 .escena-3d-capas {
@@ -2059,13 +2111,26 @@
   gap: clamp(8px, 1.6vh, 20px);
 }
 
+/* Los rotulos del HUD son microtitulos con una linea descriptiva debajo: son
+   dos roles, no uno. El titulo va en la cara de display y el cuerpo en la
+   de texto. Los dos estaban por debajo del suelo de lectura --13px y 11px
+   respectivamente-- y ademas con 1px de tracking en mayusculas, que es
+   justo lo que mas se pierde sobre fondo oscuro. De ahi los tres ejes:
+   cuerpo mas grande, tracking un punto mas abierto y la linea descriptiva
+   con mas peso para sostenerla. */
 .hud-texto h4 {
-  font-size: clamp(0.78rem, 1.5vh, 0.95rem);
+  font-size: clamp(1rem, 1.9vh, 1.25rem);
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+  margin-bottom: clamp(3px, 0.6vh, 6px);
 }
 
 .hud-texto p {
-  font-size: clamp(0.7rem, 1.3vh, 0.8rem);
+  font-size: clamp(0.92rem, 1.7vh, 1.1rem);
   line-height: 1.4;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #FFD633;
 }
 
 /* --- 7. POR QUE: la lista de beneficios con imagen que cruza --- */
@@ -2201,7 +2266,10 @@
     padding: 120px 5% 80px;
   }
   .texto-principal-consecuencias p {
+    /* En movil el hueco de la imagen flotante no hace falta: esa pieza se
+       desactiva mas abajo. */
     font-size: 1.1rem;
+    max-width: none;
     margin-bottom: 50px;
   }
   .grid-iconos-consecuencias {
@@ -2217,8 +2285,10 @@
   .imagen-flotante {
     display: none !important; 
   }
+  /* El icono sigue siendo una caja: el glifo se mide dentro de ella, no al
+     reves (2.5rem dentro de una caja de 50px se salia). */
   .item-consecuencia i {
-    font-size: 2.5rem;
+    font-size: 1.4rem;
   }
   
   /* --- SEC 5: ESPECTRO DUAL --- */

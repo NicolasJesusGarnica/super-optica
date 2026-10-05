@@ -890,7 +890,7 @@
 }
 
 .logo-adaptativo {
-  height: 80px;
+  height: 120px;
   margin-bottom: 25px;
   filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5));
 }
@@ -1369,7 +1369,7 @@
 }
 
 .logo-panel-beneficios {
-  height: 45px;
+  height: 95px;
   margin-bottom: 25px;
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
 }
@@ -2726,6 +2726,66 @@
 
 
 /* =========================================================================
+   EL FONDO SIGUE AL MODO DEL LENTE
+   El simulador tiene dos modos --EXTERIOR / SOLEADO e INTERIOR / NUBLADO-- y
+   hasta ahora solo lo contaban los dos rotulos del indicador: el fondo se
+   quedaba siempre en la misma foto y el mensaje no se cumplia.
+
+   Ahora el fondo son dos capas apiladas. La de exterior es la base y queda
+   siempre opaca; la de interior va encima y se cruza con el MISMO patron de
+   keyframes que el rotulo que la explica (mismos 8s, mismo `alternate`, misma
+   forma 0-40 / 60-100). Al compartir la cadencia, foto y etiqueta no pueden
+   desincronizarse: no hay estado en el componente que pueda quedar
+   desfasado, porque los dos leen el mismo reloj.
+
+   Las dos fotos son claires (montana a pleno sol, cocina白光) y el texto de la
+   seccion es blanco: sin bajarles el brillo, el titular se perdia. Se
+   apagan con un filtro y el velo existente los devuelve al mundo navy de
+   la marca. El interior ademas se funde en lugar de cortar, porque al
+   solaparse sobre la capa de exterior produce un degradado natural entre las
+   dos escenas.
+   ========================================================================= */
+
+/* Las dos fotos traen su propia luz, asi que no hay que apagarlas: antes
+   estaban al 50% de brillo y desaturadas, que era justo lo que las
+   convertia en una mancha sin color. */
+.img-fondo-adaptativa {
+  object-position: center;
+  filter: brightness(0.88) contrast(1.04) saturate(1.05);
+}
+
+.fondo-modo-exterior {
+  /* Capa base: siempre visible, sin animacion. */
+  opacity: 1;
+}
+
+.fondo-modo-interior {
+  /* Capa que aparece encima. 0-40% = modo INTERIOR (el mismo reparto que
+     `mostrarClaro`, que es el rotulo de INTERIOR / NUBLADO). */
+  animation: fondoModoInterior 8s infinite alternate ease-in-out;
+}
+
+@keyframes fondoModoInterior {
+  0%, 40%   { opacity: 1; }
+  60%, 100% { opacity: 0; }
+}
+
+/* El velo deja de ser azul. Era `rgba(2, 2, 38)`, un navy saturado que se
+   comia el color de las fotos y dejaba el fondo --y el lente--azules. Ahora
+   es un grafito casi neutro (6, 7, 14) y trabaja en dos direcciones:
+   · lateral: fuerte detras del texto, casi limpio donde vive el lente, para
+     que la foto se vea y la animacion del cristal tenga fondo real;
+   · inferior: la banda de las tres propiedades cruza toda la pantalla, asi
+     que necesita su propio suelo o el texto gris se pierde sobre la foto.
+   El lente mantiene su propio fondo --claro en modo INTERIOR, casi negro en
+   modo EXTERIOR-- y el pulso de ambiente sigue igual. */
+.overlay-adaptativa {
+  background:
+    linear-gradient(to top, rgba(6, 7, 14, 0.95) 0%, rgba(6, 7, 14, 0.74) 26%, rgba(6, 7, 14, 0) 58%),
+    linear-gradient(90deg, rgba(6, 7, 14, 0.94) 0%, rgba(6, 7, 14, 0.74) 42%, rgba(6, 7, 14, 0.14) 100%);
+}
+
+/* =========================================================================
    TODO ENCAJA EN UNA PANTALLA
    Las cuatro secciones son pantallas de una presentacion: las flechas del
    pager saltan de una a otra, asi que el bloque completo de cada una tiene
@@ -2750,7 +2810,10 @@
    enorme entre la regla y el parrafo. Ahora el escenario se limita a la
    altura de las filas de texto y el bloque vuelve a leerse pegado. */
 .simulador-reactivo {
-  height: clamp(200px, 28vh, 380px);
+  height: clamp(220px, 32vh, 400px);
+  /* El hueco entre el indicador y el lente lo pone el contenedor, no un
+     margen: asi los dos elementos nunca se tocan. */
+  gap: clamp(10px, 1.8vh, 18px);
 }
 
 .sol-virtual {
@@ -2767,13 +2830,19 @@
   height: clamp(210px, 25vh, 330px);
 }
 
-/* Los dos estados del indicador se cruzaban en el mismo sitio: uno estaba
-   en el flujo y el otro en absoluto. Los dos ocupan ahora la misma celda
-   y se encadenan en el tiempo, que es lo que dicen los dos keyframes. */
+/* El indicador de estado va ARRIBA del lente, no pegado a el.
+   Estaba anclado al fondo del escenario (`position: absolute; bottom`), pero
+   el lente ocupa casi toda la caja: el recuadro le caia encima y tapaba el
+   cristal. Ahora el recuadro es un hijo mas del flujo --el primero, con
+   `order`-- y el hueco lo pone el `gap` del contenedor, asi que no hay
+   solapamiento possible en ningun tamano de pantalla. Los dos estados
+   siguen cruzandose solos: los keyframes solo animan `opacity`. */
 .indicador-estado {
   display: grid;
   justify-items: center;
-  bottom: clamp(4px, 1.2vh, 10px);
+  order: -1;
+  position: static;
+  bottom: auto;
   padding: clamp(6px, 1vh, 9px) clamp(14px, 1.6vw, 22px);
 }
 

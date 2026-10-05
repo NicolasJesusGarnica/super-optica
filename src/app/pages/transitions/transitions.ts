@@ -13,7 +13,18 @@ export class TransitionsComponent implements OnInit {
   secciones: string[] = ['sec-1', 'sec-2', 'sec-3', 'sec-4', 'sec-5', 'sec-6', 'sec-7'];
   seccionActual: number = 0;
 
+  /* Escenario del simulador (seccion 2). Es la unica fuente de verdad: el
+     fondo y el tono del cristal se leen de aqui con `[data-escenario]`, de
+     modo que la foto y el lente no pueden quedar desincronizados. Antes el
+     cristal cambiaba con `:hover` sobre los botones, una prueba que se
+     perdia al salir el raton; ahora el estado es explicito y persistente. */
+  escenario: 'interiores' | 'nublado' | 'soleado' = 'soleado';
+
   constructor(private el: ElementRef) { }
+
+  setEscenario(escenario: 'interiores' | 'nublado' | 'soleado'): void {
+    this.escenario = escenario;
+  }
 
   ngOnInit(): void {
     const observer = new IntersectionObserver((entries) => {

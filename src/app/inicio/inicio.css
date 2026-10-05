@@ -177,17 +177,74 @@
   height: 130px; 
 }
 
-/* =========================================
-   FILA DE LOGOS DE TECNOLOGÍAS
-   ========================================= */
+/* =========================================================================
+   DISTRIBUCION EN DOS MITADES
+   Antes era una columna centrada: la marca arriba y los seis tratamientos
+   en una fila de 6, que obliga a dejar los logos en 150px para que quepan
+   los 6 de lado. Ahora la pantalla se parte en dos mitades: la marca ocupa
+   la izquierda y los seis tratamientos forman una retícula de 2 x 3 a la
+   derecha, separadas por un filete. Al liberar el ancho, cada logo puede
+   ocupar una celda de verdad. El video, el velo y las dos animaciones de
+   entrada se conservan tal cual.
+   ========================================================================= */
+
+.hero-contenido {
+  max-width: 1320px;
+  padding: 0 clamp(20px, 4vw, 56px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(28px, 4.5vw, 72px);
+  text-align: left;
+}
+
+/* El velo blanco ocupa TODA la mitad izquierda, de borde a borde y de alto
+   a alto. Al 50% el video se sigue viendo por detras --no se tapa la
+   escena-- y la marca deja de competir con el fotograma. Se pinta como
+   pseudo-elemento de la seccion para que llegue al borde de la pantalla,
+   no solo al ancho del contenedor. Queda por debajo del contenido
+   (z-index 3) y por encima del video (1) y del velo oscuro (2). */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  inset: 0 50% 0 0;
+  background: rgba(255, 255, 255, 0.5);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* La marca ya no necesita recuadro propio: el velo es su campo. Se le
+   agranda el ancho disponible y una sombra neutra para separarlo del
+   fotograma de abajo. */
+.logo-principal {
+  justify-self: center;
+  width: min(500px, 44vw);
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 0;
+  filter: drop-shadow(0 18px 40px rgba(2, 6, 23, 0.22));
+}
+
 .logos-tecnologias {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: clamp(118px, 16vh, 168px);
+  gap: clamp(12px, 2vw, 28px);
+  /* La costura: el borde blanco del velo ya divide la pantalla, asi que el
+     filete solo confirma la union con una linea muy tenue. */
+  border-left: 1px solid rgba(2, 6, 23, 0.16);
+  padding-left: clamp(24px, 4vw, 56px);
+  opacity: 0;
+  animation: subirLogos 1s ease-out 0.8s forwards;
+}
+
+/* La celda manda: el logo se ajusta dentro de ella sin deformarse. */
+.logos-tecnologias a {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 60px; /* Un poco más de separación entre ellos */
-  flex-wrap: wrap; 
-  opacity: 0; 
-  animation: subirLogos 1s ease-out 0.8s forwards; 
+  width: 100%;
+  height: 100%;
 }
 
 @keyframes subirLogos {
@@ -195,16 +252,40 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Agrandé un poco los logos de abajo para que se vean mejor (de 38px a 45px) */
+/* Los seis logos vienen con proporciones muy distintas (de 0.52 a 3.63 de
+   ancho/alto). Si solo se les deja `width/height: auto`, cada uno se pinta
+   a su tamano intrinsic y la retícula se descuadra: en la foto se ve el
+   escudo de Blue Stop diminuto al lado de un Transitions GEN S gigante.
+   Aqui cada marca tiene una caja propia dentro de la celda, para que todas
+   pesen lo mismo sin deformar ninguna. */
 .logos-tecnologias a img {
   max-width: 100%;
   max-height: 100%;
   width: auto;
   height: auto;
   object-fit: contain;
-  opacity: 0.7; 
+  opacity: 0.7;
   filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.8));
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Las dos marcas verticales (Blue Stop y Age Protection) se miden por alto:
+   son apiladas, asi que si se midieran por ancho --como las otras cuatro--
+   su escudo quedaria diminuto. La fila es mas alta para que quepan. */
+.logos-tecnologias a:nth-child(1) img,
+.logos-tecnologias a:nth-child(2) img {
+  height: clamp(96px, 15.5vh, 136px);
+}
+
+/* Las cuatro horizontales se miden por ancho. */
+.logos-tecnologias a:nth-child(3) img,
+.logos-tecnologias a:nth-child(4) img {
+  width: min(190px, 86%);
+}
+
+.logos-tecnologias a:nth-child(5) img,
+.logos-tecnologias a:nth-child(6) img {
+  width: min(185px, 82%);
 }
 
 .logos-tecnologias a:hover img {
@@ -213,37 +294,56 @@
   filter: drop-shadow(0 10px 18px rgba(255, 198, 0, 0.45)); /* Resplandor amarillo corporativo */
 }
 
-.logos-tecnologias a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 150px; /* Todos tendrán el mismo ancho disponible */
-  height: 150px; /* Todos tendrán el mismo alto disponible */
-}
-
 /* =========================================
    DISEÑO RESPONSIVO: HERO SECTION
    ========================================= */
 @media (max-width: 900px) {
+  /* En una sola columna no hay mitad que velar: el velo de la izquierda
+     taparia los tratamientos, que ahora van debajo. */
+  .hero-section::before {
+    display: none;
+  }
+
   .hero-contenido {
     margin-top: -40px; /* Reducimos el margen negativo para que el logo no se corte arriba */
     padding: 0 15px;
+    /* En una sola columna la marca va arriba y los tratamientos debajo: el
+       filete pasa de vertical a horizontal. */
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(22px, 5vh, 40px);
+    text-align: center;
   }
 
   .logo-principal {
-    max-width: 280px; /* El logo de Optinova se achica para móviles */
-    margin-bottom: 50px; /* Menos espacio muerto antes de la fila de tecnologías */
+    width: min(280px, 62vw);
+    margin-bottom: 0;
   }
 
   .logos-tecnologias {
-    gap: 20px; /* Acercamos los logos para que quepan mejor en la pantalla */
+    grid-auto-rows: clamp(82px, 12vh, 110px);
+    gap: 14px; /* Acercamos los logos para que quepan mejor en la pantalla */
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    padding-left: 0;
+    padding-top: 18px;
   }
 
-  .logos-tecnologias a {
-    width: 90px;  /* Reducimos la zona táctil y el tamaño de las tecnologías */
-    height: 90px;
+  /* Las proporciones se mantienen, pero con cajas mas chicas. */
+  .logos-tecnologias a:nth-child(1) img,
+  .logos-tecnologias a:nth-child(2) img {
+    height: clamp(62px, 9vh, 82px);
   }
-  
+
+  .logos-tecnologias a:nth-child(3) img,
+  .logos-tecnologias a:nth-child(4) img {
+    width: min(140px, 84%);
+  }
+
+  .logos-tecnologias a:nth-child(5) img,
+  .logos-tecnologias a:nth-child(6) img {
+    width: min(130px, 76%);
+  }
+
   /* En pantallas táctiles, la animación al pasar el dedo debe ser más sutil */
   .logos-tecnologias a:hover img {
     transform: translateY(-5px) scale(1.05); 
@@ -253,15 +353,27 @@
 /* Ajuste extra para celulares muy pequeños */
 @media (max-width: 480px) {
   .logo-principal {
-    max-width: 240px;
+    width: min(210px, 66vw);
   }
   
   .logos-tecnologias {
-    gap: 15px;
+    grid-auto-rows: clamp(66px, 10vh, 84px);
+    gap: 10px;
+    padding-top: 14px;
   }
-  
-  .logos-tecnologias a {
-    width: 75px;
-    height: 75px;
+
+  .logos-tecnologias a:nth-child(1) img,
+  .logos-tecnologias a:nth-child(2) img {
+    height: clamp(50px, 7.5vh, 62px);
+  }
+
+  .logos-tecnologias a:nth-child(3) img,
+  .logos-tecnologias a:nth-child(4) img {
+    width: min(110px, 80%);
+  }
+
+  .logos-tecnologias a:nth-child(5) img,
+  .logos-tecnologias a:nth-child(6) img {
+    width: min(100px, 74%);
   }
 }

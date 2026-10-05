@@ -4431,15 +4431,18 @@ html {
   height: clamp(170px, 30vh, 250px);
 }
 
-/* --- 12. COMPARATIVA DE LENTES: LAS FOTOS DE PRODUCTO, SIN RECORTAR ---
-   Las tres tarjetas de "Lentes para cerca / Lentes bifocales / Vision
-   Varilux" metian la foto del lente con `object-fit: cover` en una caja
-   apaisada: la montura salia cortada por arriba y por abajo, que es justo
-   lo que un lente no puede hacer. `contain` muestra el producto entero; la
-   caja es transparente, asi que el espacio que sobra no se ve.
-   Ademas la tarjeta destacada tenia su propia altura de imagen (200px) y se
-   comia el aire de las otras dos: ahora las tres comparten la misma
-   escala y la destacada se diferencia por el ancho, no por el recorte. */
+/* --- 12. COMPARATIVA DE LENTES: FOTOS ACOMODADAS Y TEXTO LEGIBLE ---
+   · Las fotos. Los tres archivos son cuadrados (varil-1/2/3.jpg, 492x498)
+     y se maquetaban en una caja apaisada: al poner `contain` para que la
+     montura no saliera cortada, la foto quedo reducida a 168px y flotando
+     perdida en medio de la tarjeta. Si la foto es cuadrada, la caja es
+     cuadrada: `aspect-ratio` la hace coincidir con el archivo y la imagen
+     llena el marco entero, sin recorte y sin bandas.
+   · El texto. Las tres fichas y la entradilla caian sobre el rostro claro
+     del fondo con un velo que solo llegaba a 0.05 de opacidad en el centro:
+     el texto se perdia. Ahora las fichas llevan su propia superficie --el
+     mismo sistema de la pagina 2 de Transitions-- y el velo de seccion
+     gana un suelo arriba, que es donde vive la entradilla. */
 .img-circular-lente {
   object-fit: contain;
   width: 100%;
@@ -4447,19 +4450,60 @@ html {
   padding: 4% 0;
 }
 
-.tarjeta-destacada-varilux .imagen-lente-placeholder {
-  height: clamp(150px, 25vh, 210px);
+.imagen-lente-placeholder {
+  /* Caja cuadrada para un archivo cuadrado: la foto llena el marco. El lado
+     se acota con la altura disponible, porque esta pagina es una pantalla
+     de presentacion y la ficha completa tiene que caber en ella. */
+  width: min(100%, 168px);
+  max-width: 168px;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto clamp(12px, 1.8vh, 18px);
 }
 
-/* El ritmo de la comparativa tambien se aprieta: son tres columnas de texto
-   largo y, con el padding fijo, la tercera se salia de la pantalla. */
+.tarjeta-destacada-varilux .imagen-lente-placeholder {
+  width: min(100%, 204px);
+  max-width: 204px;
+  height: auto;
+  margin-bottom: clamp(14px, 2vh, 20px);
+}
+
+/* Superficie propia de cada ficha: el texto deja de depender de lo que haya
+   detras. */
+.tarjeta-lente {
+  background: rgba(4, 8, 16, 0.62);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 2px solid var(--so-gold);
+  padding: clamp(16px, 2.4vh, 26px) clamp(16px, 2vw, 26px) clamp(18px, 2.6vh, 30px);
+}
+
+.tarjeta-destacada-varilux {
+  background: rgba(10, 18, 34, 0.7);
+  border-color: rgba(138, 180, 248, 0.45);
+  padding: clamp(20px, 3vh, 32px) clamp(22px, 2.4vw, 32px) clamp(22px, 3vh, 36px);
+}
+
+/* Suelo arriba para la entradilla, que era lo que mas se perdia. */
+.overlay-comparativa {
+  background:
+    linear-gradient(to bottom,
+      rgba(4, 11, 20, 0.92) 0%,
+      rgba(4, 11, 20, 0.52) 24%,
+      rgba(4, 11, 20, 0.74) 100%),
+    radial-gradient(circle at center, rgba(138, 180, 248, 0.05) 0%, rgba(4, 11, 20, 0.9) 80%);
+}
+
+/* El ritmo de la comparativa, en un solo bloque. Antes vivian dos juegos de
+   valores seguidos y el segundo (masflojo) ganaba por cascada: las fichas
+   volvian a inflarse y la tercera se salia de la pantalla. Son tres columnas
+   de texto largo, asi que el aire se mide con la altura disponible. */
 .contenedor-comparativa {
-  gap: clamp(24px, 4vh, 44px);
+  gap: clamp(18px, 2.6vh, 30px);
 }
 
 .header-comparativa {
-  gap: clamp(20px, 3vw, 48px);
-  padding-bottom: clamp(18px, 2.8vh, 32px);
+  gap: clamp(20px, 3vw, 44px);
+  padding-bottom: clamp(14px, 2vh, 22px);
 }
 
 .logo-pequeno-varilux {
@@ -4467,34 +4511,63 @@ html {
 }
 
 .desc-general-comparativa {
-  font-size: clamp(0.88rem, 1.6vh, 1.05rem);
+  font-size: clamp(0.85rem, 1.5vh, 1rem);
   line-height: 1.55;
 }
 
 .grid-3-lentes {
-  gap: clamp(16px, 2.2vw, 28px);
+  gap: clamp(14px, 1.8vw, 24px);
 }
 
 .tarjeta-lente {
-  padding: clamp(20px, 3.2vh, 34px) clamp(18px, 2.4vw, 32px) clamp(22px, 3.6vh, 38px);
+  padding: clamp(16px, 2.4vh, 26px) clamp(16px, 2vw, 26px) clamp(18px, 2.6vh, 30px);
 }
 
 .imagen-lente-placeholder {
-  margin-bottom: clamp(14px, 2.4vh, 26px);
+  margin-bottom: clamp(12px, 1.8vh, 18px);
 }
 
 .contenido-tarjeta-lente h3 {
-  font-size: clamp(1.15rem, 2.6vh, 1.6rem);
-  margin-bottom: clamp(8px, 1.4vh, 15px);
+  font-size: clamp(1.1rem, 2.3vh, 1.45rem);
+  margin-bottom: clamp(8px, 1.2vh, 12px);
 }
 
 .contenido-tarjeta-lente p {
-  font-size: clamp(0.76rem, 1.4vh, 0.85rem);
+  font-size: clamp(0.78rem, 1.45vh, 0.88rem);
   line-height: 1.5;
 }
 
 .tarjeta-destacada-varilux {
-  padding: clamp(24px, 3.8vh, 40px) clamp(22px, 2.8vw, 38px) clamp(26px, 4.2vh, 44px);
+  padding: clamp(20px, 3vh, 32px) clamp(22px, 2.4vw, 32px) clamp(22px, 3vh, 36px);
+}
+
+/* --- 13. LAS FLECHAS NO DEBEN PISAR EL TEXTO ---
+   Los controles de presentacion van fijos en la esquina inferior derecha, asi
+   que se montan sobre la ultima tarjeta de la comparativa: con la ficha
+   Varilux llena, las flechas caian encima de las ultimas lineas del parrafo.
+   La salida es dejarle su propio carril: la seccion reserva la franja
+   inferior completa y, en pantallas anchas, el bloque de contenido se
+   desplaza lo justo para que su borde derecho termine antes del carril. */
+@media (min-width: 1100px) {
+  .seccion-comparativa-lentes {
+    /* La franja del pager: 26px del borde inferior + 48px de boton + margen. */
+    padding-bottom: clamp(96px, 12vh, 132px);
+    padding-right: clamp(24px, 9vw, 150px);
+  }
+
+  /* Carril mas estrecho: los botones se achican y se pegan a la esquina, con
+     lo que la zona que tapan sobre el contenido es menor. */
+  .controles-presentacion {
+    bottom: 26px;
+    right: 26px;
+    gap: 14px;
+  }
+
+  .btn-flecha {
+    width: 48px;
+    height: 48px;
+    font-size: 1.3rem;
+  }
 }
 
 /* --- 7. TABLA DE RENDIMIENTO: LAS TRES FILAS DEL RANKING ---

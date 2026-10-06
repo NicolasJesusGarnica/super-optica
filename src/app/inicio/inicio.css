@@ -106,11 +106,7 @@
 }
 
 .hero-contenido {
-  /* Sin `position: relative`: el logo se posiciona de forma absoluta contra
-     el borde de la pantalla, asi que su referencia tiene que ser la seccion y
-     no esta caja, que esta centrada y limitada. El `z-index` sigue valiendo
-     porque `.hero-section` es flex y sus hijos lo respetan aunque no esten
-     posicionados. */
+  position: relative;
   z-index: 3;
   width: 100%;
   max-width: 1200px;
@@ -182,36 +178,44 @@
 }
 
 /* =========================================================================
-   DISTRIBUCION EN DOS MITADES
-   Antes era una columna centrada: la marca arriba y los seis tratamientos
-   en una fila de 6, que obliga a dejar los logos en 150px para que quepan
-   los 6 de lado. Ahora la pantalla se parte en dos mitades: la marca ocupa
-   la izquierda y los seis tratamientos forman una retícula de 2 x 3 a la
-   derecha, separadas por un filete. Al liberar el ancho, cada logo puede
-   ocupar una celda de verdad. El video, el velo y las dos animaciones de
-   entrada se conservan tal cual.
+   DISTRIBUCION EN UN TERCIO / DOS TERCIOS
+   Antes era una columna centrada: la marca arriba y los seis tratamientos en
+   una fila de 6, que obliga a dejar los logos en 150px para que quepan los 6
+   de lado. Ahora la pantalla se parte como pide el cliente: un tercio a la
+   izquierda con el logo sobre el velo blanco, y los dos tercios de la derecha
+   con el video y los seis tratamientos en dos filas de tres. El reparto es
+   1fr / 2fr y el contenedor va a sangre, para que la costura coincida con el
+   borde del velo y con el tercio de la pantalla, y no con el ancho de una caja
+   centrado. El video, el velo y las dos animaciones de entrada se conservan.
    ========================================================================= */
 
 .hero-contenido {
-  max-width: 1320px;
-  padding: 0 clamp(20px, 4vw, 56px);
+  max-width: none;
+  padding: 0;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  /* Reparto del cliente, ajustado: el panel blanco es un poco mas angosto que
+     el tercio y se queda en el 28%, con los dos tercios restantes para el
+     video. El reparto va en porcentajes y no en fracciones para que la costura
+     del panel y la de la reticula caigan en el mismo pixel. */
+  grid-template-columns: minmax(0, 28%) minmax(0, 72%);
   align-items: center;
-  gap: clamp(28px, 4.5vw, 72px);
+  /* Sin gap: la division ya hace de costura. */
+  gap: 0;
   text-align: left;
 }
 
-/* El velo blanco ocupa TODA la mitad izquierda, de borde a borde y de alto
-   a alto. Al 50% el video se sigue viendo por detras --no se tapa la
+/* El velo blanco ocupa el tercio izquierdo, de borde a borde y de alto a alto.
+   No llega al 100%: el video se sigue viendo por detras --no se tapa la
    escena-- y la marca deja de competir con el fotograma. Se pinta como
-   pseudo-elemento de la seccion para que llegue al borde de la pantalla,
-   no solo al ancho del contenedor. Queda por debajo del contenido
-   (z-index 3) y por encima del video (1) y del velo oscuro (2). */
+   pseudo-elemento de la seccion para que llegue al borde de la pantalla, no
+   solo al ancho del contenedor. Queda por debajo del contenido (z-index 3) y
+   por encima del video (1) y del velo oscuro (2). */
 .hero-section::before {
   content: '';
   position: absolute;
-  inset: 0 50% 0 0;
+  /* El panel blanco se queda en el 28% de la pantalla: el 72% restante queda
+     para el video. */
+  inset: 0 72% 0 0;
   background: rgba(255, 255, 255, 0.5);
   z-index: 2;
   pointer-events: none;
@@ -230,30 +234,26 @@
 
 .logos-tecnologias {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  /* Dos filas de tres, como pide el cliente. */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   grid-auto-rows: clamp(118px, 16vh, 168px);
   gap: clamp(12px, 2vw, 28px);
-  /* El filete vertical que separaba las dos mitades ya no va: al quedar el
-     logo arriba a la izquierda, la marca ya no llega al centro y la costura
-     se leia como un palo suelto en medio de la pantalla. El aire lateral se
-     conserva. */
-  padding-left: clamp(24px, 4vw, 56px);
+  /* Sin filete: al partir la pantalla en tercios, la costura ya la marca el
+     propio borde del velo blanco. Aqui solo el aire interior de la celda. */
+  padding: 0 clamp(20px, 3vw, 56px) 0 clamp(24px, 4vw, 56px);
   opacity: 0;
   animation: subirLogos 1s ease-out 0.8s forwards;
 }
 
-/* La marca, a tres cuartos de lo que era y en la esquina superior izquierda.
-   Se saca del flujo de la reticula: dentro de ella, `align-self` solo la
-   alinearia con el alto de los tratamientos y seguira quedando en el centro
-   vertical. Al salir del flujo, la rejilla de tratamientos se fija en la
-   segunda columna para que la mitad derecha no se mueva. */
+/* La marca, mas grande y centrada en el panel blanco. El tope y el
+   responsive estan calculados para que el logo no pueda traspasar el panel:
+   el ancho nunca pasa del 21% de la pantalla y el panel es del 28%, asi que
+   siempre le queda aire a cada lado (el 75% del panel, uno de cada lado). */
 @media (min-width: 901px) {
   .logo-principal {
-    position: absolute;
-    top: clamp(26px, 5vh, 56px);
-    left: clamp(20px, 3.2vw, 60px);
-    width: min(188px, 16.5vw);
-    justify-self: auto;
+    justify-self: center;
+    align-self: center;
+    width: min(400px, 21vw);
     margin-bottom: 0;
   }
 
@@ -295,21 +295,23 @@
 
 /* Las dos marcas verticales (Blue Stop y Age Protection) se miden por alto:
    son apiladas, asi que si se midieran por ancho --como las otras cuatro--
-   su escudo quedaria diminuto. La fila es mas alta para que quepan. */
+   su escudo quedaria diminuto. */
 .logos-tecnologias a:nth-child(1) img,
 .logos-tecnologias a:nth-child(2) img {
-  height: clamp(96px, 15.5vh, 136px);
+  height: clamp(108px, 17vh, 150px);
 }
 
-/* Las cuatro horizontales se miden por ancho. */
+/* Las cuatro horizontales se miden por ancho. Con dos filas de tres las celdas
+   son mas anchas que en la retícula de dos columnas, asi que los logos pueden
+   crecer un poco para no quedar perdidos en el hueco. */
 .logos-tecnologias a:nth-child(3) img,
 .logos-tecnologias a:nth-child(4) img {
-  width: min(190px, 86%);
+  width: min(240px, 78%);
 }
 
 .logos-tecnologias a:nth-child(5) img,
 .logos-tecnologias a:nth-child(6) img {
-  width: min(185px, 82%);
+  width: min(235px, 76%);
 }
 
 .logos-tecnologias a:hover img {
@@ -322,7 +324,7 @@
    DISEÑO RESPONSIVO: HERO SECTION
    ========================================= */
 @media (max-width: 900px) {
-  /* En una sola columna no hay mitad que velar: el velo de la izquierda
+  /* En una sola columna no hay tercio que velar: el velo de la izquierda
      taparia los tratamientos, que ahora van debajo. */
   .hero-section::before {
     display: none;
@@ -332,7 +334,8 @@
     margin-top: -40px; /* Reducimos el margen negativo para que el logo no se corte arriba */
     padding: 0 15px;
     /* En una sola columna la marca va arriba y los tratamientos debajo: el
-       filete pasa de vertical a horizontal. */
+       reparto 1/3 - 2/3 y la costura vertical pasan a ser una linea de
+       tiempo horizontal. */
     grid-template-columns: minmax(0, 1fr);
     gap: clamp(22px, 5vh, 40px);
     text-align: center;
@@ -344,11 +347,13 @@
   }
 
   .logos-tecnologias {
+    /* En movil los seis vuelven a 2 x 3: con 3 columnas no caben. */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-column: 1;
     grid-auto-rows: clamp(82px, 12vh, 110px);
     gap: 14px; /* Acercamos los logos para que quepan mejor en la pantalla */
     border-top: 1px solid rgba(255, 255, 255, 0.14);
-    padding-left: 0;
-    padding-top: 18px;
+    padding: 18px 0 0 0;
   }
 
   /* Las proporciones se mantienen, pero con cajas mas chicas. */
